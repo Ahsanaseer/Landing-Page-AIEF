@@ -1,0 +1,1022 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Showdown - 3rd International AI Championship</title>
+  <link href="tailwind-project/dist/output.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body class="bg-white min-h-screen font-poppins">
+
+
+  <!-- Upper Section -->
+  <section class="fixed top-0 left-0 right-0 z-10 bg-gradient-to-b from-gray-900 via-blue-900 to-teal-900">
+    <!-- Main Navigation Card -->
+    <div class="container mx-auto px-4 py-6">
+      <div class="bg-gradient-to-r from-custompurple via-customblue to-customblue rounded-md px-6 py-4 flex justify-between items-center shadow-lg">
+        <div class="flex items-center space-x-3">
+          <div>
+            <img src="PICS/icon top.png" alt="icon" class="w-15 h-10">
+          </div>
+        </div>
+        <button class="bg-green-800 hover:bg-green-900 text-white px-8 py-3 rounded-lg font-semibold text-sm transition-colors">
+          <span class="text-white tracking-widest" >HOME</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Event Announcement Section -->
+    <section class="py-20" style="margin-top: -30px;">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-6xl md:text-8xl font-poppins text-white mb-4">
+          September 27th
+        </h1>
+        <h2 class="text-6xl md:text-8xl  font-poppins text-white mb-8">
+          Lahore, PK
+        </h2>
+        <p class="text-xl md:text-2xl text-white mb-8 max-w-4xl mx-auto leading-relaxed">
+          The world will be watching as AI innovators rise to redefine the future. Sign up now for the 3rd International AI Championship
+        </p>
+        <button class="bg-white text-gray-900 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2 mx-auto">
+          <span>SIGN UP NOW</span>
+          <i class="fas fa-arrow-right text-sm"></i>
+        </button>
+      </div>
+    </section>
+  </section>
+
+  <!-- Spacer to prevent content overlap -->
+  <div class="h-screen"></div>
+
+  <!-- Main Content -->
+  <main class="min-h-screen">
+
+    <!-- AI Showdown Graphic Section -->
+    <section class="relative py-20 z-50" style="will-change: transform;">
+      <div class="container mx-auto px-4">
+        <div class="relative bg-gradient-to-b from-gray-900 via-blue-900 to-teal-800 rounded-3xl shadow-2xl max-w-4xl mx-auto">
+          <!-- Green glow effect at top -->
+          <div class="absolute top-0 left-0 w-96 h-32 bg-green-400 opacity-20 blur-3xl"></div>
+          
+          <div class="relative z-20 p-12 md:p-20">
+            <!-- Top text -->
+            <div class="text-center mb-8">
+              <h3 class="text-2xl md:text-3xl font-bold text-white opacity-80">
+                Level Up for Pakistan's Biggest
+              </h3>
+            </div>
+
+            <!-- Main AI Showdown text with AI head overlay -->
+            <div class="relative text-center mb-16">
+              <div class="relative">
+                <!-- AI Head Graphic -->
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30" style="pointer-events: none;">
+                  <img src="PICS/robot.svg" alt="AI Robot" class="w-80 h-80 md:w-[600px] md:h-[600px] object-contain" style="width: 450px; height: 450px; margin-top: 171px;">
+                </div>
+                
+                <!-- AI Showdown Text with overflow effect -->
+                <div class="relative z-25 overflow-visible ">
+                  <h2 class="text-8xl md:text-[10rem] font-black text-white leading-none relative overflow-visible">
+                    <span class="whitespace-nowrap relative">
+                      <span class="text-white -ml-48">AI Showdown</span>
+                    </span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom features -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              <div class="text-cyan-400">
+                <p class="text-lg md:text-xl font-semibold">Where Future Innovators Meet AI</p>
+              </div>
+              <div class="text-cyan-400">
+                <p class="text-lg md:text-xl font-semibold">Panel Discussion</p>
+              </div>
+              <div class="text-white relative">
+                <p class="text-lg md:text-xl font-semibold">Mentorship</p>
+                <p class="text-sm md:text-base mt-2">
+                  <span class="text-white">Top AI</span>
+                  <span class="text-cyan-400"> Talent</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </section>
+
+    <!-- AI Championship Section -->
+    <section style="margin-top: -100px; position: relative;" class="relative z-20 py-40">
+      <!-- Background split -->
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 50%; background-color: #284368; z-index: -1;"></div>
+      <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 50%; background-color: #f4f4f4; z-index: -1;"></div>
+      <div class="bg-white py-20 rounded-2xl mx-[20px] mt-[100px] my-auto relative" style="z-index: 70;">
+        <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Left Column - Text Content -->
+            <div class="space-y-6">
+              <h2 class="text-4xl md:text-5xl -mt-56 font-bold text-custompurple leading-tight">
+                Why Attend the AI Championship
+              </h2>
+              <p class="text-xs text-gray-700 leading-relaxed">
+                This is more than an AI competition it’s a celebration of young minds, big dreams, and the spirit of innovation in Pakistan. At AIEF, students aren’t just participants they’re the future. With every line of code and every bold idea, they’re solving real problems, learning from mentors who care, and discovering the confidence to lead tomorrow.
+                <br> Come be inspired, be challenged, and be part of a community that believes in you.
+              </p>
+              <div class="space-y-4">
+                <h3 class="text-2xl font-bold text-gray-900">
+                  Registrations are now open.
+                </h3>
+                <p class="text-md font-semibold text-gray-700">
+                  Sign up today and let your journey begin.
+                </p>
+                <p class="text-md font-semibold text-gray-700">
+                  AIEF 3rd International AI Championship. <span class="text-orange-500 font-semibold">Be the future.</span>
+                </p>
+              </div>
+              <button class="bg-green-800 hover:bg-green-900 text-white px-8 py-4 rounded-lg font-normal text-sm transition-colors flex items-center space-x-2" style="margin-top: 50px;">
+                <span>SIGN UP NOW</span>
+                <i class="fas fa-arrow-right text-white"></i>
+              </button>
+            </div>
+            <div class="relative">
+              <div class=" -mt-56   h-[1000px] flex items-center justify-center">
+                <img src="PICS/VR Blue.png" alt="VR Technology" class="w-full h-full object-contain">
+              </div>
+            </div>
+          </div>
+          
+          <!-- AIEF 2024 Statistics Section -->
+          <div class="mt-8">
+            <div class="max-w-4xl mx-auto">
+              <!-- Header -->
+              <div class="text-center mb-12">
+                <h3 class="text-3xl md:text-sm text-left font-normal text-custompurple mb-4" style="margin-top: -200px; margin-left: -100px;">Who Was at AIEF 2024?</h3>
+                <div class="w-1/2 h-0.5 bg-gray-100 mx-auto"></div>
+              </div>
+              
+              <!-- Statistics Grid -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <!-- Attendees -->
+                <div class="space-y-2">
+                  <div class="text-5xl md:text-6xl font-normal text-custompurple">500+</div>
+                  <div class="text-lg md:text-xl font-normal text-custompurple">Attendees</div>
+                </div>
+                
+                <!-- Projects Display -->
+                <div class="space-y-2">
+                  <div class="text-5xl md:text-6xl font-normal text-custompurple">30+</div>
+                  <div class="text-lg md:text-xl font-normal text-custompurple">Projects Display</div>
+                </div>
+                
+                <!-- Registrations -->
+                <div class="space-y-2">
+                  <div class="text-5xl md:text-6xl font-normal text-custompurple">1000+</div>
+                  <div class="text-lg md:text-xl font-normal text-custompurple">Registrations</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who can Participate Section -->
+    <section class="bg-gray-100 px-6 md:px-12 py-12 relative" style="z-index: 45; margin-top: -100px;">
+      <div class="max-w-7xl mx-auto">
+        <!-- Title -->
+        <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-12 border-b border-gray-300 pb-2">
+          Who can Participate
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Left Column -->
+          <div class="bg-white p-8 rounded-2xl shadow-sm relative">
+            <!-- Eligibility Section -->
+            <div class="mb-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-1">Eligibility Criteria</h3>
+              <p class="text-sm text-blue-700 mb-4">Students from following programs:</p>
+              <ul class="text-blue-900 space-y-1 font-medium text-base leading-relaxed">
+                <li>Computer Science</li>
+                <li>Software Engineering</li>
+                <li>Data Science</li>
+                <li>Related Computing disciplines</li>
+              </ul>
+            </div>
+
+            <!-- Degree Levels -->
+            <div class="mb-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-1">Degree Levels</h3>
+              <ul class="text-blue-900 space-y-1 font-medium text-base leading-relaxed">
+                <li>Bachelor's (Hons)</li>
+                <li>MS/MPhil</li>
+                <li>Master's Thesis Programs</li>
+              </ul>
+            </div>
+
+            <!-- Graduation Timeline -->
+            <div class="mb-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-1">Graduation Timeline</h3>
+              <p class="text-blue-900 font-medium">Recent graduates from the class of 2025</p>
+            </div>
+
+            <!-- Register Button -->
+            <div class="absolute top-8 right-[-30px] md:right-[-20px]">
+              <a href="#register" class="inline-flex items-center text-white text-sm font-semibold px-4 py-2 rounded-md bg-gradient-to-r from-green-700 to-blue-900 shadow-md hover:opacity-90 transition" style="margin-right: -50px;">
+                REGISTER
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+
+            <!-- Important Notes -->
+            <div class="bg-white rounded-xl shadow-md p-4 mt-8 flex flex-col gap-2 border border-gray-100">
+              <div class="flex justify-between items-center mb-1">
+                <span class="bg-gradient-to-r from-green-700 to-blue-900 text-white text-xs font-semibold px-3 py-1 rounded-md shadow">
+                  Important Notes
+                </span>
+              </div>
+              <ul class="text-sm text-blue-900 font-medium leading-relaxed list-disc pl-5 space-y-1">
+                <li>Participants must provide proof of their 2025 graduation status.</li>
+                <li>Cross-disciplinary participants are welcome if their thesis/research involves AI applications.</li>
+                <li>Open to both local and international students from recognized institutions.</li>
+                <li>Students graduating before 2025 are not eligible.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="bg-white p-8 rounded-2xl shadow-sm flex flex-col items-center justify-center">
+            <img src="PICS/icon-top-colour.png" alt="AIEF Logo" class=" mb-8" style="width: 300px; height: auto;" />
+            <h3 class="text-center text-lg font-semibold text-gray-900 leading-snug mb-6">
+              Artificial Intelligence<br/>
+              Education Foundation
+            </h3>
+
+            <!-- Registration Info Bar -->
+            <div class="grid grid-cols-3 text-center text-white text-xs font-semibold rounded-lg overflow-hidden shadow-md w-full">
+              <div class="bg-[#292F6F] py-2 px-3">
+                <p class="uppercase tracking-wide">Registration</p>
+                <p class="text-[11px]">Open till September 7, 2025</p>
+              </div>
+              <div class="bg-[#292F6F] py-2 px-3 border-l border-white/20 border-r border-white/20">
+                  <p class="uppercase tracking-wide">Venue</p>
+                  <p class="text-[11px]">LUMS, Lahore</p>
+              </div>
+              <div class="bg-[#292F6F] py-2 px-3">
+                <p class="uppercase tracking-wide">Event Date</p>
+                <p class="text-[11px]">September 27, 2025</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Submission Categories Section -->
+    <section class="bg-[#f5f6fa] px-6 md:px-12 lg:px-24 py-16 relative z-40">
+      <!-- Section Heading -->
+      <h2 class="text-2xl lg:text-3xl font-bold text-primary border-l-4 border-indigo-600 pl-4 mb-12">
+        Project Submission Categories
+          </h2>
+
+      <!-- Card Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <!-- Top Row -->
+        <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+          <img src="PICS/project submission catagories pics/Business Analytics ( Power bi & Tableau).png" alt="Business Analytics" class="w-full h-full object-cover">
+        </div>
+
+        <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+          <img src="PICS/project submission catagories pics/AI Agriculture.png" alt="AI in Agriculture" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Middle Column spans both rows -->
+        <div class="bg-gradient-to-b from-[#0f2b46] to-[#153c3c] text-white rounded-xl p-8 flex flex-col items-center justify-center text-center row-span-2" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+          <img src="PICS/icon top.png" alt="" class="w-20 h-15 mb-4" />
+          <h3 class="font-bold text-lg mb-2">Choose your Program</h3>
+          <p class="text-sm mb-4">Feel free to choose any category you prefer</p>
+          <button class="bg-[#292F6F] text-white px-6 py-3 rounded-lg font-normal text-xs flex items-center space-x-2 shadow-lg transition-colors duration-300" style="background-color: #292F6F;" onmouseover="this.style.backgroundColor='#1a1f4a';" onmouseout="this.style.backgroundColor='#292F6F';">
+            <span>SIGN UP NOW</span>
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+          <img src="PICS/project submission catagories pics/Intelligent app creation.png" alt="Intelligent App Creation" class="w-full h-full object-cover">
+        </div>
+
+        <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+          <img src="PICS/project submission catagories pics/Ai in fintech.png" alt="AI in Fintech" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Bottom Row -->
+        <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+          <img src="PICS/project submission catagories pics/AI in urban tech.png" alt="AI in Urban Tech" class="w-full h-full object-cover">
+        </div>
+
+        <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+          <img src="PICS/project submission catagories pics/AI in retail and e-commerce.png" alt="AI in Retail and E-Commerce" class="w-full h-full object-cover">
+        </div>
+
+        <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+          <img src="PICS/project submission catagories pics/AI in robotics.png" alt="AI in Robotics" class="w-full h-full object-cover">
+        </div>
+
+        <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+          <img src="PICS/project submission catagories pics/AI in healthcare.png" alt="AI in Healthcare" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </section>
+
+    <!-- 2025 Competition Schedule Section -->
+    <section class="bg-gray-200 px-6 md:px-12 lg:px-24 py-16 relative z-40" style="min-height: 400px;">
+      <!-- Section Heading -->
+      <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 border-l-4 border-indigo-600 pl-4 mb-12">
+        2025 Competition Schedule
+      </h2>
+
+      <div class="bg-white rounded-2xl p-8 flex flex-col lg:flex-row gap-10 shadow" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';">
+        <!-- Left Side: Steps -->
+        <div class="flex-1 space-y-8">
+          <!-- Step 1 -->
+          <div>
+            <div class="flex items-start gap-4">
+              <span class="text-2xl font-bold text-[#014141]">01</span>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800">
+                  Registrations Open
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Kickstart your AI journey by registering for Pakistan's premier AI competition.
+                </p>
+                <p class="text-sm font-medium mt-1 text-gray-900">
+                  Registrations Now Open
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div>
+            <div class="flex items-start gap-4">
+              <span class="text-2xl font-bold text-[#014141]">02</span>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800">
+                  Project Submission Deadline
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Submit your AI solution and showcase your innovation, creativity, and real-world impact.
+                </p>
+                <p class="text-sm font-medium mt-1 text-gray-900">
+                  Submission Closes: September 7, 2025
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div>
+            <div class="flex items-start gap-4">
+              <span class="text-2xl font-bold text-[#014141]">03</span>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800">
+                  Screening & Shortlisting
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Our expert panel will evaluate all submissions to shortlist the most promising AI projects.
+                </p>
+                <p class="text-sm font-medium mt-1 text-gray-900">
+                  Screening Completed by: September 19, 2025
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 (Highlighted) -->
+          <div class="bg-[#f9f3f7] rounded-xl p-4">
+            <div class="flex items-start gap-4">
+              <span class="text-2xl font-bold text-[#014141]">04</span>
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800">
+                  Shortlisted Participants Announced
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Get ready to step into the spotlight. Shortlisted teams will be notified and invited to the final showdown.
+                </p>
+                <p class="text-sm font-medium mt-1 text-gray-900">
+                  Notifications Sent by: September 25, 2025
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div>
+            <div class="flex items-start gap-4">
+              <span class="text-2xl font-bold text-[#014141]">05</span>
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800">
+                  Final Championship Event Day
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Pitch your ideas, demo your AI solutions, and compete for the title at the grand finale hosted at LUMS.
+                </p>
+                <p class="text-sm font-medium mt-1 text-gray-900">
+                  Event Date: September 27, 2025
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Image -->
+        <div class="flex-1 flex items-center justify-center">
+          <img
+            src="PICS/award.png"
+            alt="AI Championship Award Ceremony"
+            class="rounded-xl w-full object-cover max-h-[500px]"
+          />
+        </div>
+      </div>
+    </section>
+
+  
+
+    <!-- AIEF Championship Rewind Section -->
+    <section class="bg-gray-100 px-6 md:px-12 lg:px-24 py-16 relative z-40">
+      <div class="bg-white max-w-[2000px] mx-auto">
+        <div class="flex flex-col lg:flex-row gap-0">
+          <!-- Left Side - Video Player -->
+          <div class="w-[60%]">
+            <div class="bg-gradient-to-br from-red-900 to-orange-800 rounded-l-xl overflow-hidden relative h-[500px]">
+              <!-- Video Background with Network Pattern -->
+              <div class="absolute inset-0 bg-black/20">
+                <!-- Network Pattern Dots -->
+                <div class="absolute inset-0 opacity-30">
+                  <div class="w-full h-full" style="background-image: radial-gradient(circle at 20% 30%, #ff6b35 1px, transparent 1px), radial-gradient(circle at 80% 70%, #ff6b35 1px, transparent 1px), radial-gradient(circle at 40% 80%, #ff6b35 1px, transparent 1px), radial-gradient(circle at 90% 20%, #ff6b35 1px, transparent 1px); background-size: 50px 50px, 80px 80px, 60px 60px, 70px 70px;"></div>
+                </div>
+              </div>
+              
+              <!-- Play Button Overlay -->
+              
+            </div>
+          </div>
+
+          <!-- Right Side - Text Content -->
+          <div class="w-[40%] bg-[#1D2C58] rounded-r-xl p-8 text-white relative">
+            <!-- Main Content -->
+            <div class="space-y-6">
+              <h2 class="text-3xl md:text-2xl font-normal leading-tight">
+                AI Talent Takes the Spotlight!
+              </h2>
+              
+              <div class="space-y-4 text-gray-200">
+                <p class="text-xs leading-relaxed">
+                  AIEF brought together Pakistan's brightest AI minds for the 2nd International AI Championship. A high-energy, high-impact showdown held at FAST University, Lahore.
+                </p>
+                
+                <p class="text-xs leading-relaxed">
+                  Watch as university students from across Pakistan pitch, prototype, and present breakthrough AI solutions before top industry judges and global leaders.
+                </p>
+                
+                <p class="text-xs leading-relaxed">
+                  From real-time demos to expert feedback, the Championship showcases how AIEF is nurturing the country's AI ecosystem by blending research, real-world application, and entrepreneurial energy to empower the next generation of tech talent.
+                </p>
+              </div>
+
+              <!-- Call to Action Button -->
+              <button class="bg-blue-800 hover:bg-blue-900 text-white px-4 py-2 rounded-lg font-normal text-[10px] transition-colors flex items-center space-x-2">
+                <span>SIGN UP NOW</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+
+            <!-- Graduation Cap Icon -->
+            <div class="absolute bottom-6 right-6 text-white/20">
+              <img src="PICS/icon top.png" alt="graduation cap" class="w-20 h-15">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cash Prizes Section -->
+    <section class="bg-gray-100 px-6 md:px-12 lg:px-24 py-16 relative z-40">
+      <!-- Section Heading -->
+      <h2 class="text-2xl lg:text-3xl font-bold text-[#292F6F] mb-12 ml-2">
+        Cash Prizes
+      </h2>
+      <div class="w-1/2 h-0.5 bg-gray-200 mb-12" style="margin-top: -30px;"></div>
+
+      <!-- Main Content -->
+      <div class="bg-[#1D2C58] text-white -mx-6 md:-mx-12 lg:-mx-24 px-2 md:px-2 lg:px-24 py-12">
+        <!-- Philosophy Section -->
+        <div class="text-left mb-16">
+          <h3 class="text-2xl md:text-3xl font-semibold mb-6">
+            Big Ideas. Bold Impact. Real Recognition.
+          </h3>
+          <p class="text-sm text-gray-200 max-w-4xl leading-relaxed">
+            At the International AI Championship, we don't just celebrate innovation we reward it. This is where breakthrough thinkers rise, bold solutions shine, and real world impact begins. If you're solving problems that matter, your work deserves the spotlight and the recognition to match.
+          </p>
+        </div>
+
+        <!-- Prize Structure -->
+        <div class="flex flex-col lg:flex-row gap-8 w-full">
+          <!-- 1st Prize -->
+          <div class="relative w-96" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+            <img src="PICS/Cash prizes pics/1st prize.png" alt="1st Prize" class="w-full h-full rounded-xl">
+          </div>
+
+          <!-- Right Side Prizes -->
+          <div class="flex flex-col gap-4">
+            <!-- 2nd Prize -->
+            <div class="relative" style="width: 400px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+              <img src="PICS/Cash prizes pics/2nd prize.png" alt="2nd Prize" class="w-full h-auto rounded-xl">
+            </div>
+
+            <!-- 3rd Prize -->
+            <div class="relative" style="width: 400px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+              <img src="PICS/Cash prizes pics/3rd prize.png" alt="3rd Prize" class="w-full h-auto rounded-xl">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners & Sponsors Section -->
+    <section class="bg-gray-100 px-6 md:px-12 lg:px-24 py-16 relative z-40">
+      <!-- Section Heading -->
+      <h2 class="text-2xl lg:text-3xl font-bold text-[#292F6F] mb-12 ml-2">
+        Partners & Sponsors
+        </h2>
+
+      <!-- Main Content Card -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Left Side - Logos -->
+          <div class="space-y-8">
+            <!-- Top Row -->
+            <div class="grid grid-cols-4 gap-0">
+              <!-- Persivia -->
+              <div class="flex flex-col items-center text-center" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';">
+                <div class="w-16 h-16 rounded-lg flex items-center justify-center mb-2">
+                  <img src="PICS/Partners pics/persivia.png" alt="Persivia" class="w-full h-auto">
+                </div>
+              </div>
+
+              <!-- LUMS -->
+              <div class="flex flex-col items-center text-center" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';">
+                <div class="w-16 h-16 rounded-lg flex items-center justify-center mb-2">
+                  <img src="PICS/Partners pics/lums.png" alt="LUMS" class="w-full h-auto">
+                </div>
+              </div>
+
+              <!-- FAST -->
+              <div class="flex flex-col items-center text-center" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';">
+                <div class="w-16 h-16 rounded-lg flex items-center justify-center mb-2">
+                  <img src="PICS/Partners pics/fast.png" alt="FAST" class="w-full h-auto">
+                </div>
+              </div>
+
+              <!-- COMSATS -->
+              <div class="flex flex-col items-center text-center" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';">
+                <div class="w-16 h-16 rounded-lg flex items-center justify-center mb-2">
+                  <img src="PICS/Partners pics/COMSATS_Logo.svg 1.png" alt="COMSATS" class="w-full h-auto">
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Row -->
+            <div class="grid grid-cols-3 gap-0">
+              <!-- Soliton Technologies -->
+              <div class="flex flex-col items-center text-center" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';">
+                <div class="w-16 h-16 rounded-lg flex items-center justify-center mb-2">
+                  <img src="PICS/Partners pics/soliton log (2024)-01.png" alt="Soliton Technologies" class="w-full h-auto">
+                </div>
+              </div>
+
+              <!-- Soliton Welfare Foundation -->
+              <div class="flex flex-col items-center text-center" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';">
+                <div class="w-16 h-16 rounded-lg flex items-center justify-center mb-2">
+                  <img src="PICS/Partners pics/Soliton welfare.png" alt="Soliton Welfare Foundation" class="w-full h-auto">
+                </div>
+              </div>
+
+              <!-- Shield Logo -->
+              <div class="flex flex-col items-center text-center" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';">
+                <div class="w-16 h-16 rounded-lg flex items-center justify-center mb-2">
+                  <img src="PICS/Partners pics/psim.png" alt="Security Partner" class="w-full h-auto">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side - Text Content -->
+          <div class="space-y-6">
+            <h3 class="text-2xl font-bold text-gray-900">
+              Our Valuable Partners
+            </h3>
+            <p class="text-gray-700 leading-relaxed">
+              We are proud to collaborate with forward-thinking organizations that share our vision of empowering the next generation of AI innovators. Their support fuels opportunities, inspires ideas, and drives the impact of the International AI Championship. Together, we're shaping the future one breakthrough at a time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="bg-gray-100 px-6 md:px-12 lg:px-24 py-16 relative z-40">
+      <!-- Section Heading -->
+      <h2 class="text-2xl lg:text-3xl font-bold text-[#292F6F] mb-12 ml-2">
+        FAQs
+      </h2>
+
+      <!-- Main Content Card -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Left Column - Introduction -->
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-3xl font-bold text-[#292F6F] leading-tight">
+                Any questions?<br>
+                We got you.
+              </h3>
+            </div>
+            
+            <p class="text-gray-700 leading-relaxed">
+              Whether you're joining us from Pakistan or participating from across the globe, we've compiled answers to the most common questions about the International AI Championship. From registration to team setup, competition format, and rewards everything you need to know is right here.
+            </p>
+
+            <div class="pt-4">
+              <p class="text-gray-600 text-sm">
+                Can't find what you're looking for?
+              </p>
+              <p class="text-gray-600 text-sm">
+                Can't find what you're looking for? <a href="#contact" class="underline text-gray-800 hover:text-gray-900">Contact us</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column - FAQ Accordion -->
+          <div class="space-y-8 max-h-96 overflow-y-auto pl-8 pr-8" id="faq-accordion" style="scrollbar-width: thin; scrollbar-color: #cbd5e0 #f1f5f9;">
+            <!-- FAQ Item 1 -->
+            <div class="border-b border-gray-200 pb-4 faq-item">
+              <div class="flex justify-between items-start cursor-pointer faq-header" onclick="toggleFAQ(this)">
+                <h4 class="text-lg font-semibold text-gray-900 pr-4">
+                  Who can participate in the AI Championship?
+                </h4>
+                <i class="fas fa-chevron-down text-gray-500 text-sm mt-1 faq-icon"></i>
+              </div>
+              <div class="mt-4 text-gray-700 faq-content" style="display: block;">
+                <p class="mb-3">
+                  The competition is open to university students enrolled in undergraduate or graduate programs from both Pakistan and international institutions.
+                </p>
+                <a href="#aief" class="text-blue-600 underline hover:text-blue-800">
+                  Learn more about AIEF
+                </a>
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="border-b border-gray-200 pb-4 faq-item">
+              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+                <h4 class="text-lg font-semibold text-gray-900 pr-4">
+                  How do I register for the Championship?
+                </h4>
+                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+              </div>
+              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+                <p class="mb-3">
+                  Registration can be completed online through our official website. Simply fill out the registration form with your team details and project information. Early registration is recommended as spots are limited.
+                </p>
+                <a href="#register" class="text-blue-600 underline hover:text-blue-800">
+                  Register Now
+                </a>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="border-b border-gray-200 pb-4 faq-item">
+              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+                <h4 class="text-lg font-semibold text-gray-900 pr-4">
+                  Is there a registration fee?
+                </h4>
+                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+              </div>
+              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+                <p class="mb-3">
+                  The registration fee is Rs. 5,000 per team. This includes participation in the championship, access to all events, and competition materials. Payment can be made online through our secure payment gateway.
+                </p>
+                <a href="#fees" class="text-blue-600 underline hover:text-blue-800">
+                  View Fee Details
+                </a>
+              </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="border-b border-gray-200 pb-4 faq-item">
+              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+                <h4 class="text-lg font-semibold text-gray-900 pr-4">
+                  Can I register as an individual or do I need a team?
+                </h4>
+                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+              </div>
+              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+                <p class="mb-3">
+                  Teams can consist of 2-4 members. Individual registrations are not accepted. We encourage collaboration and diverse skill sets within teams to create innovative AI solutions.
+                </p>
+                <a href="#teams" class="text-blue-600 underline hover:text-blue-800">
+                  Team Guidelines
+                </a>
+              </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="border-b border-gray-200 pb-4 faq-item">
+              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+                <h4 class="text-lg font-semibold text-gray-900 pr-4">
+                  Will international teams participate virtually or on-site?
+                </h4>
+                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+              </div>
+              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+                <p class="mb-3">
+                  International teams have the option to participate either virtually or on-site. Virtual participation includes live streaming of presentations and remote judging. On-site participation provides the full championship experience.
+                </p>
+                <a href="#international" class="text-blue-600 underline hover:text-blue-800">
+                  International Guidelines
+                </a>
+              </div>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div class="border-b border-gray-200 pb-4 faq-item">
+              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+                <h4 class="text-lg font-semibold text-gray-900 pr-4">
+                  What are the project submission categories?
+                </h4>
+                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+              </div>
+              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+                <p class="mb-3">
+                  We offer multiple categories including Business Analytics, AI in Agriculture, Intelligent App Creation, AI in Fintech, AI in Urban Tech, AI in Retail & E-commerce, AI in Robotics, and AI in Healthcare. Choose the category that best fits your project.
+                </p>
+                <a href="#categories" class="text-blue-600 underline hover:text-blue-800">
+                  View All Categories
+                </a>
+              </div>
+            </div>
+
+            <!-- FAQ Item 7 -->
+            <div class="border-b border-gray-200 pb-4 faq-item">
+              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+                <h4 class="text-lg font-semibold text-gray-900 pr-4">
+                  What are the cash prizes for winners?
+                </h4>
+                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+              </div>
+              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+                <p class="mb-3">
+                  The championship offers substantial cash prizes: 1st Prize - Rs. 300,000, 2nd Prize - Rs. 200,000, and 3rd Prize - Rs. 100,000. Additionally, winners receive recognition and networking opportunities.
+                </p>
+                <a href="#prizes" class="text-blue-600 underline hover:text-blue-800">
+                  Prize Details
+                </a>
+              </div>
+            </div>
+
+            <!-- FAQ Item 8 -->
+            <div class="border-b border-gray-200 pb-4 faq-item">
+              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+                <h4 class="text-lg font-semibold text-gray-900 pr-4">
+                  What is the competition schedule?
+                </h4>
+                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+              </div>
+              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+                <p class="mb-3">
+                  Registration opens now, project submission deadline is September 7, 2025, screening completes by September 19, shortlisted participants announced by September 25, and the final championship event is on September 27, 2025.
+                </p>
+                <a href="#schedule" class="text-blue-600 underline hover:text-blue-800">
+                  Full Schedule
+                </a>
+              </div>
+            </div>
+
+            <!-- FAQ Item 9 -->
+            <div class="border-b border-gray-200 pb-4 faq-item">
+              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+                <h4 class="text-lg font-semibold text-gray-900 pr-4">
+                  What technical requirements are needed?
+                </h4>
+                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+              </div>
+              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+                <p class="mb-3">
+                  Teams need to submit a working AI solution with documentation, presentation materials, and a demo video. Technical infrastructure will be provided on-site, but teams should bring their own laptops for presentations.
+                </p>
+                <a href="#requirements" class="text-blue-600 underline hover:text-blue-800">
+                  Technical Guidelines
+                </a>
+              </div>
+            </div>
+
+            <!-- FAQ Item 10 -->
+            <div class="border-b border-gray-200 pb-4 faq-item">
+              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+                <h4 class="text-lg font-semibold text-gray-900 pr-4">
+                  How can I get support or ask questions?
+                </h4>
+                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+              </div>
+              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+                <p class="mb-3">
+                  For any questions or support, you can contact us through our website, email at info@aiedu.org.pk, or call +92 42 32560691-2. Our team is available to help with registration, technical queries, and general information.
+                </p>
+                <a href="#contact" class="text-blue-600 underline hover:text-blue-800">
+                  Contact Us
+                </a>
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="bg-gray-100 px-6 md:px-12 lg:px-24 py-16 relative z-40">
+      <!-- Section Heading -->
+      <h2 class="text-2xl lg:text-3xl font-bold text-[#292F6F] mb-12 ml-2">
+        Contact Us
+        </h2>
+
+      <!-- Main Content Card -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Left Column - Text Description -->
+          <div class="space-y-6">
+            <h3 class="text-2xl font-bold text-[#292F6F]">
+              Get In Touch With Us
+            </h3>
+            
+            <p class="text-gray-600 leading-relaxed">
+              Have questions, ideas, or looking to collaborate? We'd love to hear from you. Whether you're a student, mentor, sponsor, or just curious about the AI Championship reach out and our team will get back to you shortly.
+            </p>
+          </div>
+
+          <!-- Right Column - Contact Form -->
+          <div class="space-y-6">
+            <form class="space-y-4">
+              <!-- Name Input -->
+              <div>
+                <input 
+                  type="text" 
+                  placeholder="Your Name" 
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm placeholder:text-sm"
+                >
+              </div>
+
+              <!-- Email Input -->
+              <div>
+                <input 
+                  type="email" 
+                  placeholder="Your Email" 
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm placeholder:text-sm"
+                >
+              </div>
+
+              <!-- Phone Input -->
+              <div>
+                <input 
+                  type="tel" 
+                  placeholder="Your Phone" 
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm placeholder:text-sm"
+                >
+              </div>
+
+              <!-- Message Input -->
+              <div>
+                <textarea 
+                  placeholder="Your Message" 
+                  rows="4"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-sm placeholder:text-sm"
+                ></textarea>
+              </div>
+
+              <!-- Send Message Button -->
+              <div>
+                                  <button 
+                    type="submit" 
+                    class="w-full bg-blue-800 hover:bg-blue-900 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                  >
+                    Send Message
+          </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gradient-to-r from-blue-900 to-green-900 text-white relative z-50">
+      <div class="px-6 md:px-12 lg:px-24 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Left Side - Logo and Contact Info -->
+          <div class="space-y-6">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3 mb-8">
+              <img src="PICS/icon top.png" alt="AIEF Logo" class="w-20 h-15">
+              <div>
+                <h3 class="text-sm font-normal text-white">
+                  Artificial Intelligence
+                </h3>
+                <h3 class="text-sm font-normal text-white">
+                  Education Foundation
+                </h3>
+              </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="space-y-3 text-sm">
+              <p class="text-gray-200">
+                Office 301, The Enterprise Building, IKM, Thokar <br> Niaz Baig, Multan Road, Lahore
+              </p>
+              <p class="text-gray-200">
+                +92 42 32560691-2
+              </p>
+              <p class="text-gray-200">
+                info@aiedu.org.pk
+              </p>
+              <p class="text-gray-200">
+                https://www.aiedu.org.pk/
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Side - Links and Social Media -->
+          <div class="space-y-6">
+            <!-- Back to AIEF Website -->
+            <div class="space-y-4">
+              <h4 class="text-sm text-[#D4D9F3] font-semibold text-white">
+                BACK TO AIEF WEBSITE
+              </h4>
+              <a href="#" class="text-white underline text-sm hover:text-gray-200 transition-colors">
+                Home
+              </a>
+            </div>
+
+            <!-- Social Media Icons -->
+            <div class="flex space-x-4">
+              <a href="#" class="text-white hover:text-gray-200 transition-colors">
+                <i class="fab fa-facebook text-xl"></i>
+              </a>
+              <a href="#" class="text-white hover:text-gray-200 transition-colors">
+                <i class="fab fa-youtube text-xl"></i>
+              </a>
+              <a href="#" class="text-white hover:text-gray-200 transition-colors">
+                <i class="fab fa-instagram text-xl"></i>
+              </a>
+              <a href="#" class="text-white hover:text-gray-200 transition-colors">
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="mt-12 pt-8 border-t border-white/20 flex justify-between items-center">
+          <!-- Copyright -->
+          <p class="text-sm text-gray-300">
+            © 2024 AIEDU All Rights Reserved.
+          </p>
+
+          <!-- Scroll to Top Button -->
+          <button 
+            onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+            class="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+          >
+            <i class="fas fa-arrow-up text-white"></i>
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    
+  </main>
+  
+  <script src="script.js"></script>
+</body>
+</html>
