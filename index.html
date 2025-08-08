@@ -16,24 +16,22 @@
 <body class="bg-white min-h-screen font-poppins">
 
 
-  <!-- Upper Section -->
-  <section class="fixed top-0 left-0 right-0 z-10 bg-gradient-to-b from-gray-900 via-blue-900 to-teal-900">
-    <!-- Main Navigation Card -->
-    <div class="container mx-auto px-4 py-6">
-      <div class="bg-gradient-to-r from-custompurple via-customblue to-customblue rounded-md px-6 py-4 flex justify-between items-center shadow-lg">
-        <div class="flex items-center space-x-3">
-          <div>
-            <img src="PICS/icon top.png" alt="icon" class="w-15 h-10">
-          </div>
-        </div>
-        <button class="bg-green-800 hover:bg-green-900 text-white px-8 py-3 rounded-lg font-semibold text-sm transition-colors">
-          <span class="text-white tracking-widest" >HOME</span>
-        </button>
+  <!-- Fixed Navigation Bar -->
+  <div class="fixed top-0 left-0 right-0 z-[9999] bg-gradient-to-r from-custompurple via-customblue to-customblue px-6 py-4 flex justify-between items-center shadow-lg mb-4">
+    <div class="flex items-center space-x-3">
+      <div>
+        <img src="PICS/icon top.png" alt="icon" class="w-15 h-10">
       </div>
     </div>
+    <button class="bg-green-800 hover:bg-green-900 text-white px-8 py-3 rounded-lg font-semibold text-sm transition-colors">
+      <span class="text-white tracking-widest" >HOME</span>
+    </button>
+  </div>
 
+  <!-- Upper Section -->
+  <section class="fixed top-0 left-0 right-0 z-10 bg-gradient-to-b from-gray-900 via-blue-900 to-teal-900">
     <!-- Event Announcement Section -->
-    <section class="py-20" style="margin-top: -30px;">
+    <section class="py-20" style="margin-top: 120px;">
       <div class="container mx-auto px-4 text-center">
         <h1 class="text-6xl md:text-8xl font-poppins text-white mb-4">
           September 27th
@@ -61,54 +59,8 @@
     <!-- AI Showdown Graphic Section -->
     <section class="relative py-20 z-50" style="will-change: transform;">
       <div class="container mx-auto px-4">
-        <div class="relative bg-gradient-to-b from-gray-900 via-blue-900 to-teal-800 rounded-3xl shadow-2xl max-w-4xl mx-auto">
-          <!-- Green glow effect at top -->
-          <div class="absolute top-0 left-0 w-96 h-32 bg-green-400 opacity-20 blur-3xl"></div>
-          
-          <div class="relative z-20 p-12 md:p-20">
-            <!-- Top text -->
-            <div class="text-center mb-8">
-              <h3 class="text-2xl md:text-3xl font-bold text-white opacity-80">
-                Level Up for Pakistan's Biggest
-              </h3>
-            </div>
-
-            <!-- Main AI Showdown text with AI head overlay -->
-            <div class="relative text-center mb-16">
-              <div class="relative">
-                <!-- AI Head Graphic -->
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30" style="pointer-events: none;">
-                  <img src="PICS/robot.svg" alt="AI Robot" class="w-80 h-80 md:w-[600px] md:h-[600px] object-contain" style="width: 450px; height: 450px; margin-top: 171px;">
-                </div>
-                
-                <!-- AI Showdown Text with overflow effect -->
-                <div class="relative z-25 overflow-visible ">
-                  <h2 class="text-8xl md:text-[10rem] font-black text-white leading-none relative overflow-visible">
-                    <span class="whitespace-nowrap relative">
-                      <span class="text-white -ml-48">AI Showdown</span>
-                    </span>
-                  </h2>
-                </div>
-              </div>
-            </div>
-
-            <!-- Bottom features -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div class="text-cyan-400">
-                <p class="text-lg md:text-xl font-semibold">Where Future Innovators Meet AI</p>
-              </div>
-              <div class="text-cyan-400">
-                <p class="text-lg md:text-xl font-semibold">Panel Discussion</p>
-              </div>
-              <div class="text-white relative">
-                <p class="text-lg md:text-xl font-semibold">Mentorship</p>
-                <p class="text-sm md:text-base mt-2">
-                  <span class="text-white">Top AI</span>
-                  <span class="text-cyan-400"> Talent</span>
-                </p>
-              </div>
-            </div>
-          </div>
+        <div class="max-w-4xl mx-auto">
+          <img src="PICS/hero image/AI showdown hero image.png" alt="AI Showdown Hero" class="w-full h-auto object-contain">
         </div>
       </div> 
     </section>
@@ -149,6 +101,12 @@
             <div class="relative">
               <div class=" -mt-56   h-[1000px] flex items-center justify-center">
                 <img src="PICS/VR Blue.png" alt="VR Technology" class="w-full h-full object-contain">
+                <!-- Panel Discussion Text Overlay -->
+                <div class="absolute inset-0 flex items-center justify-center" style="z-index: 9999;">
+                  <p class="text-4xl md:text-6xl font-bold text-white drop-shadow-lg" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+                    Panel Discussion
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -347,7 +305,7 @@
         2025 Competition Schedule
       </h2>
 
-      <div class="bg-white rounded-2xl p-8 flex flex-col lg:flex-row gap-10 shadow" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';">
+      <div class="bg-white rounded-2xl p-8 flex flex-col lg:flex-row gap-10 shadow" >
         <!-- Left Side: Steps -->
         <div class="flex-1 space-y-8">
           <!-- Step 1 -->
@@ -442,11 +400,12 @@
         </div>
 
         <!-- Right Side: Image -->
-        <div class="flex-1 flex items-center justify-center">
+        <div class="flex-1 flex items-center justify-center" >
           <img
             src="PICS/award.png"
             alt="AI Championship Award Ceremony"
-            class="rounded-xl w-full object-cover max-h-[500px]"
+            class="rounded-xl w-full object-cover max-h-[500px]" 
+            style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';"
           />
         </div>
       </div>
@@ -513,21 +472,21 @@
     </section>
 
     <!-- Cash Prizes Section -->
-    <section class="bg-gray-100 px-6 md:px-12 lg:px-24 py-16 relative z-40">
+    <section class="bg-gray-100  relative z-40">
       <!-- Section Heading -->
-      <h2 class="text-2xl lg:text-3xl font-bold text-[#292F6F] mb-12 ml-2">
+      <h2 class="text-2xl lg:text-3xl font-bold text-[#292F6F] mb-12" style="margin-left: 50px;">
         Cash Prizes
       </h2>
-      <div class="w-1/2 h-0.5 bg-gray-200 mb-12" style="margin-top: -30px;"></div>
+      <div class="w-1/2 h-0.5 bg-gray-200 mb-12" style="margin-top: -30px; margin-left: 50px;"></div>
 
       <!-- Main Content -->
-      <div class="bg-[#1D2C58] text-white -mx-6 md:-mx-12 lg:-mx-24 px-2 md:px-2 lg:px-24 py-12">
+      <div class="bg-[#1D2C58] text-white  py-12" style="padding-left: 50px; padding-right: 50px;">
         <!-- Philosophy Section -->
-        <div class="text-left mb-16">
+        <div class="text-left mb-16 w-full">
           <h3 class="text-2xl md:text-3xl font-semibold mb-6">
             Big Ideas. Bold Impact. Real Recognition.
           </h3>
-          <p class="text-sm text-gray-200 max-w-4xl leading-relaxed">
+          <p class="text-sm text-gray-200 w-full leading-relaxed">
             At the International AI Championship, we don't just celebrate innovation we reward it. This is where breakthrough thinkers rise, bold solutions shine, and real world impact begins. If you're solving problems that matter, your work deserves the spotlight and the recognition to match.
           </p>
         </div>
@@ -535,19 +494,19 @@
         <!-- Prize Structure -->
         <div class="flex flex-col lg:flex-row gap-8 w-full">
           <!-- 1st Prize -->
-          <div class="relative w-96" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+          <div class="relative flex-1" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
             <img src="PICS/Cash prizes pics/1st prize.png" alt="1st Prize" class="w-full h-full rounded-xl">
           </div>
 
           <!-- Right Side Prizes -->
-          <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-4 flex-1">
             <!-- 2nd Prize -->
-            <div class="relative" style="width: 400px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+            <div class="relative flex-1" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
               <img src="PICS/Cash prizes pics/2nd prize.png" alt="2nd Prize" class="w-full h-auto rounded-xl">
             </div>
 
             <!-- 3rd Prize -->
-            <div class="relative" style="width: 400px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+            <div class="relative flex-1" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
               <img src="PICS/Cash prizes pics/3rd prize.png" alt="3rd Prize" class="w-full h-auto rounded-xl">
             </div>
           </div>
@@ -570,28 +529,28 @@
             <!-- Top Row -->
             <div class="grid grid-cols-4 gap-0">
               <!-- Persivia -->
-              <div class="flex flex-col items-center text-center" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';">
+              <div class="flex flex-col items-center text-center">
                 <div class="w-16 h-16 rounded-lg flex items-center justify-center mb-2">
                   <img src="PICS/Partners pics/persivia.png" alt="Persivia" class="w-full h-auto">
                 </div>
               </div>
 
               <!-- LUMS -->
-              <div class="flex flex-col items-center text-center" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';">
+              <div class="flex flex-col items-center text-center">
                 <div class="w-16 h-16 rounded-lg flex items-center justify-center mb-2">
                   <img src="PICS/Partners pics/lums.png" alt="LUMS" class="w-full h-auto">
                 </div>
               </div>
 
               <!-- FAST -->
-              <div class="flex flex-col items-center text-center" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';">
+              <div class="flex flex-col items-center text-center">
                 <div class="w-16 h-16 rounded-lg flex items-center justify-center mb-2">
                   <img src="PICS/Partners pics/fast.png" alt="FAST" class="w-full h-auto">
                 </div>
               </div>
 
               <!-- COMSATS -->
-              <div class="flex flex-col items-center text-center" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';">
+              <div class="flex flex-col items-center text-center">
                 <div class="w-16 h-16 rounded-lg flex items-center justify-center mb-2">
                   <img src="PICS/Partners pics/COMSATS_Logo.svg 1.png" alt="COMSATS" class="w-full h-auto">
                 </div>
@@ -601,21 +560,21 @@
             <!-- Bottom Row -->
             <div class="grid grid-cols-3 gap-0">
               <!-- Soliton Technologies -->
-              <div class="flex flex-col items-center text-center" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';">
+              <div class="flex flex-col items-center text-center">
                 <div class="w-16 h-16 rounded-lg flex items-center justify-center mb-2">
                   <img src="PICS/Partners pics/soliton log (2024)-01.png" alt="Soliton Technologies" class="w-full h-auto">
                 </div>
               </div>
 
               <!-- Soliton Welfare Foundation -->
-              <div class="flex flex-col items-center text-center" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';">
+              <div class="flex flex-col items-center text-center">
                 <div class="w-16 h-16 rounded-lg flex items-center justify-center mb-2">
                   <img src="PICS/Partners pics/Soliton welfare.png" alt="Soliton Welfare Foundation" class="w-full h-auto">
                 </div>
               </div>
 
               <!-- Shield Logo -->
-              <div class="flex flex-col items-center text-center" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';">
+              <div class="flex flex-col items-center text-center">
                 <div class="w-16 h-16 rounded-lg flex items-center justify-center mb-2">
                   <img src="PICS/Partners pics/psim.png" alt="Security Partner" class="w-full h-auto">
                 </div>
@@ -628,7 +587,7 @@
             <h3 class="text-2xl font-bold text-gray-900">
               Our Valuable Partners
             </h3>
-            <p class="text-gray-700 leading-relaxed">
+            <p class="text-gray-700 leading-relaxed" style="margin-top: 20px;">
               We are proud to collaborate with forward-thinking organizations that share our vision of empowering the next generation of AI innovators. Their support fuels opportunities, inspires ideas, and drives the impact of the International AI Championship. Together, we're shaping the future one breakthrough at a time.
             </p>
           </div>
