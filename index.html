@@ -18,15 +18,15 @@
 
   <!-- Fixed Navigation Bar -->
   <div class="fixed top-0 left-0 right-0 z-[9999] bg-gradient-to-r from-custompurple via-customblue to-customblue px-6 py-4 flex justify-between items-center shadow-lg mb-4">
-    <div class="flex items-center space-x-3">
-      <div>
-        <img src="PICS/icon top.png" alt="icon" class="w-15 h-10">
-      </div>
+        <div class="flex items-center space-x-3">
+          <div>
+            <img src="PICS/icon top.png" alt="icon" class="w-15 h-10">
+          </div>
+        </div>
+        <button class="bg-green-800 hover:bg-green-900 text-white px-8 py-3 rounded-lg font-semibold text-sm transition-colors">
+          <span class="text-white tracking-widest" >HOME</span>
+        </button>
     </div>
-    <button class="bg-green-800 hover:bg-green-900 text-white px-8 py-3 rounded-lg font-semibold text-sm transition-colors">
-      <span class="text-white tracking-widest" >HOME</span>
-    </button>
-  </div>
 
   <!-- Upper Section -->
   <section class="fixed top-0 left-0 right-0 z-10 bg-gradient-to-b from-gray-900 via-blue-900 to-teal-900">
@@ -153,7 +153,7 @@
     <section class="bg-gray-100 px-6 md:px-12 py-12 relative" style="z-index: 45; margin-top: -100px;">
       <div class="max-w-7xl mx-auto">
         <!-- Title -->
-        <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-12 border-b border-gray-300 pb-2">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-customblue mb-12 border-b border-gray-300 pb-2">
           Who can Participate
         </h2>
 
@@ -201,7 +201,7 @@
             <!-- Important Notes -->
             <div class="bg-white rounded-xl shadow-md p-4 mt-8 flex flex-col gap-2 border border-gray-100">
               <div class="flex justify-between items-center mb-1">
-                <span class="bg-gradient-to-r from-green-700 to-blue-900 text-white text-xs font-semibold px-3 py-1 rounded-md shadow">
+                <span class="bg-gradient-to-r from-green-700 to-blue-900 text-white text-xs font-semibold px-3 py-1 -mt-8 ml-[380px] rounded-md shadow">
                   Important Notes
                 </span>
               </div>
@@ -229,8 +229,8 @@
                 <p class="text-[11px]">Open till September 7, 2025</p>
               </div>
               <div class="bg-[#292F6F] py-2 px-3 border-l border-white/20 border-r border-white/20">
-                  <p class="uppercase tracking-wide">Venue</p>
-                  <p class="text-[11px]">LUMS, Lahore</p>
+                <p class="uppercase tracking-wide">Venue</p>
+                <p class="text-[11px]">LUMS, Lahore</p>
               </div>
               <div class="bg-[#292F6F] py-2 px-3">
                 <p class="uppercase tracking-wide">Event Date</p>
@@ -245,12 +245,12 @@
     <!-- Project Submission Categories Section -->
     <section class="bg-[#f5f6fa] py-16 relative z-40" style="padding-left: 100px; padding-right: 100px;">
       <!-- Section Heading -->
-      <h2 class="text-2xl lg:text-3xl font-bold text-primary border-l-4 border-indigo-600 pl-4 mb-12">
+      <h2 class="text-2xl lg:text-3xl font-bold text-customblue border-indigo-600 pl-4 mb-12 -ml-[13px]">
         Project Submission Categories
-          </h2>
+      </h2>
 
       <!-- Card Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-0">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" style="grid-template-columns: 1fr 1fr 1.2fr 1fr 1fr;" >
         <!-- Top Row -->
         <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <img src="PICS/project submission catagories pics/Business Analytics ( Power bi & Tableau).png" alt="Business Analytics" class="w-full h-full object-cover">
@@ -301,7 +301,7 @@
     <!-- 2025 Competition Schedule Section -->
     <section class="bg-gray-200 py-16 relative z-40" style="min-height: 400px; padding-left: 100px; padding-right: 100px;">
       <!-- Section Heading -->
-      <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 border-l-4 border-indigo-600 pl-4 mb-12">
+      <h2 class="text-2xl lg:text-3xl font-bold text-customblue pl-4 mb-12 -ml-4">
         2025 Competition Schedule
       </h2>
 
@@ -404,7 +404,7 @@
           <img
             src="PICS/award.png"
             alt="AI Championship Award Ceremony"
-            class="rounded-xl w-full object-cover max-h-[500px]" 
+            class="rounded-xl w-full object-cover max-h-[500px]"
             style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';"
           />
         </div>
@@ -474,10 +474,10 @@
     <!-- Cash Prizes Section -->
     <section class="bg-gray-100  relative z-40">
       <!-- Section Heading -->
-      <h2 class="text-2xl lg:text-3xl font-bold text-[#292F6F] mb-12" style="margin-left: 50px;">
+      <h2 class="text-2xl lg:text-3xl font-bold text-[#292F6F] mb-12" style="margin-left: 100px;">
         Cash Prizes
       </h2>
-      <div class="w-1/2 h-0.5 bg-gray-200 mb-12" style="margin-top: -30px; margin-left: 50px;"></div>
+      <div class="w-1/2 h-0.5 bg-gray-200 mb-12" style="margin-top: -30px; margin-left: 100px;"></div>
 
       <!-- Main Content -->
       <div class="bg-[#1D2C58] text-white  py-12" style="padding-left: 100px; padding-right: 100px;">

@@ -20,27 +20,29 @@ document.addEventListener('DOMContentLoaded', function() {
     opacity: 1 // Keep full opacity throughout
   });
   
-  // Create the main scaling animation - stops when image reaches middle of screen
+    // Create the main scaling animation - stops when image reaches middle of screen
+  // Calculate scale to fit viewport with small margins
+  const windowWidth = window.innerWidth;
+  const imageWidth = heroImage.offsetWidth;
+  const margin = 40; // 20px margin on each side
+  const targetScale = (windowWidth - margin) / imageWidth;
+ 
   gsap.to(heroImage, {
-    scale: 1.5, // Scale up to match screen size with little margin
-    duration: 1, // Duration doesn't matter much with ScrollTrigger
-    ease: "power2.out", // Smooth easing for more refined animation
+    scale: targetScale,
+    duration: 1,
+    ease: "power2.out",
     scrollTrigger: {
       trigger: cardSection,
-      start: "top bottom", // Start when top of section hits bottom of viewport
-      end: "center center", // Stop when center of section reaches center of viewport (middle of screen)
-      scrub: 0.5, // Reduced scrub for faster response
-      invalidateOnRefresh: true, // Recalculate on window resize
-      
-      // Optional: Add markers for debugging (remove in production)
-      // markers: true,
-      
-      // Ensure smooth performance
+      start: "top bottom",
+      end: "center center",
+      scrub: 0.5,
+      invalidateOnRefresh: true,
       fastScrollEnd: true,
       preventOverlaps: true
     }
   });
-  
+
+
 
   
   // Refresh ScrollTrigger on window resize for responsive behavior

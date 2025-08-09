@@ -8,10 +8,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        customblue: '#475E74',
+        customblue: '#292F6F',
         custompurple: '#4C587C',
-        mygreen: '#07453A',
-        mypurple: '#1C2C58',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
