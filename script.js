@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
     // Create the main scaling animation - stops when image reaches middle of screen
-  // Calculate scale to fit viewport with small margins
+  // Calculate scale to fit viewport with margins (20px on each side for mobile)
   const windowWidth = window.innerWidth;
   const imageWidth = heroImage.offsetWidth;
-  const margin = 40; // 20px margin on each side
-  const targetScale = (windowWidth - margin) / imageWidth;
+  const margin = 40; // 20px margin on each side (requirement for mobile)
+  const targetScale = Math.min((windowWidth - margin) / imageWidth, 1.5); // Cap the scale for better performance
  
   gsap.to(heroImage, {
     scale: targetScale,
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
       trigger: cardSection,
       start: "top bottom",
       end: "center center",
-      scrub: 0.5,
+      scrub: window.innerWidth <= 768 ? 0.3 : 0.5, // Faster scrub on mobile for better performance
       invalidateOnRefresh: true,
       fastScrollEnd: true,
       preventOverlaps: true
@@ -47,6 +47,13 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Refresh ScrollTrigger on window resize for responsive behavior
   window.addEventListener('resize', () => {
+    // Recalculate target scale on resize to maintain 20px margins
+    const newWindowWidth = window.innerWidth;
+    const newImageWidth = heroImage.offsetWidth;
+    const newTargetScale = Math.min((newWindowWidth - 40) / newImageWidth, 1.5);
+    
+    // Update the animation with new scale
+    gsap.set(heroImage, { scale: newTargetScale });
     ScrollTrigger.refresh();
   });
   
