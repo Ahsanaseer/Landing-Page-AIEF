@@ -923,6 +923,14 @@ video {
   height: 4rem;
 }
 
+.h-\[1x\] {
+  height: 1x;
+}
+
+.h-\[1px\] {
+  height: 1px;
+}
+
 .max-h-80 {
   max-height: 20rem;
 }
@@ -1009,6 +1017,14 @@ video {
 
 .w-\[210px\] {
   width: 210px;
+}
+
+.w-2 {
+  width: 0.5rem;
+}
+
+.w-\[1px\] {
+  width: 1px;
 }
 
 .max-w-4xl {
