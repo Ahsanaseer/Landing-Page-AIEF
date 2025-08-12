@@ -107,12 +107,123 @@ document.addEventListener('DOMContentLoaded', function() {
   // Force refresh ScrollTrigger to apply changes immediately
   ScrollTrigger.refresh();
   
+  // Initialize video player
+  initializeVideoPlayer();
+  
 });
 
 // Performance optimization: Reduce motion for users who prefer it
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   gsap.set('*', {clearProps: 'all'});
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+}
+
+// Video Player Functionality
+function initializeVideoPlayer() {
+  const video = document.getElementById('backgroundVideo');
+  const videoSection = document.getElementById('videoSection');
+  const videoTimer = document.getElementById('videoTimer');
+  const fallbackBg = document.querySelector('.fallback-bg');
+  
+  if (!video || !videoSection || !videoTimer) {
+    console.warn('Video elements not found');
+    return;
+  }
+  
+  let timerInterval;
+  let isVideoLoaded = false;
+  
+  // Format time in MM:SS format
+  function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  }
+  
+  // Update timer display
+  function updateTimer() {
+    if (video.duration && isFinite(video.duration)) {
+      const currentTime = video.currentTime;
+      const totalTime = video.duration;
+      videoTimer.textContent = `${formatTime(currentTime)} / ${formatTime(totalTime)}`;
+    }
+  }
+  
+  // Start timer updates
+  function startTimer() {
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    timerInterval = setInterval(updateTimer, 1000);
+  }
+  
+  // Stop timer updates
+  function stopTimer() {
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+  }
+  
+  // Handle video load
+  video.addEventListener('loadedmetadata', function() {
+    isVideoLoaded = true;
+    updateTimer();
+    // Hide fallback background
+    if (fallbackBg) {
+      fallbackBg.style.display = 'none';
+    }
+  });
+  
+  // Handle video error
+  video.addEventListener('error', function() {
+    console.warn('Video failed to load, showing fallback background');
+    if (fallbackBg) {
+      fallbackBg.style.display = 'block';
+    }
+    videoTimer.style.display = 'none';
+  });
+  
+  // Intersection Observer for play/pause behavior
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Video is 50% visible, start playing
+        if (isVideoLoaded) {
+          video.play().then(() => {
+            startTimer();
+          }).catch(error => {
+            console.warn('Video autoplay failed:', error);
+          });
+        }
+      } else {
+        // Video is out of view, pause and reset
+        video.pause();
+        video.currentTime = 0;
+        stopTimer();
+        updateTimer(); // Update to show 0:00
+      }
+    });
+  }, {
+    threshold: 0.5, // Trigger when 50% visible
+    rootMargin: '0px'
+  });
+  
+  // Observe the video section
+  observer.observe(videoSection);
+  
+  // Handle video time updates for smoother timer updates
+  video.addEventListener('timeupdate', function() {
+    if (timerInterval) {
+      updateTimer();
+    }
+  });
+  
+  // Clean up on page unload
+  window.addEventListener('beforeunload', function() {
+    stopTimer();
+    observer.disconnect();
+  });
 }
 
 // FAQ Accordion Functionality
