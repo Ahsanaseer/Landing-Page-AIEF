@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Set initial transform origin to center for smooth scaling (both mobile and desktop)
   gsap.set(heroImage, {
     transformOrigin: "center center",
-    scale: isMobile ? 0.05 : 0.1, // Much more squeezed initial scale for dramatic effect
+    scale: isMobile ? 0.1 : 0.2, // Much more squeezed initial scale for more dramatic effect
     opacity: 1 // Keep full opacity throughout
   });
   
@@ -94,11 +94,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const newPullUpAmount = newCardHeight * newHiddenPortion;
       
       gsap.set(cardSection, { marginTop: `-${newPullUpAmount}px` });
-      gsap.set(heroImage, { scale: 0.05 }); // Reset to mobile initial scale (much more squeezed)
+      gsap.set(heroImage, { scale: 0.1 }); // Reset to mobile initial scale (much more squeezed)
     } else {
       // Reset for desktop
       gsap.set(cardSection, { marginTop: "0px" });
-      gsap.set(heroImage, { scale: 0.1 }); // Reset to desktop initial scale (more squeezed)
+      gsap.set(heroImage, { scale: 0.2 }); // Reset to desktop initial scale (more squeezed)
     }
     
     ScrollTrigger.refresh();
