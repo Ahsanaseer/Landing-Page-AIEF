@@ -309,15 +309,24 @@
         </div>
 
         <!-- Middle Column spans both rows on desktop, regular card on mobile -->
-        <div class="order-first md:order-none bg-gradient-to-b from-[#0f2b46] to-[#153c3c] text-white rounded-xl p-4 md:p-8 flex flex-col items-center justify-center text-center md:row-span-2 col-span-2 md:col-span-1" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <img src="PICS/icon top.png" alt="" class="w-12 h-9 md:w-20 md:h-15 mb-2 md:mb-4" />
-          <h3 class="font-bold text-sm md:text-lg mb-1 md:mb-2">Choose your Program</h3>
-          <p class="text-xs md:text-sm mb-2 md:mb-4">Feel free to choose any category you prefer</p>
-          <button class="bg-[#292F6F] text-white px-4 md:px-6 py-2 md:py-3 rounded-lg font-normal text-xs flex items-center space-x-1 md:space-x-2 shadow-lg transition-colors duration-300" style="background-color: #292F6F;" onmouseover="this.style.backgroundColor='#1a1f4a';" onmouseout="this.style.backgroundColor='#292F6F';">
-            <span>SIGN UP NOW</span>
-            <i class="fas fa-arrow-right"></i>
-          </button>
+        <div class="order-first md:order-none bg-gradient-to-b from-[#0f2b46] to-[#153c3c] text-white rounded-xl overflow-hidden md:p-8 flex flex-col items-center justify-center text-center md:row-span-2 col-span-2 md:col-span-1" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+          <div class="p-4 md:p-0 flex flex-col items-center justify-center h-full choose-program-card">
+            <img src="PICS/icon top.png" alt="" class="w-12 h-9 md:w-20 md:h-15 mb-2 md:mb-4" />
+            <h3 class="font-bold text-sm md:text-lg mb-1 md:mb-2">Choose your Program</h3>
+            <p class="text-xs md:text-sm mb-2 md:mb-4">Feel free to choose any category you prefer</p>
+            <button class="bg-[#292F6F] text-white px-4 md:px-6 py-2 md:py-3 rounded-lg font-normal text-xs flex items-center space-x-1 md:space-x-2 shadow-lg transition-colors duration-300" style="background-color: #292F6F;" onmouseover="this.style.backgroundColor='#1a1f4a';" onmouseout="this.style.backgroundColor='#292F6F';">
+              <span>SIGN UP NOW</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
         </div>
+        <style>
+          @media (max-width: 767px) {
+            .choose-program-card {
+              height: 320px !important;
+            }
+          }
+        </style>
 
         <div class="hidden md:block rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <img src="PICS/project submission catagories pics/Intelligent app creation.png" alt="Intelligent App Creation" class="w-full h-full object-cover">
