@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const windowWidth = window.innerWidth;
   const imageWidth = heroImage.offsetWidth;
   const margin = isMobile ? 40 : 40; // 20px margin on each side
-  const targetScale = isMobile ? 1.15 : Math.min((windowWidth - margin) / imageWidth, 1.5); // Force mobile to 2.0, desktop uses viewport calculation
+  const targetScale = isMobile ? 1.15 : Math.min((windowWidth - margin) / imageWidth, 2.2); // Increased max scale for more dramatic effect
   
   if (isMobile) {
     // MOBILE BEHAVIOR: Position card down a bit, same animation as desktop
