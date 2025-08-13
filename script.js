@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const viewportHeight = window.innerHeight;
     const navHeight = 80; // Fixed nav height
     
-    // Show more of the card initially for better visibility on page load
-    const visiblePortion = 0.1; // Increased to show more of the card (25% visible)
+    // Show only 1/3 of the card initially, hide 2/3 below viewport
+    const visiblePortion = 0.33; // Show only 1/3 of the card
     const hiddenPortion = 1 - visiblePortion;
     const pullUpAmount = cardHeight * hiddenPortion;
     
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (newIsMobile) {
       // Recalculate positioning for mobile
       const newCardHeight = cardSection.offsetHeight;
-      const newVisiblePortion = 0.1; // Updated to match the user's change
+      const newVisiblePortion = 0.33; // Show only 1/3 of the card
       const newHiddenPortion = 1 - newVisiblePortion;
       const newPullUpAmount = newCardHeight * newHiddenPortion;
       
@@ -109,6 +109,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Initialize video player
   initializeVideoPlayer();
+  
+  // Initialize FAQ accordion scroll behavior
+  initializeFAQScroll();
   
 });
 
@@ -226,6 +229,67 @@ function initializeVideoPlayer() {
   });
 }
 
+// FAQ Scroll Behavior Initialization
+function initializeFAQScroll() {
+  const faqAccordion = document.getElementById('faq-accordion');
+  const faqSection = document.querySelector('.bg-gray-100.py-12.md\\:py-16.relative.z-40.px-5.md\\:px-\\[100px\\]');
+  
+  if (!faqAccordion || !faqSection) {
+    console.warn('FAQ elements not found');
+    return;
+  }
+  
+  // Set initial height to 1/3 of viewport height
+  const initialHeight = window.innerHeight * 0.33;
+  faqAccordion.style.maxHeight = initialHeight + 'px';
+  
+  // Create scroll trigger for FAQ section
+  ScrollTrigger.create({
+    trigger: faqSection,
+    start: "top bottom",
+    end: "bottom top",
+    onUpdate: (self) => {
+      // Calculate progress (0 to 1)
+      const progress = self.progress;
+      
+      // Calculate target height: from 1/3 viewport to full height
+      const minHeight = window.innerHeight * 0.33;
+      const maxHeight = 384; // 24rem (max-h-96)
+      const targetHeight = minHeight + (progress * (maxHeight - minHeight));
+      
+      // Apply smooth height transition
+      faqAccordion.style.transition = 'max-height 0.3s ease-out';
+      faqAccordion.style.maxHeight = targetHeight + 'px';
+    },
+    onEnter: () => {
+      // When section enters viewport, start expanding
+      faqAccordion.style.transition = 'max-height 0.5s ease-out';
+    },
+    onLeave: () => {
+      // When section leaves viewport, contract back to 1/3
+      faqAccordion.style.transition = 'max-height 0.3s ease-out';
+      faqAccordion.style.maxHeight = (window.innerHeight * 0.33) + 'px';
+    },
+    onEnterBack: () => {
+      // When scrolling back up, expand again
+      faqAccordion.style.transition = 'max-height 0.5s ease-out';
+    },
+    onLeaveBack: () => {
+      // When scrolling back up and leaving, contract
+      faqAccordion.style.transition = 'max-height 0.3s ease-out';
+      faqAccordion.style.maxHeight = (window.innerHeight * 0.33) + 'px';
+    }
+  });
+  
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    const newInitialHeight = window.innerHeight * 0.33;
+    if (faqAccordion.style.maxHeight === (window.innerHeight * 0.33) + 'px') {
+      faqAccordion.style.maxHeight = newInitialHeight + 'px';
+    }
+  });
+}
+
 // FAQ Accordion Functionality
 function toggleFAQ(headerElement) {
   const faqItem = headerElement.closest('.faq-item');
@@ -239,12 +303,15 @@ function toggleFAQ(headerElement) {
     content.style.opacity = '0';
     content.style.maxHeight = '0';
     content.style.overflow = 'hidden';
+    content.style.transform = 'scaleY(0.8)';
+    content.style.transformOrigin = 'top';
     
     // Animate the content opening
     setTimeout(() => {
-      content.style.transition = 'all 0.3s ease-in-out';
+      content.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
       content.style.opacity = '1';
       content.style.maxHeight = content.scrollHeight + 'px';
+      content.style.transform = 'scaleY(1)';
     }, 10);
     
     // Animate the icon
@@ -255,9 +322,10 @@ function toggleFAQ(headerElement) {
     
   } else {
     // Hide content with smooth animation
-    content.style.transition = 'all 0.3s ease-in-out';
+    content.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
     content.style.opacity = '0';
     content.style.maxHeight = '0';
+    content.style.transform = 'scaleY(0.8)';
     
     // Animate the icon
     icon.style.transition = 'transform 0.3s ease-in-out';
@@ -268,6 +336,38 @@ function toggleFAQ(headerElement) {
     // Hide the content after animation
     setTimeout(() => {
       content.style.display = 'none';
-    }, 300);
+      content.style.transform = 'scaleY(1)';
+    }, 400);
   }
 }
+
+
+function addHoverEffects() {
+  const elements = document.querySelectorAll('[style*="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%)"]');
+  
+  elements.forEach(element => {
+    // Add transition and cursor
+    element.style.transition = 'all 0.3s ease';
+    element.style.cursor = 'pointer';
+    
+    // Add hover event listeners
+    element.addEventListener('mouseenter', function() {
+      if (this.tagName === 'BUTTON') {
+        this.style.transform = 'translateY(-2px)';
+        this.style.boxShadow = '0 8px 20px -5px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.1)';
+        this.style.filter = 'brightness(0.85)';
+      } else if (this.tagName === 'FOOTER') {
+        this.style.filter = 'brightness(0.98)';
+      }
+    });
+    
+    element.addEventListener('mouseleave', function() {
+      this.style.transform = '';
+      this.style.boxShadow = '';
+      this.style.filter = '';
+    });
+  });
+}
+
+// Run when DOM is loaded
+document.addEventListener('DOMContentLoaded', addHoverEffects);

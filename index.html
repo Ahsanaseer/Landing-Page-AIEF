@@ -78,6 +78,12 @@
         backdrop-filter: blur(4px);
         border: 1px solid rgba(255, 255, 255, 0.1);
       }
+      .choose-program-card{
+        width:223px;
+        margin-left: 55px;
+        height: full;
+      }
+    }
       
       /* Responsive adjustments for video timer */
       @media (max-width: 768px) {
@@ -111,20 +117,19 @@
         align-items: center;
         justify-content: center;
       }
-    }
   </style>
 </head>
 <body class="bg-customblue md:bg-white min-h-screen font-poppins">
 
 
   <!-- Fixed Navigation Bar -->
-  <div class="fixed top-0 left-0 right-0 z-[9999] bg-gradient-to-r from-custompurple via-customblue to-customblue px-4 md:px-6 py-3 md:py-4 flex justify-between items-center shadow-lg mb-4">
+  <div class="fixed top-0 left-0 right-0 z-[9999] bg-[#4C587A] px-4 md:px-6 py-3 md:py-4 flex justify-between items-center shadow-lg mb-4">
         <div class="flex items-center space-x-2 md:space-x-3">
           <div>
-            <img src="PICS/icon top.png" alt="icon" class="w-12 h-8" class="md:w-15 md:h-10">
+            <img src="PICS/icon top.png" alt="icon" class="w-22 h-8 md:w-18 md:h-12">
           </div>
         </div>
-        <button class="bg-green-800 hover:bg-green-900 text-white px-4 md:px-8 py-2 md:py-3 rounded-lg font-semibold text-xs md:text-sm transition-colors">
+        <button class=" text-white px-4 md:px-8 py-2 md:py-3 rounded-lg font-semibold text-xs md:text-sm transition-colors" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);">
           <span class="text-white tracking-wider md:tracking-widest" >HOME</span>
         </button>
     </div>
@@ -194,7 +199,7 @@
                   AIEF 3rd International AI Championship. <span class="text-orange-500 font-semibold">Be the future.</span>
                 </p>
               </div>
-              <button class="bg-green-800 hover:bg-green-900 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-normal text-xs md:text-sm transition-colors flex items-center space-x-2" style="margin-top: 30px;">
+              <button class="text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-normal text-xs md:text-sm transition-colors flex items-center space-x-2" style="margin-top: 30px; background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);">
                 <span>SIGN UP NOW</span>
                 <i class="fas fa-arrow-right text-white"></i>
               </button>
@@ -257,7 +262,7 @@
     <section class="bg-gray-100 px-4 md:px-6 lg:px-12 py-8 md:py-12 relative" style="z-index: 45; margin-top: -60px;">
       <div class="max-w-7xl mx-auto">
         <!-- Title -->
-        <h2 class="text-xl md:text-2xl lg:text-3xl font-extrabold text-customblue mb-8 md:mb-12 border-b border-gray-300 pb-2">
+        <h2 class="text-xl md:text-2xl lg:text-3xl font-extrabold text-customblue mb-8 md:mb-12 pb-2 ml-4 md:ml-8 border-b border-gray-300" style="border-bottom-width: 1px; border-bottom-color: #d1d5db;">
           Who can Participate
         </h2>
 
@@ -294,7 +299,7 @@
 
             <!-- Register Button - Hidden on mobile, visible on desktop -->
             <div class="hidden md:block absolute top-6 md:top-8 right-[-15px] md:right-[-30px] lg:right-[-20px]">
-              <a href="#register" class="inline-flex items-center text-white text-xs md:text-sm font-semibold px-3 md:px-4 py-2 rounded-md bg-gradient-to-r from-green-700 to-blue-900 shadow-md hover:opacity-90 transition" style="margin-right: -50px;">
+              <a href="#register" class="inline-flex items-center text-white text-xs md:text-sm font-semibold px-3 md:px-4 py-2 rounded-md shadow-md transition" style="margin-right: -50px; background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);">
                 REGISTER
                 <svg class="ml-1 md:ml-2 w-3 md:w-4 h-3 md:h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -305,7 +310,7 @@
             <!-- Important Notes -->
             <div class="bg-white rounded-xl shadow-md p-3 md:p-4 mt-6 md:mt-8 flex flex-col gap-2 border border-gray-100">
               <div class="flex justify-between items-center mb-1">
-                <span class="bg-gradient-to-r from-green-700 to-blue-900 text-white text-xs font-semibold px-2 md:px-3 py-1 -mt-6 md:-mt-8 ml-[150px] md:ml-[380px] rounded-md shadow">
+                <span class="text-white text-xs font-semibold px-2 md:px-3 py-1 -mt-6 md:-mt-8 ml-[150px] md:ml-[380px] rounded-md shadow-lg" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);">
                   Important Notes
                 </span>
               </div>
@@ -327,16 +332,16 @@
             </h3>
 
             <!-- Registration Info Bar -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-0 text-center text-white text-xs font-semibold rounded-lg overflow-hidden shadow-md w-full">
-              <div class="bg-[#292F6F] py-2 px-2 md:px-3 rounded-lg md:rounded-none">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-0 text-center text-white text-xs font-semibold rounded-lg overflow-hidden shadow-md w-full" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);">
+              <div class="py-2 px-2 md:px-3 rounded-lg md:rounded-none">
                 <p class="uppercase tracking-wide text-[10px] md:text-xs">Registration</p>
                 <p class="text-[9px] md:text-[11px]">Open till September 7, 2025</p>
               </div>
-              <div class="bg-[#292F6F] py-2 px-2 md:px-3 rounded-lg md:rounded-none md:border-l md:border-white/20 md:border-r md:border-white/20">
+              <div class="py-2 px-2 md:px-3 rounded-lg md:rounded-none md:border-l md:border-white/20 md:border-r md:border-white/20">
                 <p class="uppercase tracking-wide text-[10px] md:text-xs">Venue</p>
                 <p class="text-[9px] md:text-[11px]">LUMS, Lahore</p>
               </div>
-              <div class="bg-[#292F6F] py-2 px-2 md:px-3 rounded-lg md:rounded-none">
+              <div class="py-2 px-2 md:px-3 rounded-lg md:rounded-none">
                 <p class="uppercase tracking-wide text-[10px] md:text-xs">Event Date</p>
                 <p class="text-[9px] md:text-[11px]">September 27, 2025</p>
               </div>
@@ -356,21 +361,21 @@
       <!-- Card Grid -->
       <div class="flex flex-col md:grid md:grid-cols-5 gap-2 md:gap-2">
         <!-- Row 1 - Mobile: 2 cards, Desktop: 5 cards -->
-        <div class="order-2 md:order-none rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <div class="order-2 md:order-none rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <img src="PICS/project submission catagories pics/Business Analytics ( Power bi & Tableau).png" alt="Business Analytics" class="w-full h-80 md:h-full object-contain">
         </div>
 
-        <div class="order-3 md:order-none rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <div class="order-3 md:order-none rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <img src="PICS/project submission catagories pics/AI Agriculture.png" alt="AI in Agriculture" class="w-full h-80 md:h-full object-contain">
         </div>
 
         <!-- Middle Column spans both rows on desktop, regular card on mobile -->
-        <div class="order-first md:order-none bg-gradient-to-b from-[#0f2b46] to-[#153c3c] text-white rounded-xl overflow-hidden md:p-8 flex flex-col items-center justify-center text-center md:row-span-2 col-span-2 md:col-span-1" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <div class="p-4 md:p-0 flex flex-col items-center justify-center h-full choose-program-card">
+        <div class="order-first md:order-none text-white rounded-xl overflow-hidden md:p-8 flex flex-col items-center justify-center text-center md:row-span-2 col-span-2 md:col-span-1 choose-program-card" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);"transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+          <div class="p-4 md:p-0 flex flex-col items-center justify-center h-full ">
             <img src="PICS/icon top.png" alt="" class="w-12 h-9 md:w-20 md:h-15 mb-2 md:mb-4" />
             <h3 class="font-bold text-sm md:text-lg mb-1 md:mb-2">Choose your Program</h3>
             <p class="text-xs md:text-sm mb-2 md:mb-4">Feel free to choose any category you prefer</p>
-            <button class="bg-[#292F6F] text-white px-4 md:px-6 py-2 md:py-3 rounded-lg font-normal text-xs flex items-center space-x-1 md:space-x-2 shadow-lg transition-colors duration-300" style="background-color: #292F6F;" onmouseover="this.style.backgroundColor='#1a1f4a';" onmouseout="this.style.backgroundColor='#292F6F';">
+            <button class="text-white px-4 md:px-6 py-2 md:py-3 rounded-lg font-normal text-xs flex items-center space-x-1 md:space-x-2 shadow-lg transition-colors duration-300" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);" onmouseover="this.style.backgroundColor='#1a1f4a';" onmouseout="this.style.backgroundColor='#292F6F';">
               <span>SIGN UP NOW</span>
               <i class="fas fa-arrow-right"></i>
             </button>
@@ -384,48 +389,48 @@
           }
         </style>
 
-        <div class="hidden md:block rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <div class="hidden md:block rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; " onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <img src="PICS/project submission catagories pics/Intelligent app creation.png" alt="Intelligent App Creation" class="w-full h-full object-cover">
         </div>
 
-        <div class="hidden md:block rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <div class="hidden md:block rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <img src="PICS/project submission catagories pics/Ai in fintech.png " alt="AI in Fintech" class="w-full h-full object-cover">
         </div>
 
         <!-- Row 2 - Mobile cards -->
-        <div class="order-4 md:order-none rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <div class="order-4 md:order-none rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <img src="PICS/project submission catagories pics/Intelligent app creation.png" alt="Intelligent App Creation" class="w-full h-80 md:h-full object-contain md:hidden">
           <img src="PICS/project submission catagories pics/AI in urban tech.png" alt="AI in Urban Tech" class="w-full h-full object-cover hidden md:block">
         </div>
 
-        <div class="order-5 md:order-none rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <div class="order-5 md:order-none rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <img src="PICS/project submission catagories pics/Ai in fintech.png" alt="AI in Fintech" class="w-full h-80 md:h-full object-contain md:hidden">
           <img src="PICS/project submission catagories pics/AI in retail and e-commerce.png" alt="AI in Retail and E-Commerce" class="w-full h-full object-cover hidden md:block">
         </div>
 
-        <div class="hidden md:block rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <div class="hidden md:block rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <img src="PICS/project submission catagories pics/AI in robotics.png" alt="AI in Robotics">
         </div>
 
-        <div class="hidden md:block rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <div class="hidden md:block rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <img src="PICS/project submission catagories pics/AI in healthcare.png" alt="AI in Healthcare">
         </div>
 
         <!-- Row 3 - Additional mobile cards -->
-        <div class="order-6 md:order-none rounded-xl overflow-hidden md:hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <div class="order-6 md:order-none rounded-xl overflow-hidden md:hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <img src="PICS/project submission catagories pics/AI in urban tech.png" alt="AI in Urban Tech" class="w-full h-80 object-contain">
         </div>
 
-        <div class="order-7 md:order-none rounded-xl overflow-hidden md:hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <div class="order-7 md:order-none rounded-xl overflow-hidden md:hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <img src="PICS/project submission catagories pics/AI in retail and e-commerce.png" alt="AI in Retail and E-Commerce" class="w-full h-80 object-contain">
         </div>
 
         <!-- Row 4 - Final mobile cards -->
-        <div class="order-8 md:order-none rounded-xl overflow-hidden md:hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <div class="order-8 md:order-none rounded-xl overflow-hidden md:hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <img src="PICS/project submission catagories pics/AI in robotics.png" alt="AI in Robotics" class="w-full h-80 object-contain">
         </div>
 
-        <div class="order-9 md:order-none rounded-xl overflow-hidden md:hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <div class="order-9 md:order-none rounded-xl overflow-hidden md:hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
           <img src="PICS/project submission catagories pics/AI in healthcare.png" alt="AI in Healthcare" class="w-full h-80 object-contain">
         </div>
       </div>
@@ -556,7 +561,7 @@
               <!-- Video Element -->
               <video 
                 id="backgroundVideo" 
-                class="w-auto h-full object-contain"
+                class="w-auto h-full object-cover"
                 muted 
                 loop
                 playsinline
@@ -582,7 +587,7 @@
           </div>
 
           <!-- Right Side - Text Content -->
-          <div class="w-full lg:w-[40%] bg-[#1D2C58] rounded-b-xl lg:rounded-r-xl lg:rounded-bl-none p-6 md:p-8 text-white relative">
+          <div class="w-full lg:w-[40%] rounded-b-xl lg:rounded-r-xl lg:rounded-bl-none p-6 md:p-8 text-white relative" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);">
             <!-- Main Content -->
             <div class="space-y-4 md:space-y-6">
               <h2 class="text-xl md:text-2xl lg:text-3xl xl:text-2xl font-normal leading-tight">
@@ -604,7 +609,7 @@
               </div>
 
               <!-- Call to Action Button -->
-              <button class="bg-blue-800 hover:bg-blue-900 text-white px-3 md:px-4 py-2 rounded-lg font-normal text-[9px] md:text-[10px] transition-colors flex items-center space-x-1 md:space-x-2">
+              <button class="text-white px-3 md:px-4 py-2 rounded-lg font-normal text-[9px] md:text-[10px] transition-colors flex items-center space-x-1 md:space-x-2" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);">
                 <span>SIGN UP NOW</span>
                 <i class="fas fa-arrow-right"></i>
               </button>
@@ -628,7 +633,7 @@
       <div class="w-1/2 h-0.5 bg-gray-200 mb-8 md:mb-12 -mt-5 md:-mt-[30px] ml-5 md:ml-[100px]"></div>
 
       <!-- Main Content -->
-      <div class="bg-[#1D2C58] text-white py-8 md:py-12 px-5 md:px-[100px]">
+      <div class="text-white py-8 md:py-12 px-5 md:px-[100px]" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);">
         <!-- Philosophy Section -->
         <div class="text-left mb-10 md:mb-16 w-full">
           <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold mb-4 md:mb-6">
@@ -746,7 +751,7 @@
     <!-- FAQs Section -->
     <section class="bg-gray-100 py-12 md:py-16 relative z-40 px-5 md:px-[100px]">
       <!-- Section Heading -->
-      <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-[#292F6F] mb-8 md:mb-12 ml-1 md:ml-2">
+      <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-[#292F6F] mb-8 md:mb-12 pl-6 md:pl-8">
         FAQs
       </h2>
 
@@ -777,7 +782,7 @@
           </div>
 
           <!-- Right Column - FAQ Accordion -->
-          <div class="space-y-6 md:space-y-8 max-h-80 md:max-h-96 overflow-y-auto pl-2 md:pl-8 pr-2 md:pr-8" id="faq-accordion" style="scrollbar-width: thin; scrollbar-color: #cbd5e0 #f1f5f9;">
+          <div class="space-y-6 md:space-y-8 max-h-96 md:max-h-96 overflow-y-auto pl-2 md:pl-8 pr-2 md:pr-8" id="faq-accordion" style="scrollbar-width: thin; scrollbar-color: #cbd5e0 #f1f5f9; overflow-x: hidden;">
             <!-- FAQ Item 1 -->
             <div class="border-b border-gray-200 pb-3 md:pb-4 faq-item">
               <div class="flex justify-between items-start cursor-pointer faq-header" onclick="toggleFAQ(this)">
@@ -964,10 +969,10 @@
 
     <!-- Contact Us Section -->
     <section class="bg-gray-100 py-12 md:py-16 relative z-40 px-5 md:px-[100px]">
-      <!-- Section Heading -->
-      <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-[#292F6F] mb-8 md:mb-12 ml-1 md:ml-2">
+            <!-- Section Heading -->
+      <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-[#292F6F] mb-8 md:mb-12 pl-6 md:pl-8">
         Contact Us
-        </h2>
+       </h2>
 
       <!-- Main Content Card -->
       <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg">
@@ -1026,7 +1031,7 @@
               <div>
                                   <button 
                     type="submit" 
-                    class="w-full bg-blue-800 hover:bg-blue-900 text-white font-semibold py-2 md:py-3 px-4 md:px-6 rounded-lg transition-colors duration-300 text-sm md:text-base"
+                    class="w-full text-white font-semibold py-2 md:py-3 px-4 md:px-6 rounded-lg transition-colors duration-300 text-sm md:text-base" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);"
                   >
                     Send Message
           </button>
@@ -1038,7 +1043,7 @@
     </section>
 
     <!-- Footer Section -->
-    <footer class="bg-gradient-to-r from-blue-900 to-green-900 text-white relative z-50">
+    <footer class="text-white relative z-50" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);">
       <div class="py-12 md:py-16 px-5 md:px-[100px]">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           <!-- Left Side - Logo and Contact Info -->
@@ -1122,8 +1127,9 @@
     </footer>
 
     
-  </main>
+    </main>
   
+
   <script src="script.js"></script>
 </body>
 </html>
