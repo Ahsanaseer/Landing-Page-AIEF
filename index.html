@@ -20,6 +20,119 @@
       overflow-x: hidden;
       max-width: 100vw;
     }
+    .custom-blue {
+      color: #014141;
+  }
+  .bg-custom-blue {
+      background-color: #014141;
+  }
+  .timeline-line {
+      position: absolute;
+      left: 16px; /* Shifted slightly to the left */
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: #d1d5db;
+  }
+  .progress-line {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(to bottom, #014141, #014141);
+      transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .timeline-dot {
+      position: absolute;
+      left: 12px; /* Centered on the line (16px - 4px = 12px) */
+      width: 8px;
+      height: 8px;
+      background-color: #014141;
+      border-radius: 50%;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0.4;
+      transform: scale(0.8);
+  }
+  .timeline-dot.active {
+      opacity: 1;
+      transform: scale(1.2);
+      box-shadow: 0 0 0 4px rgba(1, 65, 65, 0.2);
+  }
+  .timeline-dot.completed {
+      opacity: 1;
+      transform: scale(1);
+  }
+  .step-content {
+      margin-left: 48px; /* Adjusted for new line position */
+      padding-top: 8px;
+  }
+  .step-number {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #014141;
+      transition: all 0.3s ease;
+  }
+  .step-item.active .step-number {
+      transform: scale(1.1);
+      color: #014141;
+  }
+  .step-item {
+      position: relative;
+      min-height: 120px;
+      transition: all 0.3s ease;
+  }
+  .step-item.active {
+      transform: translateX(4px);
+  }
+  /* Add some space for better visualization */
+  body {
+      padding-top: 100px;
+      padding-bottom: 100px;
+  }
+  .step-item {
+        transition: all 0.3s ease-out;
+      }
+      
+      .step-item.active {
+        transform: scale(1.02);
+      }
+      
+      .step-item.active span {
+        color: #014141 !important;
+        transform: scale(1.1);
+      }
+      
+      .step-item.completed span {
+        color: #014141 !important;
+      }
+      
+      .step-item.completed {
+        opacity: 0.8;
+      }
+      
+      #progressLine {
+        background: linear-gradient(to bottom, #014141 0%, #014141 100%);
+        box-shadow: 0 0 10px rgba(1, 65, 65, 0.3);
+      }
+      
+      .progress-dot {
+        box-shadow: 0 0 8px rgba(1, 65, 65, 0.4);
+        transform: scale(1.2);
+        background-color: #014141 !important;
+      }
+      
+      .dot-completed {
+        opacity: 1 !important;
+        background-color: #014141 !important;
+      }
+      
+      .dot-active {
+        opacity: 1 !important;
+        background-color: #014141 !important;
+        box-shadow: 0 0 8px rgba(1, 65, 65, 0.4);
+        transform: scale(1.2);
+      }
+    
     
     /* Ensure no element causes horizontal overflow on mobile */
     @media (max-width: 768px) {
@@ -117,6 +230,11 @@
         align-items: center;
         justify-content: center;
       }
+      @media (min-width: 768px) {
+        .aief-2024-heading {
+            margin-top: -100px !important;
+        }
+      }
   </style>
 </head>
 <body class="bg-customblue md:bg-white min-h-screen font-poppins">
@@ -206,47 +324,45 @@
             </div>
             <div class="relative">
               <div class="-mt-0 md:-mt-56 h-[400px] md:h-[1000px] flex items-center justify-center">
-                <img src="PICS/VR Blue.png" alt="VR Technology" class="w-full h-full object-contain">
+                <img src="PICS/Registration image.png" alt="VR Technology" class="w-full h-full object-contain">
+                <div class="hidden md:block absolute ">
+                  <a href="#register" class="inline-flex text-white text-xs md:text-xs font-semibold px-3 md:px-4 py-2 rounded-md shadow-md transition" style="margin-right: 0px; margin-top: 150px; background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);" "transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    REGISTER NOW
+                  </a>
+                </div>
               </div>
             </div>
           </div>
           <!-- AIEF 2024 Statistics Section -->
           <div class="mt-6 md:mt-8">
-            <div class="max-w-4xl mx-auto">
+            <div class="w-full">
               <!-- Header -->
               <div class="text-center mb-8 md:mb-12">
-                <h3 class="text-xs md:text-3xl lg:text-sm text-left font-normal text-custompurple mb-4 aief-2024-heading" style="margin-top: 50px; margin-left: -20px;">Who Was at AIEF 2024?</h3>
-                <style>
-                  @media (min-width: 768px) {
-                    .aief-2024-heading {
-                      margin-top: -100px !important;
-                    }
-                  }
-                </style>
-                <div class="w-1/2 h-0.5 bg-gray-100 mx-auto"></div>
+                <h3 class="text-xs md:text-3xl lg:text-sm text-left font-normal text-custompurple mb-4 aief-2024-heading" style="margin-top: 50px; margin-left: -10px;">Who Was at AIEF 2024?</h3>
+                <div class="w-[1200px] h-[2px] bg-gray-100" style="margin-left: -10px;"></div>
               </div>
               
               <!-- Statistics Grid -->
-              <div class="grid grid-cols-3 gap-3 md:gap-6 lg:gap-8 text-center">
+              <div class="grid grid-cols-3 gap-12 md:gap-24 lg:gap-36 text-center" style="width: 100%; max-width: none;">
                 <!-- Attendees -->
                 <div class="space-y-1 md:space-y-2">
-                  <div class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-normal text-custompurple">500+</div>
-                  <div class="text-sm sm:text-base md:text-lg lg:text-xl font-normal text-custompurple">Attendees</div>
+                  <div class="text-2xl sm:text-3xl md:text-5xl lg:text-8xl font-normal text-[#131637] text-left">500+</div>
+                  <div class="text-sm sm:text-base md:text-lg lg:text-xl font-normal text-[#131637] text-left">Attendees</div>
                 </div>
                 
                 <!-- Projects Display -->
                 <div class="space-y-1 md:space-y-2">
-                  <div class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-normal text-custompurple">30+</div>
-                  <div class="text-sm sm:text-base md:text-lg lg:text-xl font-normal text-custompurple">
+                  <div class="text-2xl sm:text-3xl md:text-5xl lg:text-8xl font-normal text-[#131637] text-left">30+</div>
+                  <div class="text-sm sm:text-base md:text-lg lg:text-xl font-normal text-[#131637] text-left">
                     <span class="md:hidden">Projects</span>
                     <span class="hidden md:inline">Projects Display</span>
                   </div>
                 </div>
                 
                 <!-- Registrations -->
-                <div class="space-y-1 md:space-y-2">
-                  <div class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-normal text-custompurple">1000+</div>
-                  <div class="text-sm sm:text-base md:text-lg lg:text-xl font-normal text-custompurple">Registrations</div>
+                <div class="space-y-1 md:space-y-2 text-left">
+                  <div class="text-2xl sm:text-3xl md:text-5xl lg:text-8xl  text-[#131637]">1000+</div>
+                  <div class="text-sm sm:text-base md:text-lg lg:text-xl font-normal text-[#131637]">Registrations</div>
                 </div>
               </div>
             </div>
@@ -351,205 +467,261 @@
       </div>
     </section>
 
-    <!-- Project Submission Categories Section -->
-    <section class="bg-[#f5f6fa] py-12 md:py-16 relative z-40 px-5 md:px-[100px]">
-      <!-- Section Heading -->
-      <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-customblue border-indigo-600 pl-2 md:pl-4 mb-8 md:mb-12 -ml-[8px] md:-ml-[13px]">
-        Project Submission Categories
-      </h2>
+<!-- Project Submission Categories Section -->
+<section class="bg-[#f5f6fa] py-12 md:py-16 relative z-40 px-5 md:px-[60px]">
+  <!-- Section Heading -->
+  <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-customblue border-indigo-600 pl-2 md:pl-4 mb-8 md:mb-12 -ml-[8px] md:-ml-[13px]">
+    Project Submission Categories
+  </h2>
 
-      <!-- Card Grid -->
-      <div class="flex flex-col md:grid md:grid-cols-5 gap-2 md:gap-2">
-        <!-- Row 1 - Mobile: 2 cards, Desktop: 5 cards -->
-        <div class="order-2 md:order-none rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <img src="PICS/project submission catagories pics/Business Analytics ( Power bi & Tableau).png" alt="Business Analytics" class="w-full h-80 md:h-full object-contain">
-        </div>
-
-        <div class="order-3 md:order-none rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <img src="PICS/project submission catagories pics/AI Agriculture.png" alt="AI in Agriculture" class="w-full h-80 md:h-full object-contain">
-        </div>
-
-        <!-- Middle Column spans both rows on desktop, regular card on mobile -->
-        <div class="order-first md:order-none text-white rounded-xl overflow-hidden md:p-8 flex flex-col items-center justify-center text-center md:row-span-2 col-span-2 md:col-span-1 choose-program-card" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);"transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <div class="p-4 md:p-0 flex flex-col items-center justify-center h-full ">
-            <img src="PICS/icon top.png" alt="" class="w-12 h-9 md:w-20 md:h-15 mb-2 md:mb-4" />
-            <h3 class="font-bold text-sm md:text-lg mb-1 md:mb-2">Choose your Program</h3>
-            <p class="text-xs md:text-sm mb-2 md:mb-4">Feel free to choose any category you prefer</p>
-            <button class="text-white px-4 md:px-6 py-2 md:py-3 rounded-lg font-normal text-xs flex items-center space-x-1 md:space-x-2 shadow-lg transition-colors duration-300" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);" onmouseover="this.style.backgroundColor='#1a1f4a';" onmouseout="this.style.backgroundColor='#292F6F';">
-              <span>SIGN UP NOW</span>
-              <i class="fas fa-arrow-right"></i>
-            </button>
-          </div>
-        </div>
-        <style>
-          @media (max-width: 767px) {
-            .choose-program-card {
-              height: 320px !important;
-            }
-          }
-        </style>
-
-        <div class="hidden md:block rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; " onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <img src="PICS/project submission catagories pics/Intelligent app creation.png" alt="Intelligent App Creation" class="w-full h-full object-cover">
-        </div>
-
-        <div class="hidden md:block rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <img src="PICS/project submission catagories pics/Ai in fintech.png " alt="AI in Fintech" class="w-full h-full object-cover">
-        </div>
-
-        <!-- Row 2 - Mobile cards -->
-        <div class="order-4 md:order-none rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <img src="PICS/project submission catagories pics/Intelligent app creation.png" alt="Intelligent App Creation" class="w-full h-80 md:h-full object-contain md:hidden">
-          <img src="PICS/project submission catagories pics/AI in urban tech.png" alt="AI in Urban Tech" class="w-full h-full object-cover hidden md:block">
-        </div>
-
-        <div class="order-5 md:order-none rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <img src="PICS/project submission catagories pics/Ai in fintech.png" alt="AI in Fintech" class="w-full h-80 md:h-full object-contain md:hidden">
-          <img src="PICS/project submission catagories pics/AI in retail and e-commerce.png" alt="AI in Retail and E-Commerce" class="w-full h-full object-cover hidden md:block">
-        </div>
-
-        <div class="hidden md:block rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <img src="PICS/project submission catagories pics/AI in robotics.png" alt="AI in Robotics">
-        </div>
-
-        <div class="hidden md:block rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <img src="PICS/project submission catagories pics/AI in healthcare.png" alt="AI in Healthcare">
-        </div>
-
-        <!-- Row 3 - Additional mobile cards -->
-        <div class="order-6 md:order-none rounded-xl overflow-hidden md:hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <img src="PICS/project submission catagories pics/AI in urban tech.png" alt="AI in Urban Tech" class="w-full h-80 object-contain">
-        </div>
-
-        <div class="order-7 md:order-none rounded-xl overflow-hidden md:hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <img src="PICS/project submission catagories pics/AI in retail and e-commerce.png" alt="AI in Retail and E-Commerce" class="w-full h-80 object-contain">
-        </div>
-
-        <!-- Row 4 - Final mobile cards -->
-        <div class="order-8 md:order-none rounded-xl overflow-hidden md:hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <img src="PICS/project submission catagories pics/AI in robotics.png" alt="AI in Robotics" class="w-full h-80 object-contain">
-        </div>
-
-        <div class="order-9 md:order-none rounded-xl overflow-hidden md:hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-          <img src="PICS/project submission catagories pics/AI in healthcare.png" alt="AI in Healthcare" class="w-full h-80 object-contain">
-        </div>
+  <!-- Card Grid -->
+  <div class="flex flex-col md:flex md:gap-2">
+    <!-- Desktop Layout -->
+    <div class="hidden md:flex md:gap-2 md:mb-2">
+      <!-- Row 1 -->
+      <div class="flex-1 rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/Business Analytics ( Power bi & Tableau).png" alt="Business Analytics" class="w-full h-full object-cover">
       </div>
-    </section>
+      
+      <div class="flex-1 rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/AI Agriculture.png" alt="AI in Agriculture" class="w-full h-full object-cover">
+      </div>
+      
+      <!-- Middle card with slightly increased width -->
+      <div class="text-white rounded-xl overflow-hidden p-8 flex flex-col items-center justify-center text-center choose-program-card" style="flex: 1.1;  background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/icon top.png" alt="" class="w-20 h-15 mb-4" />
+        <h3 class="font-bold text-lg mb-2">Choose your Program</h3>
+        <p class="text-sm mb-4">Feel free to choose any category you prefer</p>
+        <button class="text-white px-6 py-3 rounded-lg font-normal text-xs flex items-center space-x-2 shadow-lg transition-colors duration-300" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);" onmouseover="this.style.backgroundColor='#1a1f4a';" onmouseout="this.style.backgroundColor='#292F6F';">
+          <span>SIGN UP NOW</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+      
+      <div class="flex-1 rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/Intelligent app creation.png" alt="Intelligent App Creation" class="w-full h-full object-cover">
+      </div>
+      
+      <div class="flex-1 rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/Ai in fintech.png" alt="AI in Fintech" class="w-full h-full object-cover">
+      </div>
+    </div>
 
-    <!-- 2025 Competition Schedule Section -->
-    <section class="bg-gray-200 py-12 md:py-16 relative z-40 px-5 md:px-[100px]" style="min-height: 400px;">
-      <!-- Section Heading -->
-      <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-customblue pl-2 md:pl-4 mb-8 md:mb-12 -ml-2 md:-ml-4">
+    <!-- Row 2 Desktop -->
+    <div class="hidden md:flex md:gap-2">
+      <div class="flex-1 rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/AI in urban tech.png" alt="AI in Urban Tech" class="w-full h-full object-cover">
+      </div>
+      
+      <div class="flex-1 rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/AI in retail.png" alt="AI in Retail and E-Commerce" class="w-full h-full object-cover">
+      </div>
+      
+      <!-- Empty space to align with middle card above -->
+      <div style="flex: 1.3;"></div>
+      
+      <div class="flex-1 rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/AI in robotics.png" alt="AI in Robotics" class="w-full h-full object-cover">
+      </div>
+      
+      <div class="flex-1 rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/AI in healthcare.png" alt="AI in Healthcare" class="w-full h-full object-cover">
+      </div>
+    </div>
+
+    <!-- Mobile Layout - UNCHANGED -->
+    <div class="flex flex-col md:hidden gap-2">
+      <!-- Choose Program Card First on Mobile -->
+      <div class="text-white rounded-xl overflow-hidden p-4 flex flex-col items-center justify-center text-center choose-program-card" style="height: 320px; background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/icon top.png" alt="" class="w-12 h-9 mb-2" />
+        <h3 class="font-bold text-sm mb-1">Choose your Program</h3>
+        <p class="text-xs mb-2">Feel free to choose any category you prefer</p>
+        <button class="text-white px-4 py-2 rounded-lg font-normal text-xs flex items-center space-x-1 shadow-lg transition-colors duration-300" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);" onmouseover="this.style.backgroundColor='#1a1f4a';" onmouseout="this.style.backgroundColor='#292F6F';">
+          <span>SIGN UP NOW</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- All other mobile cards -->
+      <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/Business Analytics ( Power bi & Tableau).png" alt="Business Analytics" class="w-full h-80 object-contain">
+      </div>
+
+      <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/AI Agriculture.png" alt="AI in Agriculture" class="w-full h-80 object-contain">
+      </div>
+
+      <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/Intelligent app creation.png" alt="Intelligent App Creation" class="w-full h-80 object-contain">
+      </div>
+
+      <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/Ai in fintech.png" alt="AI in Fintech" class="w-full h-80 object-contain">
+      </div>
+
+      <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/AI in urban tech.png" alt="AI in Urban Tech" class="w-full h-80 object-contain">
+      </div>
+
+      <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/AI in retail.png" alt="AI in Retail and E-Commerce" class="w-full h-80 object-contain">
+      </div>
+
+      <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/AI in robotics.png" alt="AI in Robotics" class="w-full h-80 object-contain">
+      </div>
+
+      <div class="rounded-xl overflow-hidden" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        <img src="PICS/project submission catagories pics/AI in healthcare.png" alt="AI in Healthcare" class="w-full h-80 object-contain">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- 2025 Competition Schedule Section -->
+  <section class="bg-gray-200 py-12 md:py-16 relative z-40 px-5 md:px-[100px]" >
+    <!-- Section Heading -->
+    <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-[#292F6F] pl-2 md:pl-4 mb-8 md:mb-12 -ml-2 md:-ml-4" " >
         2025 Competition Schedule
-      </h2>
+    </h2>
 
-      <div class="bg-white rounded-2xl p-6 md:p-8 flex flex-col lg:flex-row gap-6 md:gap-10 shadow" >
-        <!-- Left Side: Steps -->
-        <div class="flex-1 space-y-6 md:space-y-8">
-          <!-- Step 1 -->
-          <div>
-            <div class="flex items-start gap-3 md:gap-4">
-              <span class="text-xl md:text-2xl font-bold text-[#014141]">01</span>
-              <div>
-                <h3 class="text-base md:text-lg font-semibold text-gray-800">
-                  Registrations Open
-                </h3>
-                <p class="text-xs md:text-sm text-gray-600">
-                  Kickstart your AI journey by registering for Pakistan's premier AI competition.
-                </p>
-                <p class="text-xs md:text-sm font-medium mt-1 text-gray-900">
-                  Registrations Now Open
-                </p>
-              </div>
+    <div class="bg-white rounded-2xl p-6 md:p-8 flex flex-col lg:flex-row gap-6 md:gap-10 shadow">
+        <!-- Left Side: Steps with Progress Line -->
+        <div class="flex-1 relative">
+            <!-- Timeline Line Container -->
+            <div class="timeline-line">
+                <!-- Animated Progress Line -->
+                <div class="progress-line" id="progressLine" style="height: 0%;"></div>
             </div>
-          </div>
+            
+            <!-- Progress Dots -->
+            <div class="timeline-dot" id="dot1" style="top: 24px;"></div>
+            <div class="timeline-dot" id="dot2" style="top: 174px;"></div>
+            <div class="timeline-dot" id="dot3" style="top: 326px;"></div>
+            <div class="timeline-dot" id="dot4" style="top: 496px;"></div>
+            <div class="timeline-dot" id="dot5" style="top: 644px;"></div>
+            
+            <div class="space-y-8" id="timelineContainer">
+                <!-- Step 1 -->
+                <div class="step-item" data-step="1" id="step1">
+                    <div class="step-content">
+                        <div class="flex items-start gap-4">
+                            <span class="step-number">01</span>
+                            <div>
+                                <h3 class="text-base md:text-lg font-semibold text-gray-800">
+                                    Registrations Open
+                                </h3>
+                                <p class="text-xs md:text-sm text-gray-600">
+                                    Kickstart your AI journey by registering for Pakistan's premier AI competition.
+                                </p>
+                                <p class="text-xs md:text-sm font-medium mt-1 text-gray-900">
+                                    Registrations Now Open
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-          <!-- Step 2 -->
-          <div>
-            <div class="flex items-start gap-3 md:gap-4">
-              <span class="text-xl md:text-2xl font-bold text-[#014141]">02</span>
-              <div>
-                <h3 class="text-base md:text-lg font-semibold text-gray-800">
-                  Project Submission Deadline
-                </h3>
-                <p class="text-xs md:text-sm text-gray-600">
-                  Submit your AI solution and showcase your innovation, creativity, and real-world impact.
-                </p>
-                <p class="text-xs md:text-sm font-medium mt-1 text-gray-900">
-                  Submission Closes: September 7, 2025
-                </p>
-              </div>
-            </div>
-          </div>
+                <!-- Step 2 -->
+                <div class="step-item" data-step="2" id="step2">
+                    <div class="step-content">
+                        <div class="flex items-start gap-4">
+                            <span class="step-number">02</span>
+                            <div>
+                                <h3 class="text-base md:text-lg font-semibold text-gray-800">
+                                    Project Submission Deadline
+                                </h3>
+                                <p class="text-xs md:text-sm text-gray-600">
+                                    Submit your AI solution and showcase your innovation, creativity, and real-world impact.
+                                </p>
+                                <p class="text-xs md:text-sm font-medium mt-1 text-gray-900">
+                                    Submission Closes: September 7, 2025
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-          <!-- Step 3 -->
-          <div>
-            <div class="flex items-start gap-3 md:gap-4">
-              <span class="text-xl md:text-2xl font-bold text-[#014141]">03</span>
-              <div>
-                <h3 class="text-base md:text-lg font-semibold text-gray-800">
-                  Screening & Shortlisting
-                </h3>
-                <p class="text-xs md:text-sm text-gray-600">
-                  Our expert panel will evaluate all submissions to shortlist the most promising AI projects.
-                </p>
-                <p class="text-xs md:text-sm font-medium mt-1 text-gray-900">
-                  Screening Completed by: September 19, 2025
-                </p>
-              </div>
-            </div>
-          </div>
+                <!-- Step 3 -->
+                <div class="step-item" data-step="3" id="step3">
+                    <div class="step-content">
+                        <div class="flex items-start gap-4">
+                            <span class="step-number">03</span>
+                            <div>
+                                <h3 class="text-base md:text-lg font-semibold text-gray-800">
+                                    Screening & Shortlisting
+                                </h3>
+                                <p class="text-xs md:text-sm text-gray-600">
+                                    Our expert panel will evaluate all submissions to shortlist the most promising AI projects.
+                                </p>
+                                <p class="text-xs md:text-sm font-medium mt-1 text-gray-900">
+                                    Screening Completed by: September 19, 2025
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-          <!-- Step 4 (Highlighted) -->
-          <div class="bg-[#f9f3f7] rounded-xl p-3 md:p-4">
-            <div class="flex items-start gap-3 md:gap-4">
-              <span class="text-xl md:text-2xl font-bold text-[#014141]">04</span>
-            <div>
-                <h3 class="text-base md:text-lg font-semibold text-gray-800">
-                  Shortlisted Participants Announced
-                </h3>
-                <p class="text-xs md:text-sm text-gray-600">
-                  Get ready to step into the spotlight. Shortlisted teams will be notified and invited to the final showdown.
-                </p>
-                <p class="text-xs md:text-sm font-medium mt-1 text-gray-900">
-                  Notifications Sent by: September 25, 2025
-                </p>
-              </div>
-            </div>
-          </div>
+                <!-- Step 4 (Highlighted) -->
+                <div class="step-item" data-step="4" id="step4">
+                    <div class="step-content">
+                        <div class="bg-[#f9f3f7] rounded-xl p-3 md:p-4">
+                            <div class="flex items-start gap-4">
+                                <span class="step-number">04</span>
+                                <div>
+                                    <h3 class="text-base md:text-lg font-semibold text-gray-800">
+                                        Shortlisted Participants Announced
+                                    </h3>
+                                    <p class="text-xs md:text-sm text-gray-600">
+                                        Get ready to step into the spotlight. Shortlisted teams will be notified and invited to the final showdown.
+                                    </p>
+                                    <p class="text-xs md:text-sm font-medium mt-1 text-gray-900">
+                                        Notifications Sent by: September 25, 2025
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-          <!-- Step 5 -->
-          <div>
-            <div class="flex items-start gap-3 md:gap-4">
-              <span class="text-xl md:text-2xl font-bold text-[#014141]">05</span>
-            <div>
-                <h3 class="text-base md:text-lg font-semibold text-gray-800">
-                  Final Championship Event Day
-                </h3>
-                <p class="text-xs md:text-sm text-gray-600">
-                  Pitch your ideas, demo your AI solutions, and compete for the title at the grand finale hosted at LUMS.
-                </p>
-                <p class="text-xs md:text-sm font-medium mt-1 text-gray-900">
-                  Event Date: September 27, 2025
-                </p>
-              </div>
+                <!-- Step 5 -->
+                <div class="step-item" data-step="5" id="step5">
+                    <div class="step-content">
+                        <div class="flex items-start gap-4">
+                            <span class="step-number">05</span>
+                            <div>
+                                <h3 class="text-base md:text-lg font-semibold text-gray-800">
+                                    Final Championship Event Day
+                                </h3>
+                                <p class="text-xs md:text-sm text-gray-600">
+                                    Pitch your ideas, demo your AI solutions, and compete for the title at the grand finale hosted at LUMS.
+                                </p>
+                                <p class="text-xs md:text-sm font-medium mt-1 text-gray-900">
+                                    Event Date: September 27, 2025
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
 
         <!-- Right Side: Image -->
-        <div class="flex-1 flex items-center justify-center" >
+        <div class="flex-1 flex items-center justify-center">
           <img
-            src="PICS/award.png"
-            alt="AI Championship Award Ceremony"
-            class="rounded-xl w-full object-cover max-h-[300px] md:max-h-[500px]"
-            style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)';"
+              src="PICS/award.png"
+              alt="AI Championship Award Ceremony"
+              class="rounded-xl w-full object-cover max-h-[300px] md:max-h-[500px]"
+              style="transition: all 0.3s ease; cursor: pointer;" 
+              onmouseover="this.style.transform='translateY(-8px)';" 
+              onmouseout="this.style.transform='translateY(0)';"
           />
-        </div>
       </div>
-    </section>
+  </div>
+  </section>
 
-  
+
 
     <!-- AIEF Championship Rewind Section -->
     <section class="bg-gray-100 py-12 md:py-16 relative z-40 px-5 md:px-[100px]">
@@ -645,7 +817,7 @@
         </div>
 
         <!-- Prize Structure -->
-        <div class="flex flex-col lg:flex-row gap-4 md:gap-8 w-full">
+        <div class="flex flex-col lg:flex-row gap-4 md:gap-6 w-full">
           <!-- 1st Prize -->
           <div class="relative flex-1" style="transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
             <img src="PICS/Cash prizes pics/1st prize.png" alt="1st Prize" class="w-full h-auto md:h-full rounded-xl">
@@ -748,229 +920,198 @@
       </div>
     </section>
 
-    <!-- FAQs Section -->
-    <section class="bg-gray-100 py-12 md:py-16 relative z-40 px-5 md:px-[100px]">
-      <!-- Section Heading -->
-      <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-[#292F6F] mb-8 md:mb-12 pl-6 md:pl-8">
-        FAQs
-      </h2>
+<!-- FAQs Section -->
+<section class="bg-gray-100 py-16 md:py-20 relative z-40 px-5 md:px-[100px]">
+  <!-- Section Heading -->
+  <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-[#292F6F] mb-12 md:mb-16 pl-6 md:pl-8">
+    FAQs
+  </h2>
 
-      <!-- Main Content Card -->
-      <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-          <!-- Left Column - Introduction -->
-          <div class="space-y-4 md:space-y-6">
-            <div>
-              <h3 class="text-2xl md:text-3xl font-bold text-[#292F6F] leading-tight">
-                Any questions?<br>
-                We got you.
-              </h3>
-            </div>
-            
-            <p class="text-sm md:text-base text-gray-700 leading-relaxed">
-              Whether you're joining us from Pakistan or participating from across the globe, we've compiled answers to the most common questions about the International AI Championship. From registration to team setup, competition format, and rewards everything you need to know is right here.
+  <!-- Main Content Card -->
+  <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+    <div class="flex flex-col lg:flex-row gap-8 md:gap-12">
+      <!-- Left Column - Introduction -->
+      <div class="lg:w-1/2 space-y-4 md:space-y-6">
+        <div>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#292F6F] leading-tight">
+            Any questions?<br>
+            We got you.
+          </h3>
+        </div>
+        
+        <p class="text-sm md:text-base text-gray-700 leading-relaxed">
+          Whether you're joining us from Pakistan or participating from across the globe, we've compiled answers to the most common questions about the International AI Championship. From registration to team setup, competition format, and rewards everything you need to know is right here.
+        </p>
+
+        <div class="pt-3 md:pt-4">
+          <p class="text-gray-600 text-xs md:text-base">
+            Can't find what you're looking <br> for? <a href="#contact" class="underline text-gray-800 hover:text-gray-900">Contact us</a>
+          </p>
+        </div>
+      </div>
+
+             <!-- Right Column - FAQ Accordion -->
+       <div class="lg:w-1/2 space-y-6 md:space-y-8 h-[500px] md:h-[400px] overflow-y-auto pl-2 md:pl-8 pr-2 md:pr-8" id="faq-accordion" style="scrollbar-width: thin; scrollbar-color: #cbd5e0 #f1f5f9; overflow-x: hidden;">
+        <!-- FAQ Item 1 -->
+        <div class="border-b border-gray-200 pb-3 md:pb-4 faq-item">
+          <div class="flex justify-between items-start cursor-pointer faq-header" onclick="toggleFAQ(this)">
+            <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-3 md:pr-4">
+              Who can participate in the AI Championship?
+            </h4>
+            <i class="fas fa-chevron-down text-gray-500 text-xs md:text-sm mt-1 faq-icon"></i>
+          </div>
+          <div class="mt-3 md:mt-4 text-gray-700 faq-content" style="display: block;">
+            <p class="mb-2 md:mb-3 text-xs md:text-[15px]">
+              The competition is open to university students enrolled in undergraduate or graduate programs from both Pakistan and international institutions.
             </p>
-
-            <div class="pt-3 md:pt-4">
-              <p class="text-gray-600 text-xs md:text-sm">
-                Can't find what you're looking for?
-              </p>
-              <p class="text-gray-600 text-xs md:text-sm">
-                Can't find what you're looking for? <a href="#contact" class="underline text-gray-800 hover:text-gray-900">Contact us</a>
-              </p>
-            </div>
           </div>
+        </div>
 
-          <!-- Right Column - FAQ Accordion -->
-          <div class="space-y-6 md:space-y-8 max-h-96 md:max-h-96 overflow-y-auto pl-2 md:pl-8 pr-2 md:pr-8" id="faq-accordion" style="scrollbar-width: thin; scrollbar-color: #cbd5e0 #f1f5f9; overflow-x: hidden;">
-            <!-- FAQ Item 1 -->
-            <div class="border-b border-gray-200 pb-3 md:pb-4 faq-item">
-              <div class="flex justify-between items-start cursor-pointer faq-header" onclick="toggleFAQ(this)">
-                <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-3 md:pr-4">
-                  Who can participate in the AI Championship?
-                </h4>
-                <i class="fas fa-chevron-down text-gray-500 text-xs md:text-sm mt-1 faq-icon"></i>
-              </div>
-              <div class="mt-3 md:mt-4 text-gray-700 faq-content" style="display: block;">
-                <p class="mb-2 md:mb-3 text-xs md:text-sm">
-                  The competition is open to university students enrolled in undergraduate or graduate programs from both Pakistan and international institutions.
-                </p>
-                <a href="#aief" class="text-blue-600 underline hover:text-blue-800 text-xs md:text-sm">
-                  Learn more about AIEF
-                </a>
-              </div>
-            </div>
-
-            <!-- FAQ Item 2 -->
-            <div class="border-b border-gray-200 pb-3 md:pb-4 faq-item">
-              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
-                <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-3 md:pr-4">
-                  How do I register for the Championship?
-                </h4>
-                <i class="fas fa-chevron-right text-gray-500 text-xs md:text-sm faq-icon"></i>
-              </div>
-              <div class="mt-3 md:mt-4 text-gray-700 faq-content" style="display: none;">
-                <p class="mb-2 md:mb-3 text-xs md:text-sm">
-                  Registration can be completed online through our official website. Simply fill out the registration form with your team details and project information. Early registration is recommended as spots are limited.
-                </p>
-                <a href="#register" class="text-blue-600 underline hover:text-blue-800 text-xs md:text-sm">
-                  Register Now
-                </a>
-              </div>
-            </div>
-
-            <!-- FAQ Item 3 -->
-            <div class="border-b border-gray-200 pb-3 md:pb-4 faq-item">
-              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
-                <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-3 md:pr-4">
-                  Is there a registration fee?
-                </h4>
-                <i class="fas fa-chevron-right text-gray-500 text-xs md:text-sm faq-icon"></i>
-              </div>
-              <div class="mt-3 md:mt-4 text-gray-700 faq-content" style="display: none;">
-                <p class="mb-2 md:mb-3 text-xs md:text-sm">
-                  The registration fee is Rs. 5,000 per team. This includes participation in the championship, access to all events, and competition materials. Payment can be made online through our secure payment gateway.
-                </p>
-                <a href="#fees" class="text-blue-600 underline hover:text-blue-800 text-xs md:text-sm">
-                  View Fee Details
-                </a>
-              </div>
-            </div>
-
-            <!-- FAQ Item 4 -->
-            <div class="border-b border-gray-200 pb-4 faq-item">
-              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
-                <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-4">
-                  Can I register as an individual or do I need a team?
-                </h4>
-                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
-              </div>
-              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
-                <p class="mb-3">
-                  Teams can consist of 2-4 members. Individual registrations are not accepted. We encourage collaboration and diverse skill sets within teams to create innovative AI solutions.
-                </p>
-                <a href="#teams" class="text-blue-600 underline hover:text-blue-800">
-                  Team Guidelines
-                </a>
-              </div>
-            </div>
-
-            <!-- FAQ Item 5 -->
-            <div class="border-b border-gray-200 pb-4 faq-item">
-              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
-                <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-4">
-                  Will international teams participate virtually or on-site?
-                </h4>
-                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
-              </div>
-              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
-                <p class="mb-3">
-                  International teams have the option to participate either virtually or on-site. Virtual participation includes live streaming of presentations and remote judging. On-site participation provides the full championship experience.
-                </p>
-                <a href="#international" class="text-blue-600 underline hover:text-blue-800">
-                  International Guidelines
-                </a>
-              </div>
-            </div>
-
-            <!-- FAQ Item 6 -->
-            <div class="border-b border-gray-200 pb-4 faq-item">
-              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
-                <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-4">
-                  What are the project submission categories?
-                </h4>
-                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
-              </div>
-              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
-                <p class="mb-3">
-                  We offer multiple categories including Business Analytics, AI in Agriculture, Intelligent App Creation, AI in Fintech, AI in Urban Tech, AI in Retail & E-commerce, AI in Robotics, and AI in Healthcare. Choose the category that best fits your project.
-                </p>
-                <a href="#categories" class="text-blue-600 underline hover:text-blue-800">
-                  View All Categories
-                </a>
-              </div>
-            </div>
-
-            <!-- FAQ Item 7 -->
-            <div class="border-b border-gray-200 pb-4 faq-item">
-              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
-                <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-4">
-                  What are the cash prizes for winners?
-                </h4>
-                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
-              </div>
-              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
-                <p class="mb-3">
-                  The championship offers substantial cash prizes: 1st Prize - Rs. 300,000, 2nd Prize - Rs. 200,000, and 3rd Prize - Rs. 100,000. Additionally, winners receive recognition and networking opportunities.
-                </p>
-                <a href="#prizes" class="text-blue-600 underline hover:text-blue-800">
-                  Prize Details
-                </a>
-              </div>
-            </div>
-
-            <!-- FAQ Item 8 -->
-            <div class="border-b border-gray-200 pb-4 faq-item">
-              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
-                <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-4">
-                  What is the competition schedule?
-                </h4>
-                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
-              </div>
-              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
-                <p class="mb-3">
-                  Registration opens now, project submission deadline is September 7, 2025, screening completes by September 19, shortlisted participants announced by September 25, and the final championship event is on September 27, 2025.
-                </p>
-                <a href="#schedule" class="text-blue-600 underline hover:text-blue-800">
-                  Full Schedule
-                </a>
-              </div>
-            </div>
-
-            <!-- FAQ Item 9 -->
-            <div class="border-b border-gray-200 pb-4 faq-item">
-              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
-                <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-4">
-                  What technical requirements are needed?
-                </h4>
-                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
-              </div>
-              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
-                <p class="mb-3">
-                  Teams need to submit a working AI solution with documentation, presentation materials, and a demo video. Technical infrastructure will be provided on-site, but teams should bring their own laptops for presentations.
-                </p>
-                <a href="#requirements" class="text-blue-600 underline hover:text-blue-800">
-                  Technical Guidelines
-                </a>
-              </div>
-            </div>
-
-            <!-- FAQ Item 10 -->
-            <div class="border-b border-gray-200 pb-4 faq-item">
-              <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
-                <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-4">
-                  How can I get support or ask questions?
-                </h4>
-                <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
-              </div>
-              <div class="mt-4 text-gray-700 faq-content" style="display: none;">
-                <p class="mb-3">
-                  For any questions or support, you can contact us through our website, email at info@aiedu.org.pk, or call +92 42 32560691-2. Our team is available to help with registration, technical queries, and general information.
-                </p>
-                <a href="#contact" class="text-blue-600 underline hover:text-blue-800">
-                  Contact Us
-                </a>
+        <!-- FAQ Item 2 -->
+        <div class="border-b border-gray-200 pb-3 md:pb-4 faq-item">
+          <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+            <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-3 md:pr-4">
+              How do I register for the Championship?
+            </h4>
+            <i class="fas fa-chevron-right text-gray-500 text-xs md:text-sm faq-icon"></i>
           </div>
-            </div>
+          <div class="mt-3 md:mt-4 text-gray-700 faq-content" style="display: none;">
+            <p class="mb-2 md:mb-3 text-xs md:text-[15px]">
+              All participants (domestic and international) must register through our official website by filling out the application form before the deadline.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="border-b border-gray-200 pb-3 md:pb-4 faq-item">
+          <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+            <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-3 md:pr-4">
+              Is there a registration fee?
+            </h4>
+            <i class="fas fa-chevron-right text-gray-500 text-xs md:text-sm faq-icon"></i>
+          </div>
+          <div class="mt-3 md:mt-4 text-gray-700 faq-content" style="display: none;">
+            <p class="mb-2 md:mb-3 text-xs md:text-[15px]">
+              No, registration is completely free for all participants.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="border-b border-gray-200 pb-4 faq-item">
+          <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+            <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-4">
+              Can I register as an individual or do I need a team?
+            </h4>
+            <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+          </div>
+          <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+            <p class="mb-3 text-xs md:text-[15px]">
+              Only team registrations are accepted. Each team must have 2–4 members. Cross-border teams are welcome!
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 5 -->
+        <div class="border-b border-gray-200 pb-4 faq-item">
+          <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+            <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-4">
+              Will international teams participate virtually or on-site?
+            </h4>
+            <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+          </div>
+          <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+            <p class="mb-3 text-xs md:text-[15px]">
+              International teams will participate virtually in the initial rounds. Shortlisted finalists may be invited to join the grand finale either virtually or in-person, depending on travel and visa arrangements.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 6 -->
+        <div class="border-b border-gray-200 pb-4 faq-item">
+          <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+            <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-4">
+              What is the format of the competition?
+            </h4>
+            <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+          </div>
+          <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+            <p class="mb-3 text-xs md:text-[15px]">
+              The Championship includes idea submission, MVP (prototype) submission, mentorship, and a final pitch round judged by industry experts.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 7 -->
+        <div class="border-b border-gray-200 pb-4 faq-item">
+          <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+            <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-4">
+              Will mentorship be provided to international teams as well?
+            </h4>
+            <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+          </div>
+          <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+            <p class="mb-3 text-xs md:text-[15px]">
+              Yes, all shortlisted teams — local and international — will receive remote mentorship from our pool of industry experts.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 8 -->
+        <div class="border-b border-gray-200 pb-4 faq-item">
+          <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+            <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-4">
+              What kind of AI projects are eligible?
+            </h4>
+            <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+          </div>
+          <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+            <p class="mb-3 text-xs md:text-[15px]">
+              We welcome AI-driven solutions addressing real-world challenges in areas like health, education, sustainability, fintech, agriculture, and beyond.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 9 -->
+        <div class="border-b border-gray-200 pb-4 faq-item">
+          <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+            <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-4">
+              Are the rewards the same for international participants?
+            </h4>
+            <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+          </div>
+          <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+            <p class="mb-3 text-xs md:text-[15px]">
+              Yes, recognition and prizes are awarded equally, regardless of geographic location. International winners will be recognized with digital awards and global exposure.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 10 -->
+        <div class="border-b border-gray-200 pb-4 faq-item">
+          <div class="flex justify-between items-center cursor-pointer faq-header" onclick="toggleFAQ(this)">
+            <h4 class="text-sm md:text-lg font-semibold text-gray-900 pr-4">
+              How can I stay updated on key dates and announcements?
+            </h4>
+            <i class="fas fa-chevron-right text-gray-500 text-sm faq-icon"></i>
+          </div>
+          <div class="mt-4 text-gray-700 faq-content" style="display: none;">
+            <p class="mb-3 text-xs md:text-[15px]">
+              All updates will be posted on our website and shared through our official social media platforms. You can also subscribe to our newsletter for regular updates.
+            </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+
 
     <!-- Contact Us Section -->
-    <section class="bg-gray-100 py-12 md:py-16 relative z-40 px-5 md:px-[100px]">
+    <section class="bg-gray-100 py-16 md:py-20 relative z-40 px-5 md:px-[100px]">
             <!-- Section Heading -->
-      <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-[#292F6F] mb-8 md:mb-12 pl-6 md:pl-8">
+      <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-[#292F6F] mb-12 md:mb-16 pl-6 md:pl-8">
         Contact Us
        </h2>
 
@@ -1082,9 +1223,12 @@
           <div class="space-y-4 md:space-y-6">
             <!-- Back to AIEF Website -->
             <div class="space-y-3 md:space-y-4">
-              <h4 class="text-xs md:text-sm text-[#D4D9F3] font-semibold text-white">
-                BACK TO AIEF WEBSITE
-              </h4>
+              <div class="flex items-center space-x-3">
+                <div class="w-px -ml-36 mt-48 absolute h-[200px] bg-[#2A4B5F]"></div>
+                <h4 class="text-xs md:text-sm  md:text-[#D4D9F3] font-semibold text-white"style="margin-left: 0px;">
+                  BACK TO AIEF WEBSITE
+                </h4>
+              </div>
               <a href="/" class="text-white underline text-xs md:text-sm hover:text-gray-200 transition-colors">
                 Home
               </a>
@@ -1109,7 +1253,7 @@
         </div>
 
         <!-- Bottom Section -->
-        <div class="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-white/20 flex flex-row justify-between items-center gap-4 md:gap-0">
+        <div class=" mt-8 md:mt-12 pt-6 md:pt-8 border-t border-[#2A4B5F] flex flex-row justify-between items-center gap-4 md:gap-0">
           <!-- Copyright -->
           <p class="text-xs md:text-sm text-gray-300 text-center md:text-left">
             © 2024 AIEDU All Rights Reserved.

@@ -240,8 +240,8 @@ function initializeFAQScroll() {
   }
   
   // Set initial height to 1/3 of viewport height
-  const initialHeight = window.innerHeight * 0.33;
-  faqAccordion.style.maxHeight = initialHeight + 'px';
+  // const initialHeight = window.innerHeight * 0.33;
+  // faqAccordion.style.maxHeight = initialHeight + 'px';
   
   // Create scroll trigger for FAQ section
   ScrollTrigger.create({
@@ -254,40 +254,40 @@ function initializeFAQScroll() {
       
       // Calculate target height: from 1/3 viewport to full height
       const minHeight = window.innerHeight * 0.33;
-      const maxHeight = 384; // 24rem (max-h-96)
+      const maxHeight = 100; // 900px to show 5 questions
       const targetHeight = minHeight + (progress * (maxHeight - minHeight));
       
       // Apply smooth height transition
-      faqAccordion.style.transition = 'max-height 0.3s ease-out';
-      faqAccordion.style.maxHeight = targetHeight + 'px';
+      // faqAccordion.style.transition = 'max-height 0.3s ease-out';
+      // faqAccordion.style.maxHeight = targetHeight + 'px';
     },
     onEnter: () => {
       // When section enters viewport, start expanding
-      faqAccordion.style.transition = 'max-height 0.5s ease-out';
+      // faqAccordion.style.transition = 'max-height 0.5s ease-out';
     },
     onLeave: () => {
       // When section leaves viewport, contract back to 1/3
-      faqAccordion.style.transition = 'max-height 0.3s ease-out';
-      faqAccordion.style.maxHeight = (window.innerHeight * 0.33) + 'px';
+      // faqAccordion.style.transition = 'max-height 0.3s ease-out';
+      // faqAccordion.style.maxHeight = (window.innerHeight * 0.33) + 'px';
     },
     onEnterBack: () => {
       // When scrolling back up, expand again
-      faqAccordion.style.transition = 'max-height 0.5s ease-out';
+      // faqAccordion.style.transition = 'max-height 0.5s ease-out';
     },
     onLeaveBack: () => {
       // When scrolling back up and leaving, contract
-      faqAccordion.style.transition = 'max-height 0.3s ease-out';
-      faqAccordion.style.maxHeight = (window.innerHeight * 0.33) + 'px';
+      // faqAccordion.style.transition = 'max-height 0.3s ease-out';
+      // faqAccordion.style.maxHeight = (window.innerHeight * 0.33) + 'px';
     }
   });
   
   // Handle window resize
-  window.addEventListener('resize', () => {
-    const newInitialHeight = window.innerHeight * 0.33;
-    if (faqAccordion.style.maxHeight === (window.innerHeight * 0.33) + 'px') {
-      faqAccordion.style.maxHeight = newInitialHeight + 'px';
-    }
-  });
+  // window.addEventListener('resize', () => {
+  //   const newInitialHeight = window.innerHeight * 0.33;
+  //   if (faqAccordion.style.maxHeight === (window.innerHeight * 0.33) + 'px') {
+  //     faqAccordion.style.maxHeight = newInitialHeight + 'px';
+  //   }
+  // });
 }
 
 // FAQ Accordion Functionality
@@ -371,3 +371,113 @@ function addHoverEffects() {
 
 // Run when DOM is loaded
 document.addEventListener('DOMContentLoaded', addHoverEffects);
+
+
+let currentActiveStep = 0;
+const totalSteps = 5;
+
+function updateTimeline(activeStep) {
+    const progressLine = document.getElementById('progressLine');
+    
+    // Calculate progress percentage based on active step
+    let progressPercent = 0;
+    if (activeStep > 0) {
+        // Progress to the current active step
+        progressPercent = (activeStep / totalSteps) * 100;
+    }
+    
+    progressLine.style.height = progressPercent + '%';
+    
+    // Update dots and steps
+    for (let i = 1; i <= totalSteps; i++) {
+        const dot = document.getElementById(`dot${i}`);
+        const step = document.getElementById(`step${i}`);
+        
+        if (i < activeStep) {
+            // Completed steps
+            dot.classList.remove('active');
+            dot.classList.add('completed');
+            step.classList.remove('active');
+        } else if (i === activeStep) {
+            // Current active step
+            dot.classList.remove('completed');
+            dot.classList.add('active');
+            step.classList.add('active');
+        } else {
+            // Future steps
+            dot.classList.remove('active', 'completed');
+            step.classList.remove('active');
+        }
+    }
+    
+    currentActiveStep = activeStep;
+}
+
+function isElementCentered(element) {
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const elementCenter = rect.top + rect.height / 2;
+    const screenCenter = windowHeight / 2;
+    
+    // Element is considered "centered" when its center is within 20% of screen center
+    const threshold = windowHeight * 0.2;
+    return Math.abs(elementCenter - screenCenter) < threshold;
+}
+
+function handleScroll() {
+    let newActiveStep = 0;
+    
+    // Check each step to see which one is currently centered
+    for (let i = 1; i <= totalSteps; i++) {
+        const stepElement = document.getElementById(`step${i}`);
+        if (isElementCentered(stepElement)) {
+            newActiveStep = i;
+            break;
+        }
+    }
+    
+    // If no step is perfectly centered, find the closest one that's visible
+    if (newActiveStep === 0) {
+        const timelineContainer = document.getElementById('timelineContainer');
+        const containerRect = timelineContainer.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // If timeline is visible
+        if (containerRect.top < windowHeight && containerRect.bottom > 0) {
+            for (let i = 1; i <= totalSteps; i++) {
+                const stepElement = document.getElementById(`step${i}`);
+                const stepRect = stepElement.getBoundingClientRect();
+                
+                // If step is visible and above center, it should be active
+                if (stepRect.top < windowHeight / 2 && stepRect.bottom > 0) {
+                    newActiveStep = i;
+                }
+            }
+        }
+    }
+    
+    // Only update if the active step has changed
+    if (newActiveStep !== currentActiveStep) {
+        updateTimeline(newActiveStep);
+    }
+}
+
+// Initialize timeline
+updateTimeline(0);
+
+// Add scroll event listener with throttling for better performance
+let ticking = false;
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        requestAnimationFrame(() => {
+            handleScroll();
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
+
+// Handle initial state on page load
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(handleScroll, 100); // Small delay to ensure proper layout
+});
