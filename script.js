@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function getTargetScale() {
     const windowWidth = window.innerWidth;
     const imageWidth = heroImage.offsetWidth;
-    const margin = 40;
+    const margin = 10;
     const computedScale = (windowWidth - margin) / imageWidth;
     return Math.min(computedScale, 2.2);
   }

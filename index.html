@@ -229,12 +229,6 @@
       
       /* Ensure video maintains its original aspect ratio and clarity */
       #backgroundVideo {
-        width: auto;
-        height: 100%;
-        max-width: 100%;
-        object-fit: contain;
-        object-position: center;
-        background-color: #000; /* Black background for letterboxing */
         image-rendering: -webkit-optimize-contrast;
         image-rendering: crisp-edges;
         -webkit-font-smoothing: antialiased;
@@ -554,7 +548,7 @@
     <!-- Mobile Layout - UNCHANGED -->
     <div class="flex flex-col md:hidden gap-2">
       <!-- Choose Program Card First on Mobile -->
-      <div class="text-white rounded-xl overflow-hidden p-4 flex flex-col items-center justify-center text-center choose-program-card" style="height: 320px; background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+      <div class="text-white rounded-lg overflow-hidden p-4 flex flex-col items-center justify-center text-center choose-program-card" style="height: 320px; margin-left: 73px; background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
         <img src="PICS/icon top.png" alt="" class="w-12 h-9 mb-2" />
         <h3 class="font-bold text-sm mb-1">Choose your Program</h3>
         <p class="text-xs mb-2">Feel free to choose any category you prefer</p>
@@ -746,16 +740,16 @@
 
 
     <!-- AIEF Championship Rewind Section -->
-    <section class="bg-gray-100 py-12 md:py-16 relative z-40 px-5 md:px-[100px]">
+    <section class="bg-gray-100 py-12 md:py-24 relative z-40 px-5 md:px-[100px]">
       <div class="bg-white max-w-[2000px] mx-auto">
-        <div class="flex flex-col lg:flex-row gap-0">
+        <div class="flex flex-col lg:flex-row gap-0 md:min-h-[388px]">
           <!-- Left Side - Video Player -->
           <div class="w-full lg:w-[60%]">
-            <div class="overflow-hidden relative h-[300px] md:h-[400px] lg:h-[500px] video-container" id="videoSection">
+            <div class="overflow-hidden relative  video-container" id="videoSection">
               <!-- Video Element -->
               <video 
                 id="backgroundVideo" 
-                class="w-auto h-full object-cover"
+                class="w-full h-full object-contain"
                 muted 
                 loop
                 playsinline
@@ -1208,9 +1202,10 @@
     <!-- Footer Section -->
     <footer class="text-white relative z-50" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);">
       <div class="py-12 md:py-16 px-5 md:px-[100px]">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-          <!-- Left Side - Logo and Contact Info -->
-          <div class="space-y-4 md:space-y-6">
+        <!-- Main Footer Content with Equal Spacing -->
+        <div class="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-0">
+          <!-- Left Section - Logo and Contact Info -->
+          <div class="flex-1 lg:flex-none lg:w-1/3 space-y-4 md:space-y-6">
             <!-- Logo -->
             <div class="flex items-center space-x-2 md:space-x-3 mb-6 md:mb-8">
               <img src="PICS/icon top.png" alt="AIEF Logo" class="w-16 h-12 md:w-20 md:h-15">
@@ -1225,29 +1220,33 @@
             </div>
 
             <!-- Contact Information -->
-            <div class="space-y-2 md:space-y-3 text-xs md:text-sm">
-              <p class="text-gray-200">
-                Office 301, The Enterprise Building, IKM, Thokar <br> Niaz Baig, Multan Road, Lahore
+            <div class="space-y-1 flex flex-col gap-2 md:space-y-2 text-xs md:text-sm">
+              <p class="text-white mb-6 md:mb-8">
+                Office 301, The Enterprise Building, 1KM, Thokar <br> Niaz Baig, Multan Road, Lahore
               </p>
-              <p class="text-gray-200">
+              <a href="tel: +9242325606912" class="text-white underline">
                 +92 42 32560691-2
-              </p>
-              <p class="text-gray-200">
+              </a>
+              <a href="https://info@aiedu.org.pk" class="text-white underline">
                 info@aiedu.org.pk
-              </p>
-              <p class="text-gray-200">
+              </a>
+              <a href="https://www.aiedu.org.pk/" class="text-white underline">
                 https://www.aiedu.org.pk/
-              </p>
+              </a>
             </div>
           </div>
 
-          <!-- Right Side - Links and Social Media -->
-          <div class="space-y-4 md:space-y-6">
+          <!-- Center Section - Vertical Line -->
+          <div class="hidden lg:flex justify-center items-start">
+            <div class="w-0.5 h-[200px] bg-[#2A4B5F]"></div>
+          </div>
+
+          <!-- Right Section - Links and Social Media -->
+          <div class="flex-1 lg:flex-none lg:w-1/3 space-y-4 md:space-y-6">
             <!-- Back to AIEF Website -->
             <div class="space-y-3 md:space-y-4">
               <div class="flex items-center space-x-3">
-                <div class="w-px -ml-36 mt-48 absolute h-[200px] bg-[#2A4B5F]"></div>
-                <h4 class="text-xs md:text-sm  md:text-[#D4D9F3] font-semibold text-white"style="margin-left: 0px;">
+                <h4 class="text-xs md:text-sm md:text-[#D4D9F3] font-semibold text-white" style="margin-left: 0px;">
                   BACK TO AIEF WEBSITE
                 </h4>
               </div>
@@ -1275,7 +1274,7 @@
         </div>
 
         <!-- Bottom Section -->
-        <div class=" mt-8 md:mt-12 pt-6 md:pt-8 border-t border-[#2A4B5F] flex flex-row justify-between items-center gap-4 md:gap-0">
+        <div class="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-[#2A4B5F] flex flex-row justify-between items-center gap-4 md:gap-0">
           <!-- Copyright -->
           <p class="text-xs md:text-sm text-gray-300 text-center md:text-left">
             © 2024 AIEDU All Rights Reserved.
