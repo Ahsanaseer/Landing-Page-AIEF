@@ -23,11 +23,14 @@ document.addEventListener('DOMContentLoaded', function() {
     opacity: 1 // Keep full opacity throughout
   });
   
-  // Calculate scale to fit viewport with margins
-  const windowWidth = window.innerWidth;
-  const imageWidth = heroImage.offsetWidth;
-  const margin = isMobile ? 40 : 40; // 20px margin on each side
-  const targetScale = isMobile ? 1.15 : Math.min((windowWidth - margin) / imageWidth, 2.2); // Increased max scale for more dramatic effect
+  // Calculate scale to fit viewport with margins (dynamic for all devices)
+  function getTargetScale() {
+    const windowWidth = window.innerWidth;
+    const imageWidth = heroImage.offsetWidth;
+    const margin = 40;
+    const computedScale = (windowWidth - margin) / imageWidth;
+    return Math.min(computedScale, 2.2);
+  }
   
   if (isMobile) {
     // MOBILE BEHAVIOR: Position card down a bit, same animation as desktop
@@ -49,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Use EXACTLY the same animation logic as desktop
     gsap.to(heroImage, {
-      scale: targetScale,
+      scale: () => getTargetScale(),
       duration: 1,
       ease: "power2.out",
       scrollTrigger: {
@@ -67,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // DESKTOP BEHAVIOR: Keep existing animation unchanged
     
     gsap.to(heroImage, {
-      scale: targetScale,
+      scale: () => getTargetScale(),
       duration: 1,
       ease: "power2.out",
       scrollTrigger: {
@@ -94,11 +97,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const newPullUpAmount = newCardHeight * newHiddenPortion;
       
       gsap.set(cardSection, { marginTop: `-${newPullUpAmount}px` });
-      gsap.set(heroImage, { scale: 0.1 }); // Reset to mobile initial scale (much more squeezed)
+      gsap.set(heroImage, { scale: 0.1 }); // Keep initial squeezed state; animation will recalc scale via getTargetScale
     } else {
       // Reset for desktop
       gsap.set(cardSection, { marginTop: "0px" });
-      gsap.set(heroImage, { scale: 0.2 }); // Reset to desktop initial scale (more squeezed)
+      gsap.set(heroImage, { scale: 0.2 }); // Desktop unchanged
     }
     
     ScrollTrigger.refresh();
