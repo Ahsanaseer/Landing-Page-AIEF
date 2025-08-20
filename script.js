@@ -109,6 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Initialize video player
   initializeVideoPlayer();
+  // Initialize registration section video player
+  initializeRegistrationVideoPlayer();
   
   // Initialize FAQ accordion scroll behavior
   initializeFAQScroll();
@@ -119,6 +121,101 @@ document.addEventListener('DOMContentLoaded', function() {
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   gsap.set('*', {clearProps: 'all'});
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+}
+
+// Registration Video Player Functionality (mirrors initializeVideoPlayer for the registration section)
+function initializeRegistrationVideoPlayer() {
+  const video = document.getElementById('registrationVideo');
+  const videoSection = document.getElementById('registrationVideoSection');
+  const videoTimer = document.getElementById('registrationVideoTimer');
+  const fallbackBg = document.querySelector('.registration-fallback-bg');
+
+  if (!video || !videoSection || !videoTimer) {
+    return;
+  }
+
+  let timerInterval;
+  let isVideoLoaded = false;
+
+  function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    let secsString = secs.toString();
+    if (secsString.length < 2) {
+      secsString = '0' + secsString;
+    }
+    return mins + ':' + secsString;
+  }
+
+  function updateTimer() {
+    if (video.duration && isFinite(video.duration)) {
+      const currentTime = video.currentTime;
+      const totalTime = video.duration;
+      videoTimer.textContent = formatTime(currentTime) + ' / ' + formatTime(totalTime);
+    }
+  }
+
+  function startTimer() {
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+    timerInterval = setInterval(updateTimer, 1000);
+  }
+
+  function stopTimer() {
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+  }
+
+  video.addEventListener('loadedmetadata', function() {
+    isVideoLoaded = true;
+    updateTimer();
+    if (fallbackBg) {
+      fallbackBg.style.display = 'none';
+    }
+  });
+
+  video.addEventListener('error', function() {
+    if (fallbackBg) {
+      fallbackBg.style.display = 'block';
+    }
+    videoTimer.style.display = 'none';
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        if (isVideoLoaded) {
+          video.play().then(function() {
+            startTimer();
+          }).catch(function() {});
+        }
+      } else {
+        video.pause();
+        video.currentTime = 0;
+        stopTimer();
+        updateTimer();
+      }
+    });
+  }, {
+    threshold: 0.5,
+    rootMargin: '0px'
+  });
+
+  observer.observe(videoSection);
+
+  video.addEventListener('timeupdate', function() {
+    if (timerInterval) {
+      updateTimer();
+    }
+  });
+
+  window.addEventListener('beforeunload', function() {
+    stopTimer();
+    observer.disconnect();
+  });
 }
 
 // Video Player Functionality

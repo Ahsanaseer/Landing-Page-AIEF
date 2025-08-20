@@ -341,12 +341,28 @@
             </div>
             <div class="relative">
               <div class="-mt-0 md:-mt-56 h-[400px] md:h-[1000px] flex items-center justify-center">
-                <img src="PICS/Registration image.png" alt="VR Technology" class="w-full h-full object-contain">
-                <div class="absolute ">
-                  <a href="#register" class="inline-flex text-white text-[10px] md:text-xs font-normal px-3 md:px-4 py-2 rounded-md shadow-md transition" style="margin-right: 0px; margin-top: 150px; background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);" "transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    REGISTER NOW
-                  </a>
+                <div class="overflow-hidden relative w-full h-full video-container" id="registrationVideoSection">
+                  <video 
+                    id="registrationVideo" 
+                    class="w-auto h-auto object-contain rounded-lg"
+                    muted 
+                    loop
+                    playsinline
+                    preload="auto"
+                  >
+                    <source src="PICS/Registration image.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                  <div class="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4">
+                    <div class="mb-2 md:mb-3">
+                      <p class="text-white text-sm md:text-4xl font-semibold leading-tight drop-shadow-md">Don't just learn AI <br> LEAD IT</p>
+                    </div>
+                    <a href="#register" class="inline-flex text-white text-[10px]  md:text-xs font-normal px-3 md:px-4 py-2 rounded-md shadow-md transition" style="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                      REGISTER NOW
+                    </a>
+                  </div>
                 </div>
+                <div id="registrationVideoTimer" class="hidden md:hidden"></div>
               </div>
             </div>
           </div>
