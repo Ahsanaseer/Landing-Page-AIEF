@@ -498,15 +498,17 @@ function updateTimeline(activeStep) {
             dot.classList.remove('active');
             dot.classList.add('completed');
             step.classList.remove('active');
+            step.classList.add('completed');
         } else if (i === activeStep) {
             // Current active step
             dot.classList.remove('completed');
             dot.classList.add('active');
+            step.classList.remove('completed');
             step.classList.add('active');
         } else {
             // Future steps
             dot.classList.remove('active', 'completed');
-            step.classList.remove('active');
+            step.classList.remove('active', 'completed');
         }
     }
     
@@ -519,38 +521,45 @@ function isElementCentered(element) {
     const elementCenter = rect.top + rect.height / 2;
     const screenCenter = windowHeight / 2;
     
-    // Element is considered "centered" when its center is within 20% of screen center
-    const threshold = windowHeight * 0.2;
+    // Element is considered "centered" when its center is within 25% of screen center
+    const threshold = windowHeight * 0.25;
     return Math.abs(elementCenter - screenCenter) < threshold;
 }
 
 function handleScroll() {
     let newActiveStep = 0;
+    const timelineContainer = document.getElementById('timelineContainer');
+    const containerRect = timelineContainer.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
     
-    // Check each step to see which one is currently centered
-    for (let i = 1; i <= totalSteps; i++) {
-        const stepElement = document.getElementById(`step${i}`);
-        if (isElementCentered(stepElement)) {
-            newActiveStep = i;
-            break;
+    // Only process if timeline is visible
+    if (containerRect.top < windowHeight && containerRect.bottom > 0) {
+        // Check each step to see which one is currently centered or most visible
+        for (let i = 1; i <= totalSteps; i++) {
+            const stepElement = document.getElementById(`step${i}`);
+            const stepRect = stepElement.getBoundingClientRect();
+            
+            // Check if step is centered
+            if (isElementCentered(stepElement)) {
+                newActiveStep = i;
+                break;
+            }
+            
+            // If no step is perfectly centered, find the one closest to center
+            if (stepRect.top < windowHeight / 2 && stepRect.bottom > windowHeight / 2) {
+                newActiveStep = i;
+            }
         }
-    }
-    
-    // If no step is perfectly centered, find the closest one that's visible
-    if (newActiveStep === 0) {
-        const timelineContainer = document.getElementById('timelineContainer');
-        const containerRect = timelineContainer.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
         
-        // If timeline is visible
-        if (containerRect.top < windowHeight && containerRect.bottom > 0) {
+        // If still no active step, find the first visible step
+        if (newActiveStep === 0) {
             for (let i = 1; i <= totalSteps; i++) {
                 const stepElement = document.getElementById(`step${i}`);
                 const stepRect = stepElement.getBoundingClientRect();
                 
-                // If step is visible and above center, it should be active
-                if (stepRect.top < windowHeight / 2 && stepRect.bottom > 0) {
+                if (stepRect.top < windowHeight && stepRect.bottom > 0) {
                     newActiveStep = i;
+                    break;
                 }
             }
         }

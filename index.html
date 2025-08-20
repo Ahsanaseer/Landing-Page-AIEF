@@ -65,6 +65,9 @@
   .step-content {
       margin-left: 48px; /* Adjusted for new line position */
       padding-top: 8px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 12px;
+      padding: 8px;
   }
   .step-number {
       font-size: 1.5rem;
@@ -79,7 +82,8 @@
   .step-item {
       position: relative;
       min-height: 120px;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-bottom: 16px;
   }
   .step-item.active {
       transform: translateX(4px);
@@ -102,12 +106,27 @@
         transform: scale(1.1);
       }
       
+      .step-item.active .step-content {
+        background-color: #f9f3f7;
+        border-radius: 12px;
+        padding: 16px;
+        transform: scale(1.02);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
       .step-item.completed span {
         color: #014141 !important;
       }
       
       .step-item.completed {
         opacity: 0.8;
+      }
+      
+      .step-item.completed .step-content {
+        background-color: #f0f9ff;
+        border-radius: 12px;
+        padding: 16px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
       
       #progressLine {
@@ -679,23 +698,21 @@
                     </div>
                 </div>
 
-                <!-- Step 4 (Highlighted) -->
+                <!-- Step 4 -->
                 <div class="step-item" data-step="4" id="step4">
                     <div class="step-content">
-                        <div class="bg-[#f9f3f7] rounded-xl p-3 md:p-4">
-                            <div class="flex items-start gap-4">
-                                <span class="step-number">04</span>
-                                <div>
-                                    <h3 class="text-base md:text-lg font-semibold text-gray-800">
-                                        Shortlisted Participants Announced
-                                    </h3>
-                                    <p class="text-xs md:text-sm text-gray-600">
-                                        Get ready to step into the spotlight. Shortlisted teams will be notified and invited to the final showdown.
-                                    </p>
-                                    <p class="text-xs md:text-sm font-medium mt-1 text-gray-900">
-                                        Notifications Sent by: September 25, 2025
-                                    </p>
-                                </div>
+                        <div class="flex items-start gap-4">
+                            <span class="step-number">04</span>
+                            <div>
+                                <h3 class="text-base md:text-lg font-semibold text-gray-800">
+                                    Shortlisted Participants Announced
+                                </h3>
+                                <p class="text-xs md:text-sm text-gray-600">
+                                    Get ready to step into the spotlight. Shortlisted teams will be notified and invited to the final showdown.
+                                </p>
+                                <p class="text-xs md:text-sm font-medium mt-1 text-gray-900">
+                                    Notifications Sent by: September 25, 2025
+                                </p>
                             </div>
                         </div>
                     </div>

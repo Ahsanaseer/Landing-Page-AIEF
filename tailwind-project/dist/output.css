@@ -672,6 +672,42 @@ video {
   top: 3rem;
 }
 
+.top-\[28px\] {
+  top: 28px;
+}
+
+.top-\[32px\] {
+  top: 32px;
+}
+
+.top-\[322px\] {
+  top: 322px;
+}
+
+.top-\[166px\] {
+  top: 166px;
+}
+
+.top-\[16px\] {
+  top: 16px;
+}
+
+.top-\[338px\] {
+  top: 338px;
+}
+
+.top-\[504px\] {
+  top: 504px;
+}
+
+.top-\[702px\] {
+  top: 702px;
+}
+
+.top-\[0px\] {
+  top: 0px;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1228,6 +1264,16 @@ video {
   background-color: rgb(26 58 74 / var(--tw-bg-opacity, 1));
 }
 
+.bg-\[red\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 0 0 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[\#000\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
+}
+
 .bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
@@ -1770,6 +1816,26 @@ video {
     top: 644px;
   }
 
+  .md\:top-\[166px\] {
+    top: 166px;
+  }
+
+  .md\:top-\[16px\] {
+    top: 16px;
+  }
+
+  .md\:top-\[318px\] {
+    top: 318px;
+  }
+
+  .md\:top-\[488px\] {
+    top: 488px;
+  }
+
+  .md\:top-\[636px\] {
+    top: 636px;
+  }
+
   .md\:mx-\[20px\] {
     margin-left: 20px;
     margin-right: 20px;
@@ -1987,6 +2053,10 @@ video {
     gap: 1.5rem;
   }
 
+  .md\:gap-8 {
+    gap: 2rem;
+  }
+
   .md\:space-x-2 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
     margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -2033,6 +2103,18 @@ video {
     --tw-space-y-reverse: 0;
     margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+  }
+
+  .md\:space-y-12 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(3rem * var(--tw-space-y-reverse));
+  }
+
+  .md\:space-y-16 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(4rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(4rem * var(--tw-space-y-reverse));
   }
 
   .md\:rounded-none {
