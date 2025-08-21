@@ -15,6 +15,10 @@
   
   <!-- Mobile Horizontal Scroll Fix -->
   <style>
+    :root {
+      /* Global button/background gradient */
+      --btn-bg: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%);
+    }
     /* Prevent horizontal scrolling on all screen sizes, especially mobile */
     html, body {
       overflow-x: hidden;
@@ -269,7 +273,7 @@
       }
   </style>
 </head>
-<body class="bg-customblue md:bg-white min-h-screen font-poppins">
+<body class="min-h-screen font-poppins" style="background: var(--btn-bg);">
 
 
   <!-- Fixed Navigation Bar -->
@@ -283,7 +287,7 @@
     </div>
 
   <!-- Upper Section -->
-  <section class="fixed top-0 left-0 right-0 z-10 bg-gradient-to-b from-gray-900 via-blue-900 to-teal-900 pb-16">
+  <section class="fixed top-0 left-0 right-0 z-10 pb-16" style="background: transparent;">
     <!-- Event Announcement Section -->
     <section class="py-16 md:py-20" style="margin-top: 80px;">
       <div class="container mx-auto px-4 text-center mt-4">
@@ -310,8 +314,8 @@
   <!-- Main Content -->
   <main>
     <section class="relative py-16 md:py-20 z-50" style="will-change: transform;">
-      <div class="container mx-auto px-5 md:px-4">
-        <div class="max-w-4xl mx-auto">
+      <div class="mx-auto px-[5px]">
+        <div class="w-full">
           <img src="PICS/hero image/AI showdown hero image.png" alt="AI Showdown Hero" class="w-full h-auto object-contain">
         </div>
       </div> 
