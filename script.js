@@ -335,10 +335,6 @@ function initializeFAQScroll() {
   const faqAccordion = document.getElementById('faq-accordion');
   const faqSection = document.querySelector('.bg-gray-100.py-12.md\\:py-16.relative.z-40.px-5.md\\:px-\\[100px\\]');
   
-  if (!faqAccordion || !faqSection) {
-    console.warn('FAQ elements not found');
-    return;
-  }
   
   // Set initial height to 1/3 of viewport height
   // const initialHeight = window.innerHeight * 0.33;
