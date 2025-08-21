@@ -273,15 +273,19 @@
 <body class="min-h-screen font-poppins" style="background: var(--btn-bg);">
 
 
+  <!-- Fixed Background Wrapper -->
+  <div class="fixed top-0 left-0 right-0 h-24 md:pb-4 z-[9998]" style="background: #20285D">
+  </div>
+
   <!-- Fixed Navigation Bar -->
-  <div class="fixed top-0 left-0 right-0 z-[9999] bg-[#4C587A] px-4 md:px-6 py-3 md:py-4 flex justify-between items-center shadow-lg mb-4">
+  <div class="fixed top-4 md:left-6 md:right-6 left-4 right-4 z-[9999] bg-[#4C587A] px-6 md:px-8 py-3 md:py-2 flex justify-between items-center shadow-lg rounded-lg">
         <div class="flex items-center space-x-2 md:space-x-3">
           <div>
             <img src="PICS/icon top.png" alt="icon" class="w-22 h-8 md:w-18 md:h-12">
           </div>
         </div>
         <a href="https://www.aiedu.org.pk/">
-        <img src="PICS/home-icon-new.png" alt="icon" class="w-22 h-8 md:w-22 md:h-10"  onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+        <img src="PICS/home-icon-new.png" alt="icon" class="w-22 h-8 md:w-22 md:h-10" onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
         </a>
     </div>
 
@@ -763,7 +767,7 @@
         <div class="flex flex-col lg:flex-row gap-0  md:min-h-[388px]">
           <!-- Left Side - Video Player -->
           <div class="w-full lg:w-[60%] ">
-            <div class="overflow-hidden relative video-container rounded-tr-lg rounded-tl-lg md:rounded-tl-lg md:rounded-bl-lg" id="videoSection">
+            <div class="overflow-hidden relative video-container max-lg:rounded-tr-lg rounded-tl-lg md:rounded-bl-lg" id="videoSection">
               <!-- Video Element -->
               <video 
                 id="backgroundVideo" 
@@ -793,7 +797,7 @@
           </div>
 
           <!-- Right Side - Text Content -->
-          <div class="w-full lg:w-[40%] rounded-br-lg rounded-bl-lg md:rounded-tr-lg md:rounded-br-lg p-6 md:p-8 text-white relative" style="background:var(--btn-bg)">
+          <div class="w-full lg:w-[40%] rounded-br-lg max-lg:rounded-bl-lg md:rounded-tr-lg  p-6 md:p-8 text-white relative" style="background:var(--btn-bg)">
             <!-- Main Content -->
             <div class="space-y-4 md:space-y-6">
               <h2 class="text-xl md:text-2xl lg:text-3xl xl:text-2xl font-normal leading-tight">
