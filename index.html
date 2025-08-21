@@ -226,11 +226,6 @@
         backdrop-filter: blur(4px);
         border: 1px solid rgba(255, 255, 255, 0.1);
       }
-      .choose-program-card{
-        width:223px;
-        margin-left: 55px;
-        height: full;
-      }
       .timeline-dot {
         left: 13px;
       }
@@ -490,13 +485,13 @@
 
           <!-- Right Column -->
           <div class="p-4 md:p-8 rounded-2xl shadow-sm flex flex-col gap-32 items-center justify-center" style="background:var(--btn-bg) ;">
-            <img src="PICS/AIEF.svg" alt="AIEF Logo" class="mb-4 md:mb-8 w-[150px] md:w-[300px]" style="height: auto;" />
+            <img src="PICS/AIEF.svg" alt="AIEF Logo" class="mb-2 md:mb-8 mt-12 -mb-8 md:my-auto w-[150px] md:w-[300px]" style="height: auto;" />
 
             <!-- Registration Info Bar -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-0 text-center text-white text-xs font-semibold rounded-lg overflow-hidden shadow-md w-full" style="background: var(--btn-bg);">
               <div class="py-2 px-2 md:px-3 rounded-lg md:rounded-none border-b border-white/20 md:border-b-0">
                 <p class="uppercase tracking-wide text-[10px] md:text-xs">Registration</p>
-                <p class="text-[9px] md:text-[11px] w-56 -ml-[38px]">Open till September 7, 2025</p>
+                <p class="text-[9px] md:text-[11px] w-56 mx-auto md:-ml-[38px]">Open till September 7, 2025</p>
               </div>
               <div class="py-2 px-2 md:px-3 rounded-lg md:rounded-none border-b border-white/20 md:border-b-0 md:border-l md:border-white/20 md:border-r md:border-white/20">
                 <p class="uppercase tracking-wide text-[10px] md:text-xs">Venue</p>
@@ -567,10 +562,10 @@
       <img src="PICS/project submission catagories pics/AI in healthcare.png" alt="AI in Healthcare" class="w-full h-full object-cover">
     </div>
 
-    <!-- Mobile Layout - UNCHANGED -->
-    <div class="flex flex-col md:hidden gap-2">
+    <!-- Mobile Layout -->
+    <div class="flex flex-col md:hidden gap-2 items-center">
       <!-- Choose Program Card First on Mobile -->
-      <div class="text-white rounded-lg overflow-hidden p-4 flex flex-col items-center justify-center text-center choose-program-card" style="height: 320px; margin-left: 73px; background: var(--btn-bg); transition: all 0.3s ease; cursor: pointer;">
+      <div class="text-white rounded-lg overflow-hidden p-4 flex flex-col items-center justify-center text-center w-[223px]" style="height: 320px; background: var(--btn-bg); transition: all 0.3s ease; cursor: pointer;">
         <img src="PICS/icon top.png" alt="" class="w-12 h-9 mb-2" />
         <h3 class="font-bold text-sm mb-1">Choose your Program</h3>
         <p class="text-xs mb-2">Feel free to choose any category you prefer</p>
@@ -768,7 +763,7 @@
         <div class="flex flex-col lg:flex-row gap-0  md:min-h-[388px]">
           <!-- Left Side - Video Player -->
           <div class="w-full lg:w-[60%] ">
-            <div class="overflow-hidden relative video-container rounded-tl-lg rounded-bl-lg" id="videoSection">
+            <div class="overflow-hidden relative video-container rounded-tr-lg rounded-tl-lg md:rounded-tl-lg md:rounded-bl-lg" id="videoSection">
               <!-- Video Element -->
               <video 
                 id="backgroundVideo" 
@@ -798,7 +793,7 @@
           </div>
 
           <!-- Right Side - Text Content -->
-          <div class="w-full lg:w-[40%] rounded-tr-lg rounded-br-lg p-6 md:p-8 text-white relative" style="background:var(--btn-bg)">
+          <div class="w-full lg:w-[40%] rounded-br-lg rounded-bl-lg md:rounded-tr-lg md:rounded-br-lg p-6 md:p-8 text-white relative" style="background:var(--btn-bg)">
             <!-- Main Content -->
             <div class="space-y-4 md:space-y-6">
               <h2 class="text-xl md:text-2xl lg:text-3xl xl:text-2xl font-normal leading-tight">
