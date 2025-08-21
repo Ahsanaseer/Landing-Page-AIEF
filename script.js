@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Calculate scale to fit viewport with margins (dynamic for all devices)
   function getTargetScale() {
-    const windowWidth = window.innerWidth;
+    const maxResponsiveWidth = 1990; // Stop scaling beyond this viewport width
+    const windowWidth = Math.min(window.innerWidth, maxResponsiveWidth);
     const imageWidth = heroImage.offsetWidth;
     const margin = 10;
     const computedScale = (windowWidth - margin) / imageWidth;
