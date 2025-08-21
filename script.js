@@ -25,12 +25,12 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Calculate scale to fit viewport with margins (dynamic for all devices)
   function getTargetScale() {
-    const maxResponsiveWidth = 1990; // Stop scaling beyond this viewport width
-    const windowWidth = Math.min(window.innerWidth, maxResponsiveWidth);
-    const imageWidth = heroImage.offsetWidth;
-    const margin = 10;
-    const computedScale = (windowWidth - margin) / imageWidth;
-    return Math.min(computedScale, 2.2);
+    // Keep a consistent 5px left and 5px right margin across all screens
+    const totalHorizontalMargin = 10; // 5px + 5px
+    const windowWidth = window.innerWidth;
+    const imageWidth = heroImage.offsetWidth || heroImage.naturalWidth || 1;
+    const computedScale = (windowWidth - totalHorizontalMargin) / imageWidth;
+    return computedScale;
   }
   
   if (isMobile) {
