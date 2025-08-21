@@ -443,35 +443,6 @@ function toggleFAQ(headerElement) {
 }
 
 
-function addHoverEffects() {
-  const elements = document.querySelectorAll('[style*="background: linear-gradient(to top right, #166534 0%, #292F6F 60%, #292F6F 100%)"]');
-  
-  elements.forEach(element => {
-    // Add transition and cursor
-    element.style.transition = 'all 0.3s ease';
-    element.style.cursor = 'pointer';
-    
-    // Add hover event listeners
-    element.addEventListener('mouseenter', function() {
-      if (this.tagName === 'BUTTON') {
-        this.style.transform = 'translateY(-2px)';
-        this.style.boxShadow = '0 8px 20px -5px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.1)';
-        this.style.filter = 'brightness(0.85)';
-      } else if (this.tagName === 'FOOTER') {
-        this.style.filter = 'brightness(0.98)';
-      }
-    });
-    
-    element.addEventListener('mouseleave', function() {
-      this.style.transform = '';
-      this.style.boxShadow = '';
-      this.style.filter = '';
-    });
-  });
-}
-
-// Run when DOM is loaded
-document.addEventListener('DOMContentLoaded', addHoverEffects);
 
 
 let currentActiveStep = 0;
@@ -520,11 +491,14 @@ function isElementCentered(element) {
     const rect = element.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     const elementCenter = rect.top + rect.height / 2;
-    const screenCenter = windowHeight / 2;
     
-    // Element is considered "centered" when its center is within 25% of screen center
-    const threshold = windowHeight * 0.25;
-    return Math.abs(elementCenter - screenCenter) < threshold;
+    // Trigger when element reaches 65% from the top of the viewport
+    const triggerPoint = windowHeight * 0.65;
+    
+    // Element is considered "centered" when it reaches the trigger point
+    // Using a larger threshold (30px) for smoother activation
+    const threshold = 30;
+    return Math.abs(elementCenter - triggerPoint) < threshold;
 }
 
 function handleScroll() {
@@ -552,16 +526,26 @@ function handleScroll() {
             }
         }
         
-        // If still no active step, find the first visible step
+        // If still no active step, find the most visible step near the center
         if (newActiveStep === 0) {
+            let minDistance = Infinity;
+            let closestStep = 0;
+            
             for (let i = 1; i <= totalSteps; i++) {
                 const stepElement = document.getElementById(`step${i}`);
                 const stepRect = stepElement.getBoundingClientRect();
+                const elementCenter = stepRect.top + stepRect.height / 2;
+                const distance = Math.abs(elementCenter - (windowHeight / 2));
                 
-                if (stepRect.top < windowHeight && stepRect.bottom > 0) {
-                    newActiveStep = i;
-                    break;
+                // Update if this step is closer to center than previous closest
+                if (distance < minDistance && stepRect.top < windowHeight && stepRect.bottom > 0) {
+                    minDistance = distance;
+                    closestStep = i;
                 }
+            }
+            
+            if (closestStep > 0) {
+                newActiveStep = closestStep;
             }
         }
     }
