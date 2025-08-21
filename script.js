@@ -23,13 +23,14 @@ document.addEventListener('DOMContentLoaded', function() {
     opacity: 1 // Keep full opacity throughout
   });
   
-  // Calculate scale to fit viewport with margins (dynamic for all devices)
+    // Calculate scale to fit viewport with margins (dynamic for all devices)
   function getTargetScale() {
+    // Keep a consistent 5px left and 5px right margin across all screens
+    const totalHorizontalMargin = 10; // 5px + 5px
     const windowWidth = window.innerWidth;
-    const imageWidth = heroImage.offsetWidth;
-    const margin = 10;
-    const computedScale = (windowWidth - margin) / imageWidth;
-    return Math.min(computedScale, 2.2);
+    const imageWidth = heroImage.offsetWidth || heroImage.naturalWidth || 1;
+    const computedScale = (windowWidth - totalHorizontalMargin) / imageWidth;
+    return computedScale;
   }
   
   if (isMobile) {

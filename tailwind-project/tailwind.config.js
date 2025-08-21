@@ -10,6 +10,8 @@ module.exports = {
       colors: {
         customblue: '#292F6F',
         custompurple: '#4C587C',
+        gradient:"linear-gradient(228deg, #066141 -0.2%, #21275E -0.19%, #044836 99.99%);",
+
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
