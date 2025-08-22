@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', function() {
     opacity: 1 // Keep full opacity throughout
   });
   
+  // Ensure the hero visually overlaps the next section instead of keeping a fixed gap
+  heroWrap.style.marginBottom = '-120px';
+  
   // Calculate scale to fit viewport with margins (dynamic for all devices)
   function getTargetScale() {
     // Keep a consistent 5px left and 5px right margin across all screens
@@ -33,29 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const imageWidth = heroImage.offsetWidth || heroImage.naturalWidth || 1;
     const computedScale = (windowWidth - totalHorizontalMargin) / imageWidth;
     return computedScale;
-  }
-
-  // Maintain a constant visual gap below the scaled image
-  const GAP_PX = 122;
-  let rafId = null;
-  function maintainGap() {
-    // Measure current visual positions
-    const imgRect = heroImage.getBoundingClientRect();
-    const nextRect = nextSection.getBoundingClientRect();
-    const currentGap = nextRect.top - imgRect.bottom;
-    const currentMB = parseFloat(getComputedStyle(heroWrap).marginBottom) || 0;
-    const delta = GAP_PX - currentGap;
-    const newMB = Math.max(0, currentMB + delta);
-    if (Math.abs(newMB - currentMB) > 0.5) {
-      heroWrap.style.marginBottom = newMB + 'px';
-    }
-  }
-  function scheduleMaintainGap() {
-    if (rafId != null) return;
-    rafId = requestAnimationFrame(() => {
-      rafId = null;
-      maintainGap();
-    });
   }
   
   if (isMobile) {
@@ -88,9 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
         scrub: 0.5, // Same as desktop (was 0.3, now matching desktop exactly)
         invalidateOnRefresh: true,
         fastScrollEnd: true,
-        preventOverlaps: true,
-        onUpdate: scheduleMaintainGap,
-        onRefresh: maintainGap
+        preventOverlaps: true
       }
     });
     
@@ -108,9 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         scrub: 0.5,
         invalidateOnRefresh: true,
         fastScrollEnd: true,
-        preventOverlaps: true,
-        onUpdate: scheduleMaintainGap,
-        onRefresh: maintainGap
+        preventOverlaps: true
       }
     });
   }
@@ -133,14 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
       gsap.set(cardSection, { marginTop: "0px" });
       gsap.set(heroImage, { scale: 0.2 }); // Desktop unchanged
     }
-    maintainGap();
     ScrollTrigger.refresh();
   });
-  
-  // Also adjust gap on scroll/initial load
-  window.addEventListener('scroll', scheduleMaintainGap, { passive: true });
-  window.addEventListener('load', maintainGap, { passive: true });
-  maintainGap();
   
   // Force refresh ScrollTrigger to apply changes immediately
   ScrollTrigger.refresh();
