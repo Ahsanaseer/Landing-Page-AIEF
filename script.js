@@ -18,11 +18,14 @@ document.addEventListener('DOMContentLoaded', function() {
   // Detect if device is mobile
   const isMobile = window.innerWidth <= 768;
   
-  // Set initial styles
+  // Set initial styles - start with smaller width and center the image
   gsap.set(heroImage, {
     transformOrigin: "center center",
-    scale: isMobile ? 0.1 : 0.2,
-    opacity: 1
+    scale: 1, // Use full scale immediately for both mobile and desktop
+    width: "70%", // Start with 70% width
+    opacity: 1,
+    margin: "0 auto", // Center the image
+    display: "block" // Ensure margin auto works
   });
 
   // Set initial styles for the wrapper and next section
@@ -30,8 +33,17 @@ document.addEventListener('DOMContentLoaded', function() {
     zIndex: 60
   });
 
+  // Position the ai-showdown-wrap higher up from the bottom of viewport
+  gsap.set(heroWrap, {
+    position: "fixed",
+    bottom: "100px",
+    left: "0",
+    right: "0",
+    zIndex: 60
+  });
+
   gsap.set(nextSection, {
-    marginTop: "-120px"
+    marginTop: "-150px"
   });
 
 
@@ -74,33 +86,26 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   if (isMobile) {
-    // MOBILE BEHAVIOR: Position card down a bit, same animation as desktop
+    // MOBILE BEHAVIOR: Position card at bottom initially, same animation as desktop
     
-    // Calculate negative margin to pull the card up into the viewport
-    const cardHeight = cardSection.offsetHeight;
-    const viewportHeight = window.innerHeight;
-    const navHeight = 80; // Fixed nav height
-    
-    // Show only 1/3 of the card initially, hide 2/3 below viewport
-    const visiblePortion = 0.33; // Show only 1/3 of the card
-    const hiddenPortion = 1 - visiblePortion;
-    const pullUpAmount = cardHeight * hiddenPortion;
-    
-    // Apply negative margin to pull card into viewport
-    gsap.set(cardSection, {
-      marginTop: `-${pullUpAmount}px`
+    // Position ai-showdown-wrap at bottom of viewport initially
+    gsap.set(heroWrap, {
+      position: "fixed",
+      bottom: "0",
+      left: "0",
+      right: "0",
+      zIndex: 60
     });
     
-    // Use EXACTLY the same animation logic as desktop
-    gsap.to(heroImage, {
-      scale: () => getTargetScale(),
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
+          // Use EXACTLY the same animation logic as desktop
+      gsap.to(heroImage, {
+        width: "80%",
+        scale: 1.2,
+        scrollTrigger: {
         trigger: cardSection,
-        start: "top bottom", // Exact same as desktop
-        end: "center center", // Exact same as desktop  
-       scrub: 0.5, // Same as desktop (was 0.3, now matching desktop exactly)
+        start: "top bottom",
+        end: "center center",
+        scrub: 1,
         invalidateOnRefresh: true,
         fastScrollEnd: true,
         preventOverlaps: true,
@@ -114,14 +119,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // DESKTOP BEHAVIOR: Keep existing animation unchanged
     
     gsap.to(heroImage, {
-      scale: () => getTargetScale(),
-      duration: 1,
-      ease: "power2.out",
+      width: "80%",
+      scale: 1.2,
       scrollTrigger: {
         trigger: cardSection,
         start: "top bottom",
         end: "center center",
-        scrub: 0.5,
+        scrub: 1,
         invalidateOnRefresh: true,
         fastScrollEnd: true,
         preventOverlaps: true,
@@ -137,18 +141,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const newIsMobile = window.innerWidth <= 768;
     
     if (newIsMobile) {
-      // Recalculate positioning for mobile
-      const newCardHeight = cardSection.offsetHeight;
-      const newVisiblePortion = 0.33; // Show only 1/3 of the card
-      const newHiddenPortion = 1 - newVisiblePortion;
-      const newPullUpAmount = newCardHeight * newHiddenPortion;
-      
-      gsap.set(cardSection, { marginTop: `-${newPullUpAmount}px` });
-      gsap.set(heroImage, { scale: 0.1 }); // Keep initial squeezed state; animation will recalc scale via getTargetScale
+                    // Position ai-showdown-wrap higher up for mobile
+    gsap.set(heroWrap, {
+      position: "fixed",
+      bottom: "100px",
+      left: "0",
+      right: "0",
+      zIndex: 60
+    });
+              gsap.set(heroImage, { scale: 1, width: "70%", margin: "0 auto", display: "block" }); // Use full scale and 70% width for mobile
     } else {
-      // Reset for desktop
-      gsap.set(cardSection, { marginTop: "0px" });
-      gsap.set(heroImage, { scale: 0.2 }); // Desktop unchanged
+      // Position ai-showdown-wrap higher up for desktop
+      gsap.set(heroWrap, { 
+        position: "fixed",
+        bottom: "100px",
+        left: "0",
+        right: "0",
+        zIndex: 60
+      });
+      gsap.set(heroImage, { scale: 1, width: "70%", margin: "0 auto", display: "block" }); // Desktop now starts at full scale and 70% width
     }
     maintainGap();
     ScrollTrigger.refresh();
@@ -162,6 +173,17 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Force refresh ScrollTrigger to apply changes immediately
   ScrollTrigger.refresh();
+  
+  // Ensure initial scale and width are applied after a short delay
+  setTimeout(() => {
+    gsap.set(heroImage, {
+      scale: 1,
+      width: "70%",
+      margin: "0 auto",
+      display: "block",
+      transformOrigin: "center center"
+    });
+  }, 100);
   
   // Initialize video player
   initializeVideoPlayer();
