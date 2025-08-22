@@ -6,10 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Target the AI Showdown hero image section
   const cardSection = document.querySelector('section[style*="will-change: transform"]');
-  const heroImage = cardSection.querySelector('img[src*="AI showdown hero image"]');
+  const heroImage = document.querySelector('.ai-showdown');
+  const heroWrap = document.querySelector('.ai-showdown-wrap');
+  const nextSection = cardSection ? cardSection.nextElementSibling : null;
   
-  if (!heroImage || !cardSection) {
-    console.warn('Hero image element not found');
+  if (!heroImage || !cardSection || !heroWrap || !nextSection) {
+    console.warn('Hero image or required elements not found');
     return;
   }
   
@@ -23,7 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
     opacity: 1 // Keep full opacity throughout
   });
   
-    // Calculate scale to fit viewport with margins (dynamic for all devices)
+  // Ensure the hero visually overlaps the next section instead of keeping a fixed gap
+  heroWrap.style.marginBottom = '-120px';
+  
+  // Calculate scale to fit viewport with margins (dynamic for all devices)
   function getTargetScale() {
     // Keep a consistent 5px left and 5px right margin across all screens
     const totalHorizontalMargin = 10; // 5px + 5px
@@ -104,7 +109,6 @@ document.addEventListener('DOMContentLoaded', function() {
       gsap.set(cardSection, { marginTop: "0px" });
       gsap.set(heroImage, { scale: 0.2 }); // Desktop unchanged
     }
-    
     ScrollTrigger.refresh();
   });
   
