@@ -6,22 +6,35 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Target the AI Showdown hero image section
   const cardSection = document.querySelector('section[style*="will-change: transform"]');
-  const heroImage = cardSection.querySelector('img[src*="AI showdown hero image"]');
+  const heroImage = document.querySelector('.ai-showdown');
+  const heroWrap = document.querySelector('.ai-showdown-wrap');
+  const nextSection = cardSection ? cardSection.nextElementSibling : null;
   
-  if (!heroImage || !cardSection) {
-    console.warn('Hero image element not found');
+  if (!heroImage || !cardSection || !heroWrap || !nextSection) {
+    console.warn('Hero image or required elements not found');
     return;
   }
   
   // Detect if device is mobile
   const isMobile = window.innerWidth <= 768;
   
-  // Set initial transform origin to center for smooth scaling (both mobile and desktop)
+  // Set initial styles
   gsap.set(heroImage, {
     transformOrigin: "center center",
-    scale: isMobile ? 0.1 : 0.2, // Much more squeezed initial scale for more dramatic effect
-    opacity: 1 // Keep full opacity throughout
+    scale: isMobile ? 0.1 : 0.2,
+    opacity: 1
   });
+
+  // Set initial styles for the wrapper and next section
+  gsap.set(heroWrap, {
+    zIndex: 60
+  });
+
+  gsap.set(nextSection, {
+    marginTop: "-120px"
+  });
+
+
   
     // Calculate scale to fit viewport with margins (dynamic for all devices)
   function getTargetScale() {
@@ -31,6 +44,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const imageWidth = heroImage.offsetWidth || heroImage.naturalWidth || 1;
     const computedScale = (windowWidth - totalHorizontalMargin) / imageWidth;
     return computedScale;
+  }
+  
+  // Maintain overlap between sections
+  const OVERLAP_PX = 120;
+  let rafId = null;
+  function maintainOverlap() {
+    // Ensure constant overlap between sections
+    const imgRect = heroImage.getBoundingClientRect();
+    const nextRect = nextSection.getBoundingClientRect();
+    
+    // Calculate the current overlap
+    const currentOverlap = imgRect.bottom - nextRect.top;
+    const delta = OVERLAP_PX - currentOverlap;
+    
+    if (Math.abs(delta) > 1) {
+      // Adjust the next section's position to maintain overlap
+      const currentMarginTop = parseFloat(getComputedStyle(nextSection).marginTop) || 0;
+      nextSection.style.marginTop = (currentMarginTop - delta) + 'px';
+    }
+  }
+  
+  function scheduleOverlapMaintenance() {
+    if (rafId != null) return;
+    rafId = requestAnimationFrame(() => {
+      rafId = null;
+      maintainOverlap();
+    });
   }
   
   if (isMobile) {
@@ -60,10 +100,13 @@ document.addEventListener('DOMContentLoaded', function() {
         trigger: cardSection,
         start: "top bottom", // Exact same as desktop
         end: "center center", // Exact same as desktop  
-        scrub: 0.5, // Same as desktop (was 0.3, now matching desktop exactly)
+       scrub: 0.5, // Same as desktop (was 0.3, now matching desktop exactly)
         invalidateOnRefresh: true,
         fastScrollEnd: true,
-        preventOverlaps: true
+        preventOverlaps: true,
+        onUpdate: scheduleOverlapMaintenance,
+        onRefresh: maintainOverlap,
+        markers: false
       }
     });
     
@@ -81,7 +124,10 @@ document.addEventListener('DOMContentLoaded', function() {
         scrub: 0.5,
         invalidateOnRefresh: true,
         fastScrollEnd: true,
-        preventOverlaps: true
+        preventOverlaps: true,
+        onUpdate: scheduleOverlapMaintenance,
+        onRefresh: maintainOverlap,
+        markers: false
       }
     });
   }
@@ -104,9 +150,15 @@ document.addEventListener('DOMContentLoaded', function() {
       gsap.set(cardSection, { marginTop: "0px" });
       gsap.set(heroImage, { scale: 0.2 }); // Desktop unchanged
     }
-    
+    maintainGap();
     ScrollTrigger.refresh();
   });
+
+   
+  // Keep overlap consistent during scroll and on load
+  window.addEventListener('scroll', scheduleOverlapMaintenance, { passive: true });
+  window.addEventListener('load', maintainOverlap, { passive: true });
+  maintainOverlap();
   
   // Force refresh ScrollTrigger to apply changes immediately
   ScrollTrigger.refresh();
