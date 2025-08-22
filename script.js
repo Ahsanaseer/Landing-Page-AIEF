@@ -73,34 +73,38 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  if (isMobile) {
-    // MOBILE BEHAVIOR: Position card down a bit, same animation as desktop
-    
-    // Calculate negative margin to pull the card up into the viewport
-    const cardHeight = cardSection.offsetHeight;
+  // Compute how much of the card should peek into the viewport based on gap under the top CTA
+  function computePeekAmountPx() {
+    const ctaBtn = document.getElementById('ctaTopBtn');
+    if (!ctaBtn) return 0;
+    const rect = ctaBtn.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
-    const navHeight = 80; // Fixed nav height
-    
-    // Show only 1/3 of the card initially, hide 2/3 below viewport
-    const visiblePortion = 0.33; // Show only 1/3 of the card
-    const hiddenPortion = 1 - visiblePortion;
-    const pullUpAmount = cardHeight * hiddenPortion;
-    
-    // Apply negative margin to pull card into viewport
-    gsap.set(cardSection, {
-      marginTop: `-${pullUpAmount}px`
-    });
-    
-    // Use EXACTLY the same animation logic as desktop
+    const gapBelowCta = Math.max(0, viewportHeight - rect.bottom);
+    // Clamp to card height to avoid over-pulling if gap is huge
+    const cardHeight = cardSection.offsetHeight || 0;
+    const maxPeek = Math.max(0, Math.min(gapBelowCta, cardHeight));
+    return maxPeek;
+  }
+
+  function setInitialPeek() {
+    const peek = computePeekAmountPx();
+    gsap.set(cardSection, { marginTop: `-${peek}px` });
+  }
+  
+  // Apply initial peek state
+  setInitialPeek();
+
+  // Scroll animation (unchanged)
+  if (isMobile) {
     gsap.to(heroImage, {
       scale: () => getTargetScale(),
       duration: 1,
       ease: "power2.out",
       scrollTrigger: {
         trigger: cardSection,
-        start: "top bottom", // Exact same as desktop
-        end: "center center", // Exact same as desktop  
-       scrub: 0.5, // Same as desktop (was 0.3, now matching desktop exactly)
+        start: "top bottom",
+        end: "center center",
+        scrub: 0.5,
         invalidateOnRefresh: true,
         fastScrollEnd: true,
         preventOverlaps: true,
@@ -109,10 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
         markers: false
       }
     });
-    
   } else {
-    // DESKTOP BEHAVIOR: Keep existing animation unchanged
-    
     gsap.to(heroImage, {
       scale: () => getTargetScale(),
       duration: 1,
@@ -136,21 +137,15 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('resize', () => {
     const newIsMobile = window.innerWidth <= 768;
     
+    // Re-apply initial peek on resize
+    setInitialPeek();
+
     if (newIsMobile) {
-      // Recalculate positioning for mobile
-      const newCardHeight = cardSection.offsetHeight;
-      const newVisiblePortion = 0.33; // Show only 1/3 of the card
-      const newHiddenPortion = 1 - newVisiblePortion;
-      const newPullUpAmount = newCardHeight * newHiddenPortion;
-      
-      gsap.set(cardSection, { marginTop: `-${newPullUpAmount}px` });
-      gsap.set(heroImage, { scale: 0.1 }); // Keep initial squeezed state; animation will recalc scale via getTargetScale
+      gsap.set(heroImage, { scale: 0.1 });
     } else {
-      // Reset for desktop
-      gsap.set(cardSection, { marginTop: "0px" });
-      gsap.set(heroImage, { scale: 0.2 }); // Desktop unchanged
+      gsap.set(heroImage, { scale: 0.2 });
     }
-    maintainGap();
+    maintainOverlap();
     ScrollTrigger.refresh();
   });
 
