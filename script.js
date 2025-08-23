@@ -2,22 +2,23 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-  
+document.addEventListener("DOMContentLoaded", function () {
   // Target the AI Showdown hero image section
-  const cardSection = document.querySelector('section[style*="will-change: transform"]');
-  const heroImage = document.querySelector('.ai-showdown');
-  const heroWrap = document.querySelector('.ai-showdown-wrap');
+  const cardSection = document.querySelector(
+    'section[style*="will-change: transform"]'
+  );
+  const heroImage = document.querySelector(".ai-showdown");
+  const heroWrap = document.querySelector(".ai-showdown-wrap");
   const nextSection = cardSection ? cardSection.nextElementSibling : null;
-  
+
   if (!heroImage || !cardSection || !heroWrap || !nextSection) {
-    console.warn('Hero image or required elements not found');
+    console.warn("Hero image or required elements not found");
     return;
   }
-  
+
   // Detect if device is mobile
   const isMobile = window.innerWidth <= 768;
-  
+
   // Set initial styles - start with smaller width and center the image
   gsap.set(heroImage, {
     transformOrigin: "center center",
@@ -25,12 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
     width: "70%", // Start with 70% width
     opacity: 1,
     margin: "0 auto", // Center the image
-    display: "block" // Ensure margin auto works
+    display: "block", // Ensure margin auto works
   });
 
   // Set initial styles for the wrapper and next section
   gsap.set(heroWrap, {
-    zIndex: 60
+    zIndex: 60,
   });
 
   // Position the ai-showdown-wrap higher up from the bottom of viewport
@@ -39,16 +40,14 @@ document.addEventListener('DOMContentLoaded', function() {
     bottom: "100px",
     left: "0",
     right: "0",
-    zIndex: 60
+    zIndex: 60,
   });
 
   gsap.set(nextSection, {
-    marginTop: "-150px"
+    marginTop: "-150px",
   });
 
-
-  
-    // Calculate scale to fit viewport with margins (dynamic for all devices)
+  // Calculate scale to fit viewport with margins (dynamic for all devices)
   function getTargetScale() {
     // Keep a consistent 5px left and 5px right margin across all screens
     const totalHorizontalMargin = 10; // 5px + 5px
@@ -57,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const computedScale = (windowWidth - totalHorizontalMargin) / imageWidth;
     return computedScale;
   }
-  
+
   // Maintain overlap between sections
   const OVERLAP_PX = 120;
   let rafId = null;
@@ -65,18 +64,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ensure constant overlap between sections
     const imgRect = heroImage.getBoundingClientRect();
     const nextRect = nextSection.getBoundingClientRect();
-    
+
     // Calculate the current overlap
     const currentOverlap = imgRect.bottom - nextRect.top;
     const delta = OVERLAP_PX - currentOverlap;
-    
+
     if (Math.abs(delta) > 1) {
       // Adjust the next section's position to maintain overlap
-      const currentMarginTop = parseFloat(getComputedStyle(nextSection).marginTop) || 0;
-      nextSection.style.marginTop = (currentMarginTop - delta) + 'px';
+      const currentMarginTop =
+        parseFloat(getComputedStyle(nextSection).marginTop) || 0;
+      nextSection.style.marginTop = currentMarginTop - delta + "px";
     }
   }
-  
+
   function scheduleOverlapMaintenance() {
     if (rafId != null) return;
     rafId = requestAnimationFrame(() => {
@@ -84,40 +84,20 @@ document.addEventListener('DOMContentLoaded', function() {
       maintainOverlap();
     });
   }
-  
+
   if (isMobile) {
     // MOBILE BEHAVIOR: Position card at bottom initially, same animation as desktop
-    
+
     // Position ai-showdown-wrap at bottom of viewport initially
     gsap.set(heroWrap, {
       position: "fixed",
       bottom: "0",
       left: "0",
       right: "0",
-      zIndex: 60
+      zIndex: 60,
     });
-    
-          // Use EXACTLY the same animation logic as desktop
-      gsap.to(heroImage, {
-        width: "80%",
-        scale: 1.2,
-        scrollTrigger: {
-        trigger: cardSection,
-        start: "top bottom",
-        end: "center center",
-        scrub: 1,
-        invalidateOnRefresh: true,
-        fastScrollEnd: true,
-        preventOverlaps: true,
-        onUpdate: scheduleOverlapMaintenance,
-        onRefresh: maintainOverlap,
-        markers: false
-      }
-    });
-    
-  } else {
-    // DESKTOP BEHAVIOR: Keep existing animation unchanged
-    
+
+    // Use EXACTLY the same animation logic as desktop
     gsap.to(heroImage, {
       width: "80%",
       scale: 1.2,
@@ -131,49 +111,79 @@ document.addEventListener('DOMContentLoaded', function() {
         preventOverlaps: true,
         onUpdate: scheduleOverlapMaintenance,
         onRefresh: maintainOverlap,
-        markers: false
-      }
+        markers: false,
+      },
+    });
+  } else {
+    // DESKTOP BEHAVIOR: Keep existing animation unchanged
+
+    gsap.to(heroImage, {
+      width: "80%",
+      scale: 1.2,
+      scrollTrigger: {
+        trigger: cardSection,
+        start: "top bottom",
+        end: "center center",
+        scrub: 1,
+        invalidateOnRefresh: true,
+        fastScrollEnd: true,
+        preventOverlaps: true,
+        onUpdate: scheduleOverlapMaintenance,
+        onRefresh: maintainOverlap,
+        markers: false,
+      },
     });
   }
-  
+
   // Refresh ScrollTrigger on window resize for responsive behavior
-  window.addEventListener('resize', () => {
+  window.addEventListener("resize", () => {
     const newIsMobile = window.innerWidth <= 768;
-    
+
     if (newIsMobile) {
-                    // Position ai-showdown-wrap higher up for mobile
-    gsap.set(heroWrap, {
-      position: "fixed",
-      bottom: "100px",
-      left: "0",
-      right: "0",
-      zIndex: 60
-    });
-              gsap.set(heroImage, { scale: 1, width: "70%", margin: "0 auto", display: "block" }); // Use full scale and 70% width for mobile
-    } else {
-      // Position ai-showdown-wrap higher up for desktop
-      gsap.set(heroWrap, { 
+      // Position ai-showdown-wrap higher up for mobile
+      gsap.set(heroWrap, {
         position: "fixed",
         bottom: "100px",
         left: "0",
         right: "0",
-        zIndex: 60
+        zIndex: 60,
       });
-      gsap.set(heroImage, { scale: 1, width: "70%", margin: "0 auto", display: "block" }); // Desktop now starts at full scale and 70% width
+      gsap.set(heroImage, {
+        scale: 1,
+        width: "70%",
+        margin: "0 auto",
+        display: "block",
+      }); // Use full scale and 70% width for mobile
+    } else {
+      // Position ai-showdown-wrap higher up for desktop
+      gsap.set(heroWrap, {
+        position: "fixed",
+        bottom: "100px",
+        left: "0",
+        right: "0",
+        zIndex: 60,
+      });
+      gsap.set(heroImage, {
+        scale: 1,
+        width: "70%",
+        margin: "0 auto",
+        display: "block",
+      }); // Desktop now starts at full scale and 70% width
     }
     maintainGap();
     ScrollTrigger.refresh();
   });
 
-   
   // Keep overlap consistent during scroll and on load
-  window.addEventListener('scroll', scheduleOverlapMaintenance, { passive: true });
-  window.addEventListener('load', maintainOverlap, { passive: true });
+  window.addEventListener("scroll", scheduleOverlapMaintenance, {
+    passive: true,
+  });
+  window.addEventListener("load", maintainOverlap, { passive: true });
   maintainOverlap();
-  
+
   // Force refresh ScrollTrigger to apply changes immediately
   ScrollTrigger.refresh();
-  
+
   // Ensure initial scale and width are applied after a short delay
   setTimeout(() => {
     gsap.set(heroImage, {
@@ -181,32 +191,31 @@ document.addEventListener('DOMContentLoaded', function() {
       width: "70%",
       margin: "0 auto",
       display: "block",
-      transformOrigin: "center center"
+      transformOrigin: "center center",
     });
   }, 100);
-  
+
   // Initialize video player
   initializeVideoPlayer();
   // Initialize registration section video player
   initializeRegistrationVideoPlayer();
-  
+
   // Initialize FAQ accordion scroll behavior
   initializeFAQScroll();
-  
 });
 
 // Performance optimization: Reduce motion for users who prefer it
-if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  gsap.set('*', {clearProps: 'all'});
-  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  gsap.set("*", { clearProps: "all" });
+  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 }
 
 // Registration Video Player Functionality (mirrors initializeVideoPlayer for the registration section)
 function initializeRegistrationVideoPlayer() {
-  const video = document.getElementById('registrationVideo');
-  const videoSection = document.getElementById('registrationVideoSection');
-  const videoTimer = document.getElementById('registrationVideoTimer');
-  const fallbackBg = document.querySelector('.registration-fallback-bg');
+  const video = document.getElementById("registrationVideo");
+  const videoSection = document.getElementById("registrationVideoSection");
+  const videoTimer = document.getElementById("registrationVideoTimer");
+  const fallbackBg = document.querySelector(".registration-fallback-bg");
 
   if (!video || !videoSection || !videoTimer) {
     return;
@@ -220,16 +229,17 @@ function initializeRegistrationVideoPlayer() {
     const secs = Math.floor(seconds % 60);
     let secsString = secs.toString();
     if (secsString.length < 2) {
-      secsString = '0' + secsString;
+      secsString = "0" + secsString;
     }
-    return mins + ':' + secsString;
+    return mins + ":" + secsString;
   }
 
   function updateTimer() {
     if (video.duration && isFinite(video.duration)) {
       const currentTime = video.currentTime;
       const totalTime = video.duration;
-      videoTimer.textContent = formatTime(currentTime) + ' / ' + formatTime(totalTime);
+      videoTimer.textContent =
+        formatTime(currentTime) + " / " + formatTime(totalTime);
     }
   }
 
@@ -247,50 +257,56 @@ function initializeRegistrationVideoPlayer() {
     }
   }
 
-  video.addEventListener('loadedmetadata', function() {
+  video.addEventListener("loadedmetadata", function () {
     isVideoLoaded = true;
     updateTimer();
     if (fallbackBg) {
-      fallbackBg.style.display = 'none';
+      fallbackBg.style.display = "none";
     }
   });
 
-  video.addEventListener('error', function() {
+  video.addEventListener("error", function () {
     if (fallbackBg) {
-      fallbackBg.style.display = 'block';
+      fallbackBg.style.display = "block";
     }
-    videoTimer.style.display = 'none';
+    videoTimer.style.display = "none";
   });
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        if (isVideoLoaded) {
-          video.play().then(function() {
-            startTimer();
-          }).catch(function() {});
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          if (isVideoLoaded) {
+            video
+              .play()
+              .then(function () {
+                startTimer();
+              })
+              .catch(function () {});
+          }
+        } else {
+          video.pause();
+          video.currentTime = 0;
+          stopTimer();
+          updateTimer();
         }
-      } else {
-        video.pause();
-        video.currentTime = 0;
-        stopTimer();
-        updateTimer();
-      }
-    });
-  }, {
-    threshold: 0.5,
-    rootMargin: '0px'
-  });
+      });
+    },
+    {
+      threshold: 0.5,
+      rootMargin: "0px",
+    }
+  );
 
   observer.observe(videoSection);
 
-  video.addEventListener('timeupdate', function() {
+  video.addEventListener("timeupdate", function () {
     if (timerInterval) {
       updateTimer();
     }
   });
 
-  window.addEventListener('beforeunload', function() {
+  window.addEventListener("beforeunload", function () {
     stopTimer();
     observer.disconnect();
   });
@@ -298,35 +314,37 @@ function initializeRegistrationVideoPlayer() {
 
 // Video Player Functionality
 function initializeVideoPlayer() {
-  const video = document.getElementById('backgroundVideo');
-  const videoSection = document.getElementById('videoSection');
-  const videoTimer = document.getElementById('videoTimer');
-  const fallbackBg = document.querySelector('.fallback-bg');
-  
+  const video = document.getElementById("backgroundVideo");
+  const videoSection = document.getElementById("videoSection");
+  const videoTimer = document.getElementById("videoTimer");
+  const fallbackBg = document.querySelector(".fallback-bg");
+
   if (!video || !videoSection || !videoTimer) {
-    console.warn('Video elements not found');
+    console.warn("Video elements not found");
     return;
   }
-  
+
   let timerInterval;
   let isVideoLoaded = false;
-  
+
   // Format time in MM:SS format
   function formatTime(seconds) {
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
   }
-  
+
   // Update timer display
   function updateTimer() {
     if (video.duration && isFinite(video.duration)) {
       const currentTime = video.currentTime;
       const totalTime = video.duration;
-      videoTimer.textContent = `${formatTime(currentTime)} / ${formatTime(totalTime)}`;
+      videoTimer.textContent = `${formatTime(currentTime)} / ${formatTime(
+        totalTime
+      )}`;
     }
   }
-  
+
   // Start timer updates
   function startTimer() {
     if (timerInterval) {
@@ -334,7 +352,7 @@ function initializeVideoPlayer() {
     }
     timerInterval = setInterval(updateTimer, 1000);
   }
-  
+
   // Stop timer updates
   function stopTimer() {
     if (timerInterval) {
@@ -342,63 +360,69 @@ function initializeVideoPlayer() {
       timerInterval = null;
     }
   }
-  
+
   // Handle video load
-  video.addEventListener('loadedmetadata', function() {
+  video.addEventListener("loadedmetadata", function () {
     isVideoLoaded = true;
     updateTimer();
     // Hide fallback background
     if (fallbackBg) {
-      fallbackBg.style.display = 'none';
+      fallbackBg.style.display = "none";
     }
   });
-  
+
   // Handle video error
-  video.addEventListener('error', function() {
-    console.warn('Video failed to load, showing fallback background');
+  video.addEventListener("error", function () {
+    console.warn("Video failed to load, showing fallback background");
     if (fallbackBg) {
-      fallbackBg.style.display = 'block';
+      fallbackBg.style.display = "block";
     }
-    videoTimer.style.display = 'none';
+    videoTimer.style.display = "none";
   });
-  
+
   // Intersection Observer for play/pause behavior
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Video is 50% visible, start playing
-        if (isVideoLoaded) {
-          video.play().then(() => {
-            startTimer();
-          }).catch(error => {
-            console.warn('Video autoplay failed:', error);
-          });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Video is 50% visible, start playing
+          if (isVideoLoaded) {
+            video
+              .play()
+              .then(() => {
+                startTimer();
+              })
+              .catch((error) => {
+                console.warn("Video autoplay failed:", error);
+              });
+          }
+        } else {
+          // Video is out of view, pause and reset
+          video.pause();
+          video.currentTime = 0;
+          stopTimer();
+          updateTimer(); // Update to show 0:00
         }
-      } else {
-        // Video is out of view, pause and reset
-        video.pause();
-        video.currentTime = 0;
-        stopTimer();
-        updateTimer(); // Update to show 0:00
-      }
-    });
-  }, {
-    threshold: 0.5, // Trigger when 50% visible
-    rootMargin: '0px'
-  });
-  
+      });
+    },
+    {
+      threshold: 0.5, // Trigger when 50% visible
+      rootMargin: "0px",
+    }
+  );
+
   // Observe the video section
   observer.observe(videoSection);
-  
+
   // Handle video time updates for smoother timer updates
-  video.addEventListener('timeupdate', function() {
+  video.addEventListener("timeupdate", function () {
     if (timerInterval) {
       updateTimer();
     }
   });
-  
+
   // Clean up on page unload
-  window.addEventListener('beforeunload', function() {
+  window.addEventListener("beforeunload", function () {
     stopTimer();
     observer.disconnect();
   });
@@ -406,14 +430,15 @@ function initializeVideoPlayer() {
 
 // FAQ Scroll Behavior Initialization
 function initializeFAQScroll() {
-  const faqAccordion = document.getElementById('faq-accordion');
-  const faqSection = document.querySelector('.bg-gray-100.py-12.md\\:py-16.relative.z-40.px-5.md\\:px-\\[100px\\]');
-  
-  
+  const faqAccordion = document.getElementById("faq-accordion");
+  const faqSection = document.querySelector(
+    ".bg-gray-100.py-12.md\\:py-16.relative.z-40.px-5.md\\:px-\\[100px\\]"
+  );
+
   // Set initial height to 1/3 of viewport height
   // const initialHeight = window.innerHeight * 0.33;
   // faqAccordion.style.maxHeight = initialHeight + 'px';
-  
+
   // Create scroll trigger for FAQ section
   ScrollTrigger.create({
     trigger: faqSection,
@@ -422,12 +447,12 @@ function initializeFAQScroll() {
     onUpdate: (self) => {
       // Calculate progress (0 to 1)
       const progress = self.progress;
-      
+
       // Calculate target height: from 1/3 viewport to full height
       const minHeight = window.innerHeight * 0.33;
       const maxHeight = 100; // 900px to show 5 questions
-      const targetHeight = minHeight + (progress * (maxHeight - minHeight));
-      
+      const targetHeight = minHeight + progress * (maxHeight - minHeight);
+
       // Apply smooth height transition
       // faqAccordion.style.transition = 'max-height 0.3s ease-out';
       // faqAccordion.style.maxHeight = targetHeight + 'px';
@@ -449,9 +474,9 @@ function initializeFAQScroll() {
       // When scrolling back up and leaving, contract
       // faqAccordion.style.transition = 'max-height 0.3s ease-out';
       // faqAccordion.style.maxHeight = (window.innerHeight * 0.33) + 'px';
-    }
+    },
   });
-  
+
   // Handle window resize
   // window.addEventListener('resize', () => {
   //   const newInitialHeight = window.innerHeight * 0.33;
@@ -463,167 +488,199 @@ function initializeFAQScroll() {
 
 // FAQ Accordion Functionality
 function toggleFAQ(headerElement) {
-  const faqItem = headerElement.closest('.faq-item');
-  const content = faqItem.querySelector('.faq-content');
-  const icon = faqItem.querySelector('.faq-icon');
-  
-  // Toggle the content visibility with smooth animation
-  if (content.style.display === 'none' || content.style.display === '') {
+  const faqItem = headerElement.closest(".faq-item");
+  const content = faqItem.querySelector(".faq-content");
+  const icon = faqItem.querySelector(".faq-icon");
+
+  // Check if content is currently visible
+  const isVisible =
+    content.style.display !== "none" && content.style.display !== "";
+
+  if (!isVisible) {
     // Show content with smooth animation
-    content.style.display = 'block';
-    content.style.opacity = '0';
-    content.style.maxHeight = '0';
-    content.style.overflow = 'hidden';
-    content.style.transform = 'scaleY(0.8)';
-    content.style.transformOrigin = 'top';
-    
-    // Animate the content opening
-    setTimeout(() => {
-      content.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-      content.style.opacity = '1';
-      content.style.maxHeight = content.scrollHeight + 'px';
-      content.style.transform = 'scaleY(1)';
-    }, 10);
-    
+    content.style.display = "block";
+    content.style.overflow = "hidden";
+
+    // Set initial state
+    content.style.opacity = "0";
+    content.style.maxHeight = "0";
+    content.style.transform = "translateY(-10px)";
+    content.style.marginTop = "0";
+    content.style.marginBottom = "0";
+
+    // Force reflow to ensure initial state is applied
+    content.offsetHeight;
+
+    // Animate to final state
+    content.style.transition =
+      "opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin 0.4s cubic-bezier(0.4, 0, 0.2, 1)";
+    content.style.opacity = "1";
+    content.style.maxHeight = content.scrollHeight + "px";
+    content.style.transform = "translateY(0)";
+    content.style.marginTop = "";
+    content.style.marginBottom = "";
+
     // Animate the icon
-    icon.style.transition = 'transform 0.3s ease-in-out';
-    icon.classList.remove('fa-chevron-right');
-    icon.classList.add('fa-chevron-down');
-    icon.style.transform = 'rotate(0deg)';
-    
+    icon.style.transition = "transform 0.3s ease-out";
+    icon.classList.remove("fa-chevron-right");
+    icon.classList.add("fa-chevron-down");
+
+    // Clean up transition after animation completes
+    setTimeout(() => {
+      content.style.transition = "";
+      content.style.overflow = "";
+    }, 400);
   } else {
     // Hide content with smooth animation
-    content.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-    content.style.opacity = '0';
-    content.style.maxHeight = '0';
-    content.style.transform = 'scaleY(0.8)';
-    
+    content.style.overflow = "hidden";
+
+    // Store the current height before starting animation
+    const currentHeight = content.scrollHeight;
+
+    // Set transition with easing for smoother animation
+    content.style.transition =
+      "opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin 0.4s cubic-bezier(0.4, 0, 0.2, 1)";
+
+    // Animate to hidden state with smoother easing
+    content.style.opacity = "0";
+    content.style.maxHeight = "0";
+    content.style.transform = "translateY(-5px)";
+    content.style.marginTop = "0";
+    content.style.marginBottom = "0";
+
     // Animate the icon
-    icon.style.transition = 'transform 0.3s ease-in-out';
-    icon.classList.remove('fa-chevron-down');
-    icon.classList.add('fa-chevron-right');
-    icon.style.transform = 'rotate(0deg)';
-    
-    // Hide the content after animation
+    icon.style.transition = "transform 0.3s ease-in";
+    icon.classList.remove("fa-chevron-down");
+    icon.classList.add("fa-chevron-right");
+
+    // Hide content after animation completes
     setTimeout(() => {
-      content.style.display = 'none';
-      content.style.transform = 'scaleY(1)';
+      content.style.display = "none";
+      content.style.transition = "";
+      content.style.overflow = "";
+      content.style.transform = "";
+      content.style.marginTop = "";
+      content.style.marginBottom = "";
     }, 400);
   }
 }
-
-
-
 
 let currentActiveStep = 0;
 const totalSteps = 5;
 
 function updateTimeline(activeStep) {
-    const progressLine = document.getElementById('progressLine');
-    
-    // Calculate progress percentage based on active step
-    let progressPercent = 0;
-    if (activeStep > 0) {
-        // Progress to the current active step
-        progressPercent = (activeStep / totalSteps) * 100;
+  const progressLine = document.getElementById("progressLine");
+
+  // Calculate progress percentage based on active step
+  let progressPercent = 0;
+  if (activeStep > 0) {
+    // Progress to the current active step
+    progressPercent = (activeStep / totalSteps) * 100;
+  }
+
+  progressLine.style.height = progressPercent + "%";
+
+  // Update dots and steps
+  for (let i = 1; i <= totalSteps; i++) {
+    const dot = document.getElementById(`dot${i}`);
+    const step = document.getElementById(`step${i}`);
+
+    if (i < activeStep) {
+      // Completed steps
+      dot.classList.remove("active");
+      dot.classList.add("completed");
+      step.classList.remove("active");
+      step.classList.add("completed");
+    } else if (i === activeStep) {
+      // Current active step
+      dot.classList.remove("completed");
+      dot.classList.add("active");
+      step.classList.remove("completed");
+      step.classList.add("active");
+    } else {
+      // Future steps
+      dot.classList.remove("active", "completed");
+      step.classList.remove("active", "completed");
     }
-    
-    progressLine.style.height = progressPercent + '%';
-    
-    // Update dots and steps
-    for (let i = 1; i <= totalSteps; i++) {
-        const dot = document.getElementById(`dot${i}`);
-        const step = document.getElementById(`step${i}`);
-        
-        if (i < activeStep) {
-            // Completed steps
-            dot.classList.remove('active');
-            dot.classList.add('completed');
-            step.classList.remove('active');
-            step.classList.add('completed');
-        } else if (i === activeStep) {
-            // Current active step
-            dot.classList.remove('completed');
-            dot.classList.add('active');
-            step.classList.remove('completed');
-            step.classList.add('active');
-        } else {
-            // Future steps
-            dot.classList.remove('active', 'completed');
-            step.classList.remove('active', 'completed');
-        }
-    }
-    
-    currentActiveStep = activeStep;
+  }
+
+  currentActiveStep = activeStep;
 }
 
 function isElementCentered(element) {
-    const rect = element.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    const elementCenter = rect.top + rect.height / 2;
-    
-    // Trigger when element reaches 65% from the top of the viewport
-    const triggerPoint = windowHeight * 0.65;
-    
-    // Element is considered "centered" when it reaches the trigger point
-    // Using a larger threshold (30px) for smoother activation
-    const threshold = 30;
-    return Math.abs(elementCenter - triggerPoint) < threshold;
+  const rect = element.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+  const elementCenter = rect.top + rect.height / 2;
+
+  // Trigger when element reaches 65% from the top of the viewport
+  const triggerPoint = windowHeight * 0.65;
+
+  // Element is considered "centered" when it reaches the trigger point
+  // Using a larger threshold (30px) for smoother activation
+  const threshold = 30;
+  return Math.abs(elementCenter - triggerPoint) < threshold;
 }
 
 function handleScroll() {
-    let newActiveStep = 0;
-    const timelineContainer = document.getElementById('timelineContainer');
-    const containerRect = timelineContainer.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    
-    // Only process if timeline is visible
-    if (containerRect.top < windowHeight && containerRect.bottom > 0) {
-        // Check each step to see which one is currently centered or most visible
-        for (let i = 1; i <= totalSteps; i++) {
-            const stepElement = document.getElementById(`step${i}`);
-            const stepRect = stepElement.getBoundingClientRect();
-            
-            // Check if step is centered
-            if (isElementCentered(stepElement)) {
-                newActiveStep = i;
-                break;
-            }
-            
-            // If no step is perfectly centered, find the one closest to center
-            if (stepRect.top < windowHeight / 2 && stepRect.bottom > windowHeight / 2) {
-                newActiveStep = i;
-            }
-        }
-        
-        // If still no active step, find the most visible step near the center
-        if (newActiveStep === 0) {
-            let minDistance = Infinity;
-            let closestStep = 0;
-            
-            for (let i = 1; i <= totalSteps; i++) {
-                const stepElement = document.getElementById(`step${i}`);
-                const stepRect = stepElement.getBoundingClientRect();
-                const elementCenter = stepRect.top + stepRect.height / 2;
-                const distance = Math.abs(elementCenter - (windowHeight / 2));
-                
-                // Update if this step is closer to center than previous closest
-                if (distance < minDistance && stepRect.top < windowHeight && stepRect.bottom > 0) {
-                    minDistance = distance;
-                    closestStep = i;
-                }
-            }
-            
-            if (closestStep > 0) {
-                newActiveStep = closestStep;
-            }
-        }
+  let newActiveStep = 0;
+  const timelineContainer = document.getElementById("timelineContainer");
+  const containerRect = timelineContainer.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  // Only process if timeline is visible
+  if (containerRect.top < windowHeight && containerRect.bottom > 0) {
+    // Check each step to see which one is currently centered or most visible
+    for (let i = 1; i <= totalSteps; i++) {
+      const stepElement = document.getElementById(`step${i}`);
+      const stepRect = stepElement.getBoundingClientRect();
+
+      // Check if step is centered
+      if (isElementCentered(stepElement)) {
+        newActiveStep = i;
+        break;
+      }
+
+      // If no step is perfectly centered, find the one closest to center
+      if (
+        stepRect.top < windowHeight / 2 &&
+        stepRect.bottom > windowHeight / 2
+      ) {
+        newActiveStep = i;
+      }
     }
-    
-    // Only update if the active step has changed
-    if (newActiveStep !== currentActiveStep) {
-        updateTimeline(newActiveStep);
+
+    // If still no active step, find the most visible step near the center
+    if (newActiveStep === 0) {
+      let minDistance = Infinity;
+      let closestStep = 0;
+
+      for (let i = 1; i <= totalSteps; i++) {
+        const stepElement = document.getElementById(`step${i}`);
+        const stepRect = stepElement.getBoundingClientRect();
+        const elementCenter = stepRect.top + stepRect.height / 2;
+        const distance = Math.abs(elementCenter - windowHeight / 2);
+
+        // Update if this step is closer to center than previous closest
+        if (
+          distance < minDistance &&
+          stepRect.top < windowHeight &&
+          stepRect.bottom > 0
+        ) {
+          minDistance = distance;
+          closestStep = i;
+        }
+      }
+
+      if (closestStep > 0) {
+        newActiveStep = closestStep;
+      }
     }
+  }
+
+  // Only update if the active step has changed
+  if (newActiveStep !== currentActiveStep) {
+    updateTimeline(newActiveStep);
+  }
 }
 
 // Initialize timeline
@@ -631,17 +688,17 @@ updateTimeline(0);
 
 // Add scroll event listener with throttling for better performance
 let ticking = false;
-window.addEventListener('scroll', () => {
-    if (!ticking) {
-        requestAnimationFrame(() => {
-            handleScroll();
-            ticking = false;
-        });
-        ticking = true;
-    }
+window.addEventListener("scroll", () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      handleScroll();
+      ticking = false;
+    });
+    ticking = true;
+  }
 });
 
 // Handle initial state on page load
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(handleScroll, 100); // Small delay to ensure proper layout
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(handleScroll, 100); // Small delay to ensure proper layout
 });

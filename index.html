@@ -1273,12 +1273,16 @@
 
       <!-- AIEF Championship Rewind Section -->
       <section
-        class="bg-gray-100 py-12 md:py-24 relative z-40"
+        class="bg-gray-100 py-12 md:py-24 2xl:py-28 3xl:py-32 4xl:py-36 5xl:py-40 relative z-40"
         style="transform-origin: 50% 50%"
       >
-        <div class="w-[calc(100%-64px)] ml-[32px] mr-[32px]">
+        <div
+          class="w-[calc(100%-64px)] ml-[32px] mr-[32px] 2xl:ml-[48px] 2xl:mr-[48px] 3xl:ml-[64px] 3xl:mr-[64px] 4xl:ml-[80px] 4xl:mr-[80px] 5xl:ml-[96px] 5xl:mr-[96px]"
+        >
           <div class="bg-white mx-auto">
-            <div class="flex flex-col lg:flex-row gap-0 md:min-h-[388px]">
+            <div
+              class="flex flex-col lg:flex-row gap-0 md:min-h-[388px] 2xl:min-h-[450px] 3xl:min-h-[500px] 4xl:min-h-[550px] 5xl:min-h-[600px]"
+            >
               <!-- Left Side - Video Player -->
               <div class="w-full lg:w-[60%]">
                 <div
@@ -1300,7 +1304,7 @@
 
                   <!-- Video Progress Timer -->
                   <div
-                    class="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 rounded-md text-[10px] font-poppinsvideo-timer"
+                    class="absolute top-4 left-4 2xl:top-6 3xl:top-8 4xl:top-10 5xl:top-12 left-4 2xl:left-6 3xl:left-8 4xl:left-10 5xl:left-12 bg-black/50 text-white px-3 py-1 2xl:px-4 2xl:py-2 3xl:px-5 3xl:py-3 4xl:px-6 4xl:py-4 5xl:px-7 5xl:py-5 rounded-md text-[10px] 2xl:text-xs 3xl:text-sm 4xl:text-base 5xl:text-lg font-poppinsvideo-timer"
                     id="videoTimer"
                   >
                     0:00 / 0:00
@@ -1347,31 +1351,41 @@
 
               <!-- Right Side - Text Content -->
               <div
-                class="w-full lg:w-[40%] rounded-br-lg max-lg:rounded-bl-lg md:rounded-tr-lg p-6 md:p-8 text-white relative"
+                class="w-full lg:w-[40%] rounded-br-lg max-lg:rounded-bl-lg md:rounded-tr-lg p-6 md:p-8 2xl:p-10 3xl:p-12 4xl:p-14 5xl:p-16 text-white relative"
                 style="background: var(--btn-bg)"
               >
                 <!-- Main Content -->
-                <div class="space-y-4 md:space-y-6">
+                <div
+                  class="space-y-4 md:space-y-6 2xl:space-y-8 3xl:space-y-10 4xl:space-y-12 5xl:space-y-14"
+                >
                   <h2
-                    class="text-xl md:text-2xl lg:text-3xl xl:text-2xl font-normal leading-tight"
+                    class="text-xl md:text-2xl lg:text-3xl 2xl:text-4xl 3xl:text-5xl 4xl:text-6xl 5xl:text-7xl font-normal leading-tight"
                   >
                     AI Talent Takes the Spotlight!
                   </h2>
 
-                  <div class="space-y-3 md:space-y-4 text-gray-200">
-                    <p class="fluid-text-sm md:fluid-text-base leading-relaxed">
+                  <div
+                    class="space-y-3 md:space-y-4 2xl:space-y-5 3xl:space-y-6 4xl:space-y-7 5xl:space-y-8 text-gray-200"
+                  >
+                    <p
+                      class="fluid-text-sm md:fluid-text-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl 5xl:text-3xl leading-relaxed"
+                    >
                       AIEF brought together Pakistan's brightest AI minds for
                       the 2nd International AI Championship. A high-energy,
                       high-impact showdown held at FAST University, Lahore.
                     </p>
 
-                    <p class="fluid-text-sm md:fluid-text-base leading-relaxed">
+                    <p
+                      class="fluid-text-sm md:fluid-text-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl 5xl:text-3xl leading-relaxed"
+                    >
                       Watch as university students from across Pakistan pitch,
                       prototype, and present breakthrough AI solutions before
                       top industry judges and global leaders.
                     </p>
 
-                    <p class="fluid-text-sm md:fluid-text-base leading-relaxed">
+                    <p
+                      class="fluid-text-sm md:fluid-text-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl 5xl:text-3xl leading-relaxed"
+                    >
                       From real-time demos to expert feedback, the Championship
                       showcases how AIEF is nurturing the country's AI ecosystem
                       by blending research, real-world application, and
@@ -1382,7 +1396,7 @@
 
                   <!-- Call to Action Button -->
                   <button
-                    class="text-white px-3 md:px-4 py-2 rounded-lg font-normal fluid-btn-sm md:fluid-btn-base transition-colors flex items-center space-x-1 md:space-x-2"
+                    class="text-white px-3 md:px-4 2xl:px-6 3xl:px-8 4xl:px-10 5xl:px-12 py-2 2xl:py-3 3xl:py-4 4xl:py-5 5xl:py-6 rounded-lg font-normal fluid-btn-sm md:fluid-btn-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl 5xl:text-3xl transition-colors flex items-center space-x-1 md:space-x-2 2xl:space-x-3 3xl:space-x-4 4xl:space-x-5 5xl:space-x-6"
                     style="
                       background: linear-gradient(
                         to top right,
@@ -1395,18 +1409,20 @@
                     onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
                   >
                     <span>SIGN UP NOW</span>
-                    <i class="fas fa-arrow-right"></i>
+                    <i
+                      class="fas fa-arrow-right 2xl:text-lg 3xl:text-xl 4xl:text-2xl 5xl:text-3xl"
+                    ></i>
                   </button>
                 </div>
 
                 <!-- Graduation Cap Icon -->
                 <div
-                  class="absolute bottom-4 md:bottom-6 right-4 md:right-6 text-white/20"
+                  class="absolute bottom-4 md:bottom-6 2xl:bottom-8 3xl:bottom-10 4xl:bottom-12 5xl:bottom-14 right-4 md:right-6 2xl:right-8 3xl:right-10 4xl:right-12 5xl:right-14 text-white/20"
                 >
                   <img
                     src="PICS/icon top.png"
                     alt="graduation cap"
-                    class="w-16 h-12 md:w-20 md:h-15"
+                    class="w-16 h-12 md:w-20 md:h-15 2xl:w-24 2xl:h-18 3xl:w-28 3xl:h-21 4xl:w-32 4xl:h-24 5xl:w-36 5xl:h-27"
                   />
                 </div>
               </div>
