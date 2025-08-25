@@ -201,6 +201,7 @@
         scrollbar-width: none;
         /* Firefox */
       }
+      
 
       /* Ensure no element causes horizontal overflow on mobile */
       @media (max-width: 768px) {
@@ -363,7 +364,7 @@
         class="py-16 md:py-20 2xl:py-24 3xl:py-48"
         style="margin-top: 80px; transform-origin: 50% 50%"
       >
-        <div class="w-[calc(100%-64px)] ml-[32px] mr-[32px] text-center mt-4">
+        <div class="w-[calc(100%-64px)] ml-[32px] mr-[32px] text-center my-auto">
           <h1
             class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl 2xl:text-9xl 3xl:text-[16rem] font-poppins text-white mb-3 md:mb-4 2xl:mb-6 3xl:mb-20"
           >
@@ -394,12 +395,12 @@
     </section>
 
     <!-- Spacer to prevent content overlap -->
-    <div class="h-screen"></div>
+    <div class="h-screen" style="background: linear-gradient(255deg, #21275e 36.55%, #044836 86.52%);"></div>
 
     <!-- Main Content -->
-    <main class="w-full">
+    <main class="w-full" style="background: linear-gradient(255deg, #21275e 36.55%, #044836 86.52%);">
       <section
-        class="relative py-16 md:py-20 z-50 md:h-[34em]"
+        class="relative py-16 md:py-20 z-50 "
         style="
           will-change: transform;
           top: -200px;
@@ -417,6 +418,7 @@
           </div>
         </div>
       </section>
+    
       <!-- AI Championship Section -->
       <section
         class="relative z-20 pt-20 md:pt-40 pb-20"
@@ -641,6 +643,8 @@
           </div>
         </div>
       </section>
+      </main>
+    
 
       <!-- Who can Participate Section -->
       <section
@@ -2266,7 +2270,7 @@
           </div>
         </div>
       </footer>
-    </main>
+    
 
     <script src="script.js"></script>
   </body>
