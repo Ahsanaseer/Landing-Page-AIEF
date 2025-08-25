@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
         display: "block",
       }); // Desktop now starts at full scale and 70% width
     }
-    maintainGap();
+    maintainOverlap();
     ScrollTrigger.refresh();
   });
 
