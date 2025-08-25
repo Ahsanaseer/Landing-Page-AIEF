@@ -702,3 +702,9 @@ window.addEventListener("scroll", () => {
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(handleScroll, 100); // Small delay to ensure proper layout
 });
+
+
+function opendoc(){
+
+  window.open("https://docs.google.com/forms/d/e/1FAIpQLSc3sSZerWE6Jjk4q48n3AE5cOcAL_6743Qj5RkJDVMUgrVp9w/viewform", "_blank");
+}
